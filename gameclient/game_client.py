@@ -14,7 +14,9 @@ class GameClient:
         user_input = ""
         while user_input != 'quit':
             print(self.ui.print_main_menu())
-            user_input = input(">> ")
+            user_input = self.ui.user_prompt()
+
+
 
 
 
@@ -31,16 +33,24 @@ class GameState:
         print("Loading rooms from files (This is a stub)")
 
 
+
+
+
 class UserInterface:
     '''
     Primarily used to print information to the user's screen
     '''
     def __init__(self):
-        pass
+        self.prompt_text = ">> "
+
 
     def print_main_menu(self):
         print("Welcome to Hacker: The Movie: The Adventure Game: The Sequel")
         print("This game is awesome! If you wanna start h4ck1nG the n3t, say 'begin hack'! Or be a sissy and 'quit'!" )
+
+    def user_prompt(self):
+        return input(self.prompt_text)
+
 
 
 class Player:
