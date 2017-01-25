@@ -39,8 +39,13 @@ class RoomBuilder:
         rooms = []
 
         # Could refactor this out as a method that is then called on each file in the folder if desired
-        with open('./gamedata/rooms/street.json') as sample_room:
-            room_properties = json.load(sample_room)
+        with open('./gamedata/rooms/street.json') as street_room:
+            room_properties = json.load(street_room)
+            new_room = Room(room_properties)
+            rooms.append(new_room)
+
+        with open('./gamedata/rooms/arcade.json') as arcade_room:
+            room_properties = json.load(arcade_room)
             new_room = Room(room_properties)
             rooms.append(new_room)
         # pprint(rooms)

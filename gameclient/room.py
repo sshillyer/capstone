@@ -59,6 +59,9 @@ class Room:
         # TODO: Determine if Objects located in rooms are set per the room JSON files or loaded programatically elsewhere
         self.objects = [] # Room starts with no objects
 
+    def get_name(self):
+        return self.name
+
     def get_long_description(self):
         '''
         Get the "long description" version of the room's description

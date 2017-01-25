@@ -169,20 +169,20 @@ class GameClient:
             # Prompt user for input and parse the command
             self.user_input = self.ui.user_prompt()
 
-                # TODO: The language parser will have to return more than the verb. It will also need to identify the
-                #  subject (feature or object) and appropriate prepositions and such. At a minimum I'd expect the LP to
-                #  return a python dictionary of a verb that's being called and one or more subjects that are trying to
-                #  be interacted. For example "use broom on dusty floor" might return:
-                #
-                # {
-                #     'verb' : 'use',
-                #     'object' : 'broom',
-                #     'targets' : [
-                #         'dusty floor'
-                #     ]
-                # }
-                #
-                # (SSH)
+            # TODO: The language parser will have to return more than the verb. It will also need to identify the
+            #  subject (feature or object) and appropriate prepositions and such. At a minimum I'd expect the LP to
+            #  return a python dictionary of a verb that's being called and one or more subjects that are trying to
+            #  be interacted. For example "use broom on dusty floor" might return:
+            #
+            # {
+            #     'verb' : 'use',
+            #     'object' : 'broom',
+            #     'targets' : [
+            #         'dusty floor'
+            #     ]
+            # }
+            #
+            # (SSH)
 
             self.command, self.object, self.targets = self.lp.parse_command(self.user_input)
 
@@ -202,6 +202,18 @@ class GameClient:
                 else:
                     print(PICKUP_FAILURE_PREFIX + self.object + PICKUP_FAILURE_SUFFIX)
 
+            elif self.command is DROP:
+                if self.verb_drop(self.object) is True:
+                    print(DROP_SUCCESS_PREFIX + self.object + DROP_SUCCESS_SUFFIX)
+                else:
+                    print(DROP_FAILURE_PREFIX + self.object + DROP_FAILURE_SUFFIX)
+
+            elif self.command is GO:
+                destination = self.verb_go(self.object)
+                if destination:
+                    print(GO_SUCCESS_PREFIX + destination.get_name() + GO_SUCCESS_SUFFIX)
+                else:
+                    print(GO_FAILURE_PREFIX + self.object + GO_FAILURE_SUFFIX)
 
             elif self.command is HELP:
                 self.verb_help()
@@ -246,7 +258,7 @@ class GameClient:
         #     return GAMEOVER_LOSE
         #
         # else:
-            return GAME_CONTINUE
+        return GAME_CONTINUE
 
     def verb_look_at(self, object_name):
         '''
@@ -296,12 +308,33 @@ class GameClient:
         # TODO: if we have more complex objects player can take by stealing, this logic may be insufficient
         return False
 
+    def verb_help(self):
+        self.ui.print_help_message()
+
     def verb_inventory(self):
         inventory_description = self.gamestate.player.get_inventory_string()
         print(inventory_description)
 
-    def verb_help(self):
-        self.ui.print_help_message()
+    def verb_drop(self, object_name):
+        inventory_object = self.gamestate.player.inventory.get_object_by_name(object_name)
+        if inventory_object is not None:
+            self.gamestate.player.inventory.remove_object(inventory_object)
+            self.gamestate.current_location.add_object_to_room(inventory_object)
+            return True
+        return False
+
+    def verb_go(self, destination):
+        # See if the destination is the cardinal direction OR the name of one of the room_connections
+        for connection in self.gamestate.current_location.room_connections:
+            if connection.label.lower() == destination.lower() \
+                    or connection.cardinal_direction.lower() == destination.lower():
+                new_room = self.gamestate.get_room_by_name(connection.destination.lower())
+                if new_room:
+                    self.gamestate.set_current_location(new_room)
+                    return new_room
+                else:
+                    logger.debug("The 'go' command almost worked, but the destination room isn't in the GameState.rooms list")
+        return None
 
 
 class GameState:
@@ -326,8 +359,11 @@ class GameState:
         # TODO: THis lookup would be done out of the GameState.rooms[] list of course
         self.current_location = room
 
-
-
+    def get_room_by_name(self, room_name):
+        for room in self.rooms:
+            if room.name.lower() == room_name.lower():
+                return room
+        return None
 
 
 class UserInterface:

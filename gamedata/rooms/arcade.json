@@ -1,0 +1,24 @@
+{
+  "name" : "Arcade",
+  "long_description" : "You're standing an amazing Arcade. Not much happening here... Pac-Man and Street Fighter, mostly.",
+  "short_description" : "The arcade is very boring.",
+  "visited" : false,
+  "room_features" : [
+      {
+        "name" : "Pac-Man",
+        "description" : "This game is amazing. Cherry-Munching Dot Chaser!"
+      },
+      {
+        "name" : "Street Fighter",
+        "description" : "Round One... Fight!"
+      }
+  ],
+  "room_connections" : [
+    {
+      "label": "Street",
+      "cardinal_direction": "South",
+      "description": "the door heading outside to the Street",
+      "destination": "Street"
+    }
+  ]
+}

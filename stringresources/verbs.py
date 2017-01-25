@@ -10,9 +10,9 @@
 # CITATIONS
 # CITE: None
 
-
-# MAIN MENU COMMANDS
-
+######################
+# MAIN MENU COMMANDS #
+######################
 
 # NEW_GAME
 NEW_GAME_ALIASES = { 'newgame', 'new game', "hacktheplanet"}
@@ -30,28 +30,37 @@ QUIT = 'quit'
 SAVE_GAME_ALIASES = [ 'savegame', 'save game', 'save_game']
 SAVE_GAME = 'save game'
 
-
-# Other verbs used in gameplay
-
+###############
+# OTHER VERBS #
+###############
 
 # HELP
-HELP_ALIASES = { 'help' }
+HELP_ALIASES = {'help'}
 HELP = 'help'
 
 # LOOK
-LOOK_ALIASES = { 'look' }
+LOOK_ALIASES = {'look'}
 LOOK = 'look'
 
 # LOOK AT
-LOOK_AT_ALIASES = { 'look at', 'examine' }
+LOOK_AT_ALIASES = {'look at', 'examine'}
 LOOK_AT = 'look at'
 
 # TAKE
-TAKE_ALIASES = { 'take', 'pick up'}
+TAKE_ALIASES = {'take', 'pick up'}
 TAKE = 'take'
 
+# DROP
+DROP_ALIASES = {'drop', 'put down', 'let go'}
+DROP = 'drop'
+
 # INVENTORY
-INVENTORY_ALIASES = { 'inventory', 'backpack', 'bag'}
+INVENTORY_ALIASES = {'inventory', 'backpack', 'bag'}
 INVENTORY = 'inventory'
+
+# GO
+GO_ALIASES = {'go'}
+GO = "go"
+
 
 INVALID_INPUT = 'invalid command'
