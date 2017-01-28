@@ -1,0 +1,30 @@
+{
+  "name" : "Hall",
+  "long_description" : "The bell just rang, so no one's around. There's a good chance a hall monitor could catch you skipping. Better move fast.",
+  "short_description" : "You hear footsteps coming down the hall just around the corner...",
+  "visited" : false,
+  "room_features" : [
+      {
+        "name" : "Locker",
+        "description" : "5... 29... 17... click... Aaand unlocked!"
+      },
+      {
+        "name" : "Fire Alarm",
+        "description" : "This could make an excellent diversion..."
+      }
+  ],
+  "room_connections" : [
+    {
+      "label": "\"Pool\" on the Roof",
+      "cardinal_direction": "North",
+      "description": "",
+      "destination": "\"Pool\" on the Roof"
+    },
+    {
+      "label": "Office",
+      "cardinal_direction": "South",
+      "description": "",
+      "destination": "Office"
+    }
+  ]
+}

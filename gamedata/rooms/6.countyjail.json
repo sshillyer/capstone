@@ -1,0 +1,42 @@
+{
+  "name" : "County Jail",
+  "long_description" : "Bars on all sides, thin mattress, and a musty blanket. And worst of all, no tech in sight! Call it time served so you can get out of here already.",
+  "short_description" : "Bored already. This is worse than being grounded for sure!",
+  "visited" : false,
+  "room_features" : [
+      {
+        "name" : "Personal Affects Counter",
+        "description" : "\"Here's your crap, kid. Stay outta trouble.\", says the cop through the glass."
+      },
+      {
+        "name" : "Unattended Police Computer",
+        "description" : "Somebody forgot to log out... Don't they learn this stuff in the Academy?"
+      }
+  ],
+  "room_connections" : [
+    {
+      "label": "",
+      "cardinal_direction": "North",
+      "description": "",
+      "destination": ""
+    },
+    {
+      "label": "",
+      "cardinal_direction": "South",
+      "description": "",
+      "destination": ""
+    },
+    {
+      "label": "",
+      "cardinal_direction": "East",
+      "description": "",
+      "destination": ""
+    },
+    {
+      "label": "",
+      "cardinal_direction": "West",
+      "description": "",
+      "destination": ""
+    }
+  ]
+}

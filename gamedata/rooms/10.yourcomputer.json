@@ -1,0 +1,29 @@
+{
+  "name" : "Your Computer",
+  "long_description" : "The letters on your keyboard are so worn out from hacking you've had to paint them back on with nail polish a few times. Time to get to work!",
+  "short_description" : "Beep beep boop.",
+  "visited" : false,
+  "room_features" : [
+      {
+        "name" : "Disk Drive",
+        "description" : "You can load your CD-ROMs in here."
+      },
+      {
+        "name" : "Panel",
+        "description" : "Your Computer's ultimate backdoor. You can add some sweet new mods through here."
+      },
+      {
+        "name" : "Terminal",
+        "description" : "\"Hello, World!\", it reads."
+      }
+  ],
+  "room_connections" : [
+
+    {
+      "label": "Inside the Metaverse",
+      "cardinal_direction": "East",
+      "description": "",
+      "destination": "Inside the Metaverse"
+    }
+  ]
+}

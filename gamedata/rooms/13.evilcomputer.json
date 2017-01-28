@@ -1,0 +1,42 @@
+{
+  "name" : "Evil Computer",
+  "long_description" : "Auto install malware? No thank you! Best not to linger here...",
+  "short_description" : "Oh snap! Some of your files just disappeared!",
+  "visited" : false,
+  "room_features" : [
+      {
+        "name" : "Input / Output Port",
+        "description" : "You can copy some useful files through this port."
+      },
+      {
+        "name" : "Sentient Motherboard",
+        "description" : "\"Hello, Puny Human!\""
+      }
+  ],
+  "room_connections" : [
+    {
+      "label": "Inside the Metaverse",
+      "cardinal_direction": "North",
+      "description": "",
+      "destination": "Inside the Metaverse"
+    },
+    {
+      "label": "Actual Pool on the Roof",
+      "cardinal_direction": "South",
+      "description": "",
+      "destination": "Actual Pool on the Roof"
+    },
+    {
+      "label": "Virus Room",
+      "cardinal_direction": "East",
+      "description": "",
+      "destination": "Virus Room"
+    },
+    {
+      "label": "Secret Files",
+      "cardinal_direction": "West",
+      "description": "",
+      "destination": "Secret Files"
+    }
+  ]
+}

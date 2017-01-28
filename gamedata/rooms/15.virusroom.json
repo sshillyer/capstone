@@ -1,0 +1,24 @@
+{
+  "name" : "Virus Room",
+  "long_description" : "This is definitely not a secure location. Your computer just slowed way down for some reason.",
+  "short_description" : "Sooo slooow!",
+  "visited" : false,
+  "room_features" : [
+      {
+        "name" : "Binary Files",
+        "description" : "\"01000101111001Mr.Robot1100010\" So THAT'S who's behind all this!"
+      },
+      {
+        "name" : "Corrupted Files",
+        "description" : "Probably shouldn't open these..."
+      }
+  ],
+  "room_connections" : [
+    {
+      "label": "Evil Computer",
+      "cardinal_direction": "West",
+      "description": "",
+      "destination": "Evil Computer"
+    }
+  ]
+}

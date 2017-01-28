@@ -1,0 +1,34 @@
+{
+  "name" : "Pawn Shop",
+  "long_description" : "The Store Clerk, who is sitting in a rusty protective cage, doesn't bother looking up from his magazine as you enter. You see some dusty old computers on the Shelves behind the Counter.",
+  "short_description" : "Looks like there's a lot of junk for sale.",
+  "visited" : false,
+  "room_features" : [
+    {
+      "name" : "Counter",
+      "description" : "Nothing really useful to you under the smeared glass."
+    },
+    {
+      "name" : "Shelves",
+      "description" : "Old computers can always be repurposed..."
+    },
+    {
+        "name" : "Store Clerk",
+        "description" : "\"Best wares in town.\", he grunts as he turns a page."
+    }
+  ],
+  "room_connections" : [
+    {
+      "label": "Subway",
+      "cardinal_direction": "South",
+      "description": "the door to the alley leading to the Subway station",
+      "destination": "Subway"
+    },
+    {
+      "label": "Street",
+      "cardinal_direction": "East",
+      "description": "the door heading outside to the Street",
+      "destination": "Street"
+    }
+  ]
+}

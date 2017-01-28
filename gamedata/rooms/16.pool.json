@@ -1,0 +1,28 @@
+{
+  "name" : "Actual Pool on the Roof",
+  "long_description" : "So there IS an actual Pool up here! You probably couldn't see it from behind the wall on the other side of the roof. And a Diving Board, too!",
+  "short_description" : "The water looks super inviting...",
+  "visited" : false,
+  "room_features" : [
+      {
+        "name" : "Acid Burn",
+        "description" : "High five! We did it!"
+      },
+      {
+        "name" : "Diving Board",
+        "description" : "CANNON BALLLL!"
+      },
+      {
+        "name" : "Walls",
+        "description" : "There are some sweet tags on here."
+      }
+  ],
+  "room_connections" : [
+    {
+      "label": "Street",
+      "cardinal_direction": "West",
+      "description": "",
+      "destination": "Street"
+    }
+  ]
+}

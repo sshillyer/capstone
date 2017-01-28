@@ -1,0 +1,28 @@
+{
+  "name" : "Chat Room",
+  "long_description" : "So many chatters from so many IPs! These are your people ;)",
+  "short_description" : "ASL?",
+  "visited" : false,
+  "room_features" : [
+      {
+        "name" : "Emojis",
+        "description" : "8-P <<< Cheeky nerd"
+      },
+      {
+        "name" : "Troll",
+        "description" : "Time to pay the troll toll..."
+      },
+      {
+        "name" : "Friends",
+        "description" : "So much hacking knowledge in one place!"
+      }
+  ],
+  "room_connections" : [
+    {
+      "label": "Inside the Metaverse",
+      "cardinal_direction": "South",
+      "description": "",
+      "destination": "Inside the Metaverse"
+    }
+  ]
+}

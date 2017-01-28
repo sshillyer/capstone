@@ -1,0 +1,36 @@
+{
+  "name" : "Subway",
+  "long_description" : "A train screeches to a halt. The conductor mumbles something over the intercom and it echoes off the cracked tile walls. The platform is mostly deserted except for squirrel that seems to have wandered down here from the Street. Actually, he looks right at home in that Trash Can to your left. To the right, you spot a dingy looking Phone Booth with one of it's windows boarded up. There's a ragged looking phonebook dangling from a cord inside.",
+  "short_description" : "That Phone Booth looks totally busted. I wonder what goodies that squirrel is getting into in that Trash Can...",
+  "visited" : false,
+  "room_features" : [
+      {
+        "name" : "Phone Booth",
+        "description" : "People have probably wasted a lot of money in this broke down Phone Booth."
+      },
+      {
+        "name" : "Trash Can",
+        "description" : "One's trash is another's treasure, right?"
+      }
+  ],
+  "room_connections" : [
+    {
+      "label": "Street",
+      "cardinal_direction": "North",
+      "description": "the door heading outside to the Street",
+      "destination": "Street"
+    },
+    {
+      "label": "Arcade",
+      "cardinal_direction": "East",
+      "description": "an exciting sign for an arcade",
+      "destination": "Arcade"
+    },
+    {
+      "label": "EvilCorp Bank",
+      "cardinal_direction": "West",
+      "description": "a very evil corporate bank",
+      "destination": "EvilCorp Bank"
+    }
+  ]
+}

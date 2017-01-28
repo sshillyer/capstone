@@ -1,0 +1,28 @@
+{
+  "name" : "Office",
+  "long_description" : "Principal Skinner has collected a few more framed motivational posters than the last time you were called in here. At least he's predictable and not around...",
+  "short_description" : "There is literally a shiny red apple on his desk. Wow.",
+  "visited" : false,
+  "room_features" : [
+      {
+        "name" : "School-wide Intercom Mic",
+        "description" : "\"Attention students! School is closed for the rest of the year!\" jk jk"
+      },
+      {
+        "name" : "Office Computer",
+        "description" : "Straight A's? Suuure I earned all these..."
+      },
+      {
+        "name" : "Acid Burn",
+        "description" : "Still the coolest kid in school (even though she graduated last year)."
+      }
+  ],
+  "room_connections" : [
+    {
+      "label": "Hall",
+      "cardinal_direction": "North",
+      "description": "",
+      "destination": "Hall"
+    }
+  ]
+}

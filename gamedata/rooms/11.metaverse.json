@@ -1,0 +1,36 @@
+{
+  "name" : "Inside the Metaverse",
+  "long_description" : "You're in! There are so many ports you can access from here! So much hacking potential!",
+  "short_description" : "Which server to hack into first...",
+  "visited" : false,
+  "room_features" : [
+      {
+        "name" : "Bug",
+        "description" : "Oh no! Someone hacked autocorrect to change every word you type to \"butts\"!"
+      },
+      {
+        "name" : "Firewall",
+        "description" : "Access denied?! Not today!"
+      }
+  ],
+  "room_connections" : [
+    {
+      "label": "Chat Room",
+      "cardinal_direction": "North",
+      "description": "",
+      "destination": "Chat Room"
+    },
+    {
+      "label": "Evil Computer",
+      "cardinal_direction": "South",
+      "description": "",
+      "destination": "Evil Computer"
+    },
+    {
+      "label": "Your Computer",
+      "cardinal_direction": "West",
+      "description": "",
+      "destination": "Your Computer"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name" : "\"Pool\" on the Roof",
+  "long_description" : "Okay, this is just the roof...",
+  "short_description" : "Yup. No pool up here.",
+  "visited" : false,
+  "room_features" : [
+      {
+        "name" : "Door",
+        "description" : "Oh no! Don't get locked out!"
+      },
+      {
+        "name" : "Ledge",
+        "description" : "No way but... down? It's only two stories..."
+      }
+  ],
+  "room_connections" : [
+    {
+      "label": "Hall",
+      "cardinal_direction": "South",
+      "description": "",
+      "destination": "Hall"
+    }
+  ]
+}

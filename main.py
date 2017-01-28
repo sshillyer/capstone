@@ -2,7 +2,7 @@
 
 # DELPHINUS - ADVENTURE APP
 # CS 467 - Winter 2017
-# Team Members: Sara Hashem:, Shawn Hillyer, Niza Volair
+# Team Members: Sara Hashem, Shawn Hillyer, Niza Volair
 
 # game_client.py
 # Description: GameClient class and closely-related classes
@@ -15,6 +15,7 @@ from gameclient.game_client import *
 
 # For debugging
 from debug.debug import *
+
 logger = logging.getLogger(__name__)
 
 
@@ -26,9 +27,7 @@ def main():
 
     # TODO: Implement some code that checks if the screen height and width meets some minimum requirement. Note sure
     # if we have a min h/w requirement or not yet
-    logger.debug("Entering main() loop")
+
     GC = GameClient()
-
-
 
 if __name__ == "__main__": main()

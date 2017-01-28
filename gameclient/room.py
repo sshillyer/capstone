@@ -1,6 +1,6 @@
 # DELPHINUS - ADVENTURE APP
 # CS 467 - Winter 2017
-# Team Members: Sara Hashem:, Shawn Hillyer, Niza Volair
+# Team Members: Sara Hashem, Shawn Hillyer, Niza Volair
 
 # room.py
 # Description: Room class and related / composite classes
@@ -83,7 +83,7 @@ class Room:
         Get a string of all the connections and objects in the Room
         :return: string
         '''
-        description = "\n\n" + self.get_connection_string() + "\n\n" + self.get_object_list_string()
+        description = "\nEXITS:\n" + self.get_connection_string() + "\nOBJECTS: \n" + self.get_object_list_string()
         return description
 
     def get_connection_string(self):
@@ -94,7 +94,7 @@ class Room:
         connection_string = ""
         if self.room_connections:
             for connection in self.room_connections:
-                connection_string = connection_string + connection.get_connection_description()
+                connection_string = connection_string + connection.get_connection_description() + "\n"
         return connection_string
 
     def get_object_list_string(self):
@@ -214,5 +214,5 @@ class RoomConnection:
         Get the sting as required per specifications for this particular connection
         :return: string
         '''
-        description = "To the " + self.cardinal_direction + " you see " + self.description + "."
+        description = "To the [" + self.cardinal_direction + "] you see " + self.description + ". [" + self.label + "]."
         return description

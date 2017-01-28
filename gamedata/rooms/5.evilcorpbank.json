@@ -1,0 +1,24 @@
+{
+  "name" : "EvilCorp Bank",
+  "long_description" : "The rent-a-cop just inside the revolving door eyes your backpack as you walk in. People are rushing around busy with their accounts and contracts and bank stuff. That ATM over there, probably full of Cash, has no line...",
+  "short_description" : "Looks like security has lost interest in you.",
+  "visited" : false,
+  "room_features" : [
+      {
+        "name" : "ATM",
+        "description" : "So much Cash in such a small machine..."
+      },
+      {
+        "name" : "Cash",
+        "description" : "Jackpot!"
+      }
+  ],
+  "room_connections" : [
+    {
+      "label": "Subway",
+      "cardinal_direction": "East",
+      "description": "the door to the alley leading to the Subway station",
+      "destination": "Subway"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 
 # DELPHINUS - ADVENTURE APP
 # CS 467 - Winter 2017
-# Team Members: Sara Hashem:, Shawn Hillyer, Niza Volair
+# Team Members: Sara Hashem, Shawn Hillyer, Niza Volair
 #
 # debug.py
 # Description: Debug tool setup (logging module)

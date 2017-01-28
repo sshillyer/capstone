@@ -1,6 +1,6 @@
 # DELPHINUS - ADVENTURE APP
 # CS 467 - Winter 2017
-# Team Members: Sara Hashem:, Shawn Hillyer, Niza Volair
+# Team Members: Sara Hashem, Shawn Hillyer, Niza Volair
 #
 # verbs.py
 # Description:  Used by language parser - possibly a temporary solution to parsing the commands.
@@ -62,5 +62,10 @@ INVENTORY = 'inventory'
 GO_ALIASES = {'go'}
 GO = "go"
 
+# CHEAT CODES
+CHEATCODE_WIN_ALIASES = {'die like the rest'}
+CHEATCODE_WIN = 'cheatcode win'
+CHEATCODE_LOSE_ALIASES = {'mess with the best'}
+CHEATCODE_LOSE = 'cheatcode lose'
 
 INVALID_INPUT = 'invalid command'

@@ -1,6 +1,6 @@
 # DELPHINUS - ADVENTURE APP
 # CS 467 - Winter 2017
-# Team Members: Sara Hashem:, Shawn Hillyer, Niza Volair
+# Team Members: Sara Hashem, Shawn Hillyer, Niza Volair
 #
 # language_parser.py
 # Description: Class used to parse the language and return relevant components
@@ -91,11 +91,16 @@ class LanguageParser:
         # ends up being returned by the parser. -- (SSH)
 
         if command in QUIT_ALIASES:
+            # TODO: Added this to avoid keyboard interrupts midgame (hashems)
             command = QUIT
+            # print(EXIT_MESSAGE)
+            # sys.exit()
         elif command in NEW_GAME_ALIASES:
             command = NEW_GAME
         elif command in LOAD_GAME_ALIASES:
             command = LOAD_GAME
+        elif command in SAVE_GAME_ALIASES:
+            command = SAVE_GAME
         elif command in HELP_ALIASES:
             command = HELP
         elif command in LOOK_ALIASES:
@@ -110,6 +115,11 @@ class LanguageParser:
             command = DROP
         elif command in INVENTORY_ALIASES:
             command = INVENTORY
+        # cheat codes
+        elif command == "mess with the best":
+            command = CHEATCODE_LOSE
+        elif command == "die like the rest":
+            command = CHEATCODE_WIN
 
         else:
             command = INVALID_INPUT
