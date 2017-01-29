@@ -29,5 +29,7 @@ def main():
     # if we have a min h/w requirement or not yet
 
     GC = GameClient()
+    GC.main_loop()
+
 
 if __name__ == "__main__": main()
