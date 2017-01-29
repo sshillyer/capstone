@@ -16,7 +16,6 @@ def main():
     GC.gamestate.rooms = GC.gamestate.rb.load_room_data_from_file()
     GC.gamestate.initialize_new_game()
 
-
     sg = SaveGame(GC.gamestate)
     pp = pprint.PrettyPrinter()
     print("Current Room:")
