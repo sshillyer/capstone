@@ -9,7 +9,7 @@
 # CITATIONS
 # CITE:
 
-from stringresources.strings import *
+from constants.strings import *
 
 class Player:
     '''

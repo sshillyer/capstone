@@ -31,6 +31,8 @@ class SaveGame:
             # * What objects are in the player's inventory
             self.player_inventory = []
             # * The player's various stats (speed, coolness, etc.)
+            # * The time left
+            self.time_left = gamestate.get_time_left()
 
             for room in gamestate.rooms:
                 if room.is_visited():
@@ -79,3 +81,6 @@ class SaveGame:
 
     def get_current_room(self):
         return self.current_room
+
+    def get_time_left(self):
+        return self.time_left

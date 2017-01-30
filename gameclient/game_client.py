@@ -13,14 +13,15 @@
 import os
 import platform
 
-from languageparser.language_parser import LanguageParser
-from gameclient.player import *
-from gameclient.object import *
+from constants.strings import *
+from constants.verbs import *
+from constants.status_codes import *
+from constants.action_costs import *
 from fileio.save_game import *
 from fileio.room_builder import RoomBuilder
-from stringresources.strings import *
-from stringresources.verbs import *
-from stringresources.status_codes import *
+from gameclient.player import *
+from gameclient.object import *
+from languageparser.language_parser import LanguageParser
 
 from debug.debug import *
 logger = logging.getLogger(__name__)
@@ -81,7 +82,7 @@ class GameClient:
                 # Actually playing the game will eventually terminate for one of the below reasons
                 # We handle each case separately because if a player forfeits and does not save,
                 # it can have different logic than if they quit and save, etc.
-                # The constants are defined in stringresources\status_codes.py
+                # The constants are defined in constants\status_codes.py
                 exit_code = self.play_game()
                 if exit_code is GAMEOVER_FORFEIT:
                     print("Game over: Forfeit")
@@ -121,7 +122,7 @@ class GameClient:
 
     def main_menu_prompt(self):
         '''
-        Prints the main menu then prompts the user for input one time
+        Prints the main menu then prompts the user for input one time_left
         :return: Indirectly - sets instance variable user_input to the string typed by user
         '''
         self.ui.print_main_menu()
@@ -130,8 +131,8 @@ class GameClient:
     def is_valid_menu_command(self, command):
         '''
         Checks the command returned from language parser against a list of valid menu commands defined on the
-        GameClient class (which are in term constants defined in stringresources\verbs.py)
-        :param command: A constant defined in stringresources\verbs.py
+        GameClient class (which are in term constants defined in constants\verbs.py)
+        :param command: A constant defined in constants\verbs.py
         :return: True or false depending on presence of the command in the list of valid commands
         '''
         if command in self.valid_main_menu_commands:
@@ -142,7 +143,7 @@ class GameClient:
     def play_game(self):
         '''
         Primary game loop that prints information to user, reads input, and reacts accordingly
-        :return: a status code as defined in stringresources\status_codes.py, used by gameclient to determine how
+        :return: a status code as defined in constants\status_codes.py, used by gameclient to determine how
         and/or why game ended.
         '''
 
@@ -157,7 +158,7 @@ class GameClient:
             # Check game status; if Gameover, leave game loop and return status code
             status = self.gamestate.game_status()
 
-            if status in GAMEOVER_STATES:  # list as defined in stringresources\status_codes.py
+            if status in GAMEOVER_STATES:  # list as defined in constants\status_codes.py
                 return status
 
             # Print the current room's appropriate description
@@ -174,33 +175,33 @@ class GameClient:
             if self.command is LOOK:
                 # The verb_look() method is called at the top of each loop, so not explicitly called here
                 print_long_description = True
+                self.gamestate.update_time_left(LOOK_COST)
                 self.ui.clear_screen()
 
             elif self.command is LOOK_AT:
                 self.verb_look_at(self.object)
-
             elif self.command is INVENTORY:
                 self.verb_inventory()
-
             elif self.command is TAKE:
-                if self.verb_take(self.object) is True:
-                    print(PICKUP_SUCCESS_PREFIX + self.object + PICKUP_SUCCESS_SUFFIX)
-                else:
-                    print(PICKUP_FAILURE_PREFIX + self.object + PICKUP_FAILURE_SUFFIX)
-
+                self.verb_take(self.object)
             elif self.command is DROP:
                 self.verb_drop(self.object)
-
             elif self.command is GO:
-                destination = self.verb_go(self.object)
-                if destination:
-                    print(GO_SUCCESS_PREFIX + destination.get_name() + GO_SUCCESS_SUFFIX)
-                else:
-                    print(GO_FAILURE_PREFIX + self.object + GO_FAILURE_SUFFIX)
-
+                self.verb_go(self.object)
+            elif self.command is HACK:
+                # TODO: Implement HACK
+                logger.debug("Hack is not yet implemented.")
+            elif self.command is STEAL:
+                # TODO: Implement STEAL
+                logger.debug("Steal is not yet implemented.")
+            elif self.command is BUY:
+                # TODO: Implement BUY
+                logger.debug("Buy is not yet implemented.")
+            elif self.command is SPRAYPAINT:
+                # TODO: Implement SPRAYPAINT
+                logger.debug("Spraypaint is not yet implemented.")
             elif self.command is HELP:
                 self.verb_help()
-
             elif self.command is LOAD_GAME:
                 load_confirmed = self.verb_quit(LOAD_CONFIRM_PROMPT)
                 if load_confirmed == True:
@@ -227,7 +228,6 @@ class GameClient:
             self.reset_input_and_command()
         return status
 
-
     def load_game_menu(self):
         '''
         Sets appropriate variables in the GameClient's gamestate instance
@@ -242,6 +242,25 @@ class GameClient:
         # TODO: Implement the save game menu and logic ((SSH))
         print(SAVE_GAME_MESSAGE)
         self.ui.wait_for_enter()
+
+    def verb_look(self, print_long_description):
+        '''
+        First clear the screen then determine correct version to print.
+        :param print_long_description: If set to true, forces long description to print even if user has been in room
+        before. Used for 'look' command
+        :return:
+        '''
+        self.ui.clear_screen()
+
+        if self.gamestate.get_current_room().visited is False or print_long_description is True:
+            description= self.gamestate.get_current_room().get_long_description()
+        else:
+            description = self.gamestate.get_current_room().get_short_description()
+
+        header_info = self.gamestate.get_header_info()
+        self.ui.print_status_header(header_info)
+        self.ui.print_room_description(description)
+        self.gamestate.get_current_room().set_visited()
 
     def verb_look_at(self, object_name):
         '''
@@ -265,6 +284,7 @@ class GameClient:
         else:
             description = LOOK_AT_NOT_SEEN
 
+        self.gamestate.update_time_left(LOOK_AT_COST)
         print(description)
         self.ui.wait_for_enter()
 
@@ -282,16 +302,21 @@ class GameClient:
         if room_object is not None:
             self.gamestate.get_current_room().remove_object_from_room(room_object)
             self.gamestate.player.add_object_to_inventory(room_object)
-            print(TAKE_MESSAGE_PREFIX + room_object.get_name() + TAKE_MESSAGE_SUFFIX)
+            print(PICKUP_SUCCESS_PREFIX + self.object + PICKUP_SUCCESS_SUFFIX)
+            self.gamestate.update_time_left(TAKE_COST)
             self.ui.wait_for_enter()
             return True
+        print(PICKUP_FAILURE_PREFIX + self.object + PICKUP_FAILURE_SUFFIX)
         return False
 
+
     def verb_help(self):
+        self.gamestate.update_time_left(HELP_COST)
         self.ui.print_help_message()
         self.ui.wait_for_enter()
 
     def verb_inventory(self):
+        self.gamestate.update_time_left(INVENTORY_COST)
         inventory_description = self.gamestate.player.get_inventory_string()
         self.ui.print_inventory(inventory_description)
         self.ui.wait_for_enter()
@@ -303,11 +328,14 @@ class GameClient:
             self.gamestate.player.inventory.remove_object(inventory_object)
             self.gamestate.get_current_room().add_object_to_room(inventory_object)
             print(DROP_SUCCESS_PREFIX + self.object + DROP_SUCCESS_SUFFIX)
+            self.gamestate.update_time_left(DROP_COST)
+            self.ui.wait_for_enter()
+            successful = True
         else:
             print(DROP_FAILURE_PREFIX + self.object + DROP_FAILURE_SUFFIX)
-            return False
+            successful = False
         self.ui.wait_for_enter()
-
+        return successful
 
     def verb_go(self, destination):
         # See if the destination is the cardinal direction OR the name of one of the room_connections
@@ -317,10 +345,16 @@ class GameClient:
                 new_room = self.gamestate.get_room_by_name(connection.destination.lower())
                 if new_room:
                     self.gamestate.set_current_room(new_room)
-                    return new_room
+                    print(GO_SUCCESS_PREFIX + new_room.get_name() + GO_SUCCESS_SUFFIX)
+                    self.gamestate.update_time_left(GO_COST)
+                    self.ui.wait_for_enter()
+                    return True
                 else:
                     logger.debug("The 'go' command almost worked, but the destination room isn't in the GameState.rooms list")
-        return None
+
+        # If go failed to find the room / direction desired, print a failure message
+        print(GO_FAILURE_PREFIX + self.object + GO_FAILURE_SUFFIX)
+        return False
 
     def verb_cheat_win(self):
         self.ui.clear_screen()
@@ -347,26 +381,6 @@ class GameClient:
 
 
 
-    def verb_look(self, print_long_description):
-        '''
-        First clear the screen then determine correct version to print.
-        :param print_long_description: If set to true, forces long description to print even if user has been in room
-        before. Used for 'look' command
-        :return:
-        '''
-        self.ui.clear_screen()
-
-        if self.gamestate.get_current_room().visited is False or print_long_description is True:
-            description= self.gamestate.get_current_room().get_long_description()
-        else:
-            description = self.gamestate.get_current_room().get_short_description()
-
-        header_info = self.gamestate.get_header_info()
-        self.ui.print_status_header(header_info)
-
-        self.ui.print_room_description(description)
-        self.gamestate.get_current_room().set_visited()
-
 
 
 class GameState:
@@ -378,6 +392,7 @@ class GameState:
         self.player = Player()
         self.ob = ObjectBuilder()
         self.rb = RoomBuilder()
+        self.time_left = STARTING_TIME
 
     def set_current_room(self, room):
         '''
@@ -402,11 +417,11 @@ class GameState:
 
         self.set_room_vars_to_default()
         self.set_default_room("Street")
+        self.time_left = STARTING_TIME
 
         # Get a list of every object in game. Each object has a default location so we can put in each room or inventory
         game_objects = self.ob.get_game_objects()
         self.place_objects_in_rooms(game_objects)
-
 
     def initialize_load_game(self, filename):
         # TODO: Finish fleshing out these ideas and test this function. Will require constant tweaking of this and the SaveGame
@@ -434,16 +449,17 @@ class GameState:
             else:
                 logger.debug("Error finding the room stored in a SaveGame object")
 
-        # Also set the current_room
+        # Set the current_room
         current_room_name = save_game.get_current_room()
         current_room = self.get_room_by_name(current_room_name)
         self.set_current_room(current_room)
 
-
+        # Set the time_left
+        self.time_left = save_game.get_time_left()
 
 
     def game_status(self):
-        # TODO: Implement this properly. Status codes in stringresources\status_codes.py  ((SSH))
+        # TODO: Implement this properly. Status codes in constants\status_codes.py  ((SSH))
         # This function should/will check if player has won or lost(died/whatever)
         # if self.gamestate.player.speed is 0:
         #     return GAMEOVER_LOSE
@@ -455,7 +471,8 @@ class GameState:
         header_info = {
             'speed' : self.player.speed,
             'coolness' : self.player.coolness,
-            'current_room' : self.current_room.get_name()
+            'current_room' : self.current_room.get_name(),
+            'time_left' : self.time_left
         }
         return header_info
 
@@ -479,6 +496,18 @@ class GameState:
 
     def get_current_room(self):
         return self.current_room
+
+    def update_time_left(self, time_change):
+        '''
+        Update the amount of time_left left.
+        :param time_change: Positive --> Increases time_left available. Negative --> Decreases time_left available
+        :return: N/A
+        '''
+        self.time_left += time_change
+
+    def get_time_left(self):
+        return self.time_left
+
 
 class UserInterface:
     '''
@@ -529,12 +558,12 @@ class UserInterface:
 
     def new_game_splash_screen(self):
         self.clear_screen()
-        print(NEW_GAME_MESSAGE)  # Defined in stringresources\strings.py
+        print(NEW_GAME_MESSAGE)  # Defined in constants\strings.py
         self.wait_for_enter()
 
     def print_status_header(self, info):
         print(STATUS_HEADER_BAR)
-        print("|\tSPEED: " + str(info['speed']))
+        print("|\tSPEED: " + str(info['speed']) + "\tTIME LEFT: " + str(info['time_left']))
         print("|\tCOOLNESS: " + str(info['coolness']) )
         print("|\tCURRENT LOCATION: " + str(info['current_room']))
         print(STATUS_HEADER_BAR)
@@ -546,7 +575,7 @@ class UserInterface:
     def print_room_description(self, description):
         print(DESCRIPTION_HEADER)
         print(description)
-        print(DESCRIPTION_FOOTER)
+        # print(DESCRIPTION_FOOTER)
 
     def print_inventory(self, inventory_description):
         print(INVENTORY_LIST_HEADER)

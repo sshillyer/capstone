@@ -30,7 +30,7 @@
 # #########################################################################################################
 
 
-from stringresources.verbs import *
+from constants.verbs import *
 
 from debug.debug import *
 logger = logging.getLogger(__name__)
@@ -48,7 +48,7 @@ class LanguageParser:
 
     def parse_command(self, command):
         '''
-        Presently returning a constant defined in a stringresources/verbs.py file so that the
+        Presently returning a constant defined in a constants/verbs.py file so that the
         return values from parser can just be set. Thi is Shawn's temporary solution. Later on
         we will need to send more than just the verb back (the subject etc. also needed). See Dev note near file head
         '''
@@ -85,7 +85,7 @@ class LanguageParser:
             command = "go"
 
         # This simple code just checks if the string entered by user us in one of several Lists defined in the resource
-        # file stringresources/verbs.py. Each list is a set of aliases for each verb and it returns a simple string that
+        # file constants/verbs.py. Each list is a set of aliases for each verb and it returns a simple string that
         # the gameclient is able to examine.
         # Once this is re-implemented in a stable way, gameclient will need to be reconfigured to properly parse whatever
         # ends up being returned by the parser. -- (SSH)

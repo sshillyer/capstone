@@ -9,7 +9,7 @@
 # CITATIONS
 # CITE:
 
-from stringresources.strings import *
+from constants.strings import *
 
 from debug.debug import *
 logger = logging.getLogger(__name__)
@@ -59,7 +59,7 @@ class Room:
         Get the "long description" version of the room's description
         :return: string representing full length description
         '''
-        full_description = self.long_description + self.get_supplemental_description()
+        full_description = self.long_description + "\n" +  self.get_supplemental_description()
         return full_description
 
     def get_short_description(self):
@@ -75,7 +75,7 @@ class Room:
         Get a string of all the connections and objects in the Room
         :return: string
         '''
-        description = "\nEXITS:\n" + self.get_connection_string() + "\nOBJECTS: \n" + self.get_object_list_string()
+        description = "\n" + OBJECTS_HEADER + "\n" + self.get_object_list_string() + "\n\n" + EXITS_HEADER + "\n" + self.get_connection_string()
         return description
 
     def get_connection_string(self):
