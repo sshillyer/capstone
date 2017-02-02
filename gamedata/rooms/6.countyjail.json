@@ -1,16 +1,29 @@
 {
   "name" : "County Jail",
-  "long_description" : "Bars on all sides, thin mattress, and a musty blanket. And worst of all, no tech in sight! Call it time served so you can get out of here already.",
-  "short_description" : "Bored already. This is worse than being grounded for sure!",
+  "long_description" : "A loud \"CLANK\" hits your ears as your butt hits a slab of grey concrete.  It takes, like, a whole minute for your eyes to adjust to the budget lighting of your new surroundings. You immediately wish they hadn’t wasted the cash on the single blinking bulb hanging directly from a wire in the center of the ceiling. You must be in some kind of waiting room to hell; off-white office equipment litters a couple of build-it-yourself desks and one squeaky office chairs overflows with a police officer typing with a single sausage-sized finger. Your gear has been confiscated and thrown on the unoccupied desk with complete lack of care. Across the bleak room is an even less appealing enclosure locked with steel bars and not much more than darkness inside. A metal door marks the entrance you must have been pushed in from and, incidentally, the only exit in sight.",
+  "short_description" : "Bored already. This rent-a-jail presided over by a discount cop is worse than being grounded for sure!",
   "visited" : false,
+  "virtual_space" : false,
   "room_features" : [
       {
-        "name" : "Personal Affects Counter",
-        "description" : "\"Here's your crap, kid. Stay outta trouble.\", says the cop through the glass."
+        "name" : "Your Gear",
+        "description" : "All the sweet stuff you've collected through all your adventures."
       },
       {
         "name" : "Unattended Police Computer",
         "description" : "Somebody forgot to log out... Don't they learn this stuff in the Academy?"
+      },
+	  {
+        "name" : "Police Officer",
+        "description" : "Probably works for tips."
+      },
+      {
+        "name" : "Unoccupied Desk",
+        "description" : "The new home of all your sweet gear... not. gonna. cry."
+      },
+	  {
+        "name" : "Metal Door",
+        "description" : "Locked tight- but there must be keys somewhere."
       }
   ],
   "room_connections" : [

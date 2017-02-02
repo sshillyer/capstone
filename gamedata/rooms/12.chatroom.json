@@ -1,19 +1,20 @@
 {
   "name" : "Chat Room",
-  "long_description" : "So many chatters from so many IPs! These are your people ;)",
-  "short_description" : "ASL?",
+  "long_description" : "You enter a vast structure with holographic walls at every imaginable angle connected together at odd angles. On every surface are streams of text and emojis flickering past like ticket tape from every stock market in the world gone totally insane. In the corners or are caricatures, mostly humans, of what must be the sources of these dialogues. Most of these avatars are like, completely unbelievable animated hotties, probably just lame facades for bloated old farts wasting time on the company PCs. One of these anime avatars catches your eye, though; a funny little creature with pointy ears, long spiked-up rainbow hair, and a big round tummy with a belly ring. As you adjust to the communication overload, you notice that each surface seems to be a conversation with its own language characters, speed and syntax. Just as one conversation ends, more avatars appear or other slide over to occupy the vacant space. At times one conversation seems to catch on and spreads like wildfire from screen to screen until thousands of them are all blabbering about something or other. Just as quickly it will die out and another area of screens will start to take off with text flying by like hovercats. On a screen next to you a conversation with a lot of wiggly characters has just faded and in its place appears a sleek graphic of what could only be Acid Burn forming on the wall.",
+  "short_description" : "Notable chat room attendees include a crazy-haird creature and the lovely Acid Burn.",
   "visited" : false,
+  "virtual_space" : true,
   "room_features" : [
       {
         "name" : "Emojis",
         "description" : "8-P <<< Cheeky nerd"
       },
       {
-        "name" : "Troll",
+        "name" : "Creature",
         "description" : "Time to pay the troll toll..."
       },
       {
-        "name" : "Friends",
+        "name" : "Acid Burn",
         "description" : "So much hacking knowledge in one place!"
       }
   ],

@@ -3,6 +3,7 @@
   "long_description" : "So there IS an actual Pool up here! You probably couldn't see it from behind the wall on the other side of the roof. And a Diving Board, too!",
   "short_description" : "The water looks super inviting...",
   "visited" : false,
+  "virtual_space" : true,
   "room_features" : [
       {
         "name" : "Acid Burn",

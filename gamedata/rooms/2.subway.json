@@ -1,8 +1,9 @@
 {
   "name" : "Subway",
-  "long_description" : "A train screeches to a halt. The conductor mumbles something over the intercom and it echoes off the cracked tile walls. The platform is mostly deserted except for squirrel that seems to have wandered down here from the Street. Actually, he looks right at home in that Trash Can to your left. To the right, you spot a dingy looking Phone Booth with one of it's windows boarded up. There's a ragged looking phonebook dangling from a cord inside.",
-  "short_description" : "That Phone Booth looks totally busted. I wonder what goodies that squirrel is getting into in that Trash Can...",
+  "long_description" : "You find yourself in a cavernous space completely covered in pale tile, giving your footsteps a sweet-sounding echo. Excessive greenish fluorescent lighting floods the space and saps the color from the mostly organic stains on the ground and walls. A dense rumble precedes the arrival of each subway, which greets you with an unintelligible squawking of multilingual vowels and jingles. A much abuse trashcan cowers in the far corner. To one side a phone booth advertises the city’s best psychic and liquor delivery services.",
+  "short_description" : "An underground transport system complete with garbage receptacle and touch tone communication interface.",
   "visited" : false,
+  "virtual_space" : false,
   "room_features" : [
       {
         "name" : "Phone Booth",

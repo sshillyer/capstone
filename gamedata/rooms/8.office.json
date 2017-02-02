@@ -1,8 +1,9 @@
 {
   "name" : "Office",
-  "long_description" : "Principal Skinner has collected a few more framed motivational posters than the last time you were called in here. At least he's predictable and not around...",
-  "short_description" : "There is literally a shiny red apple on his desk. Wow.",
+  "long_description" : "The chartreuse carpet and wood paneling on the walls is a constant reminder that school is, indeed, cool.  The \"tick, tock, tick, tock\" from the clock on the wall provides the aural equivalent of Chinese water torture. In the middle of the room is a desk with a computer that looks a decade old.  An intercom microphone sits on a counter in the back. Next to it is a pixelated image of a mug of coffee taped to the wall, captioned, \"I like school a latte.\" This motivational triumph more than restores your faith in the education system. Your instinct is to start vandalizing everything in sight, but then you notice something worth looking at- leaning against the far corner is an angel in a faux-leather jacket. Short spiky hair, dreamy- deer eyes, spikes, glitter nail-polish, and a mischievous smile that makes you wanna fall to your knees and pledge your miserable existence to the worship of this extreme hottie.",
+  "short_description" : "A boring office with a medieval computer and an even more ancient intercom. Oh and a completely wonderful otherworldly being, that too.",
   "visited" : false,
+  "virtual_space" : false,
   "room_features" : [
       {
         "name" : "School-wide Intercom Mic",
@@ -14,14 +15,22 @@
       },
       {
         "name" : "Acid Burn",
-        "description" : "Still the coolest kid in school (even though she graduated last year)."
+        "description" : "Still the coolest kid in school (graduating last year hasn't changed this)."
+      },
+	  {
+        "name" : "Clock",
+        "description" : "It isn't even digital."
+      },
+      {
+        "name" : "Poster",
+        "description" : "The thing is, they paid someone to write this. That is a job. People go to school to do that."
       }
   ],
   "room_connections" : [
     {
       "label": "Hall",
       "cardinal_direction": "North",
-      "description": "",
+      "description": "a door leading back into the Hall",
       "destination": "Hall"
     }
   ]

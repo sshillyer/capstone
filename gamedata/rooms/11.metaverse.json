@@ -1,8 +1,9 @@
 {
   "name" : "Inside the Metaverse",
-  "long_description" : "You're in! There are so many ports you can access from here! So much hacking potential!",
-  "short_description" : "Which server to hack into first...",
+  "long_description" : "Swoosh! Streams of data fly past you in pixilated bits and bytes. You’ve been sucked inside your computer! Awesome. Flashes of light form binary patterns cycling through the sky, if you can call an amalgamation of circuitry and electrical currents a sky, collecting and redirecting stream of info from here to the horizon. You hear the clamor of a million kittens let loose on keyboards off towards your left- must be a chat room. To you right you see an alarming amount of digits sliding past towards a blackish data tower, but the view is obscured by a large wall of flames and- what was that? You could swear you just saw a jungle-sized spider skitter around one side of the flame wall. You look down to discover that you are now more like a radical ghost than a teen hacking sensation. Your body glows a bright blue and information seems to flow through you processing on a bionic level. You can feel the power. Woah.",
+  "short_description" : "You are in a computer, which is totally awesome, except maybe the wall of flames and that weird looking bug thing, but whatev.",
   "visited" : false,
+  "virtual_space" : true,
   "room_features" : [
       {
         "name" : "Bug",

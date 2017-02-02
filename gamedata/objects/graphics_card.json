@@ -1,0 +1,8 @@
+{
+  "name" : "Graphics Card",
+  "long_description" : "a black square with bright lines of gold striping along the sides with small projections sticking out in a few places. Probably a [Graphics Card].",
+  "short_description" : "A black chip",
+  "default_location" : "Street",
+  "details" : "build computer",
+  "cost" : 0
+}

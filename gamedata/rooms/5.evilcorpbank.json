@@ -1,8 +1,9 @@
 {
   "name" : "EvilCorp Bank",
-  "long_description" : "The rent-a-cop just inside the revolving door eyes your backpack as you walk in. People are rushing around busy with their accounts and contracts and bank stuff. That ATM over there, probably full of Cash, has no line...",
-  "short_description" : "Looks like security has lost interest in you.",
+  "long_description" : "A low hum of the personal scanners built into the door frame rise slightly in pitch as you pass through. Endless streams of industrial-strength inoculate poor from the ventilation, squelching out any bacterial growth and giving the lobby a stench best described as a dentist office built into a love motel. Long red banners hang from the ceiling to the floor, giving the room an odd octagonal shape and proudly displaying the \"EvilCorp Bank #404\" designation. Close to the entrance stands a shiny AutoBucksBot. A Security guard more mustache than face stand sentry nearby staging an amateur improve class worthy impression of someone who gives a damn. The red jumpsuit adorned with gleaming emblems proclaiming achievements like \"Most Beatings of the Month\" does nothing for that authority’s figure.",
+  "short_description" : "An evil bank equipped with an AutoBucksBot and a lazy looking security guard.",
   "visited" : false,
+  "virtual_space" : false,
   "room_features" : [
       {
         "name" : "ATM",
@@ -11,6 +12,10 @@
       {
         "name" : "Cash",
         "description" : "Jackpot!"
+      },
+	  {
+        "name" : "Guard",
+        "description" : "A pile of aggressive flesh, worked into a rage from years of never guessing the answers to any Jeopardy questions. Good thing it like naps."
       }
   ],
   "room_connections" : [

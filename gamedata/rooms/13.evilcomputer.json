@@ -1,16 +1,17 @@
 {
   "name" : "Evil Computer",
-  "long_description" : "Auto install malware? No thank you! Best not to linger here...",
-  "short_description" : "Oh snap! Some of your files just disappeared!",
+  "long_description" : "The inside of the data tower is the digital equivalent of a scrapyard where the compactor just never quits, instead of a bunch of old autos stacked up high, it is all these glowing crushed bits of binary files just smashed together with no order or elegance. One encrypted file keeps flashing the same pattern in what must be some digital death cry.  Another sad data files spaghetti code flows out like guts dripping bits that scatter on the floor. In the center there is one exception, a gleaming Central Processing Unit- a disembodied giant head, kind of like a digital Olmec from Legends of the Hidden Temple glaring down all red eyed and angry at you.",
+  "short_description" : "large dark structure with crushed binary files on one side, spaghetti code on the other, and a dark looking CPU in the center.",
   "visited" : false,
+  "virtual_space" : true,
   "room_features" : [
       {
         "name" : "Input / Output Port",
         "description" : "You can copy some useful files through this port."
       },
       {
-        "name" : "Sentient Motherboard",
-        "description" : "\"Hello, Puny Human!\""
+        "name" : "Sentient CPU",
+        "description" : "The creepiest graphics imaginable."
       }
   ],
   "room_connections" : [

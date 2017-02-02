@@ -1,8 +1,9 @@
 {
   "name" : "Your Computer",
-  "long_description" : "The letters on your keyboard are so worn out from hacking you've had to paint them back on with nail polish a few times. Time to get to work!",
-  "short_description" : "Beep beep boop.",
+  "long_description" : "your heart beat quickens as you examine the sleek exterior of this machine. A powerful beast roughly the size of a Trapper Keeper stuffed full of schoolwork. There’s a glossy sticker on the front proclaiming \"Hack the System!\"  This mean machine is equipped with a floppy disk input port on the side. On the undercarriage is a thin panel screwed tightly shut to encapsulate the inner working of your beloved. The screen is smooth and clear except for a chipped section in the corner; the result of an intense game of pong. The key board displays all your favorite letters and some numbers too! Around the \"A\" you’ve used some white out and like, a bunch, of artistic skills to make a tiny anarchy symbol. <3 <3 <3!",
+  "short_description" : "The love of your life; a sleek black box of technology with a disk drive and an access panel on back.",
   "visited" : false,
+  "virtual_space" : false,
   "room_features" : [
       {
         "name" : "Disk Drive",

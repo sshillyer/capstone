@@ -28,7 +28,8 @@ class RoomBuilder:
     "Street" room so I can just update the initialization to look up that room first. -- SSH
     '''
     def __init__(self):
-        logger.debug("RoomBuilder instantiated")
+        # logger.debug("RoomBuilder instantiated")
+        pass
 
     def load_room_data_from_file(self):
         '''

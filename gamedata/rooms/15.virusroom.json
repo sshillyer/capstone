@@ -1,8 +1,9 @@
 {
   "name" : "Virus Room",
-  "long_description" : "This is definitely not a secure location. Your computer just slowed way down for some reason.",
-  "short_description" : "Sooo slooow!",
+  "long_description" : "A sticky sloppy mess of code swirls around your body immobilizing you in a small cramped space where you can barely see anything except a few black and white binary blinks and a couple of oozing corrupted files.",
+  "short_description" : "A swirl of spaghetti code with binary blinks and some majorly harshed files.",
   "visited" : false,
+  "virtual_space" : true,
   "room_features" : [
       {
         "name" : "Binary Files",

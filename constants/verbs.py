@@ -46,3 +46,5 @@ SPRAYPAINT = 'spraypaint'
 SPRAYPAINT_ALIASES = {'spraypaint', 'tag', 'spray'}
 STEAL = 'steal'
 STEAL_ALIASES = {'steal'}
+USE = 'use'
+USE_ALIASES = {'use'}

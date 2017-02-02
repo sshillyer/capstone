@@ -1,8 +1,9 @@
 {
   "name" : "Pawn Shop",
-  "long_description" : "The Store Clerk, who is sitting in a rusty protective cage, doesn't bother looking up from his magazine as you enter. You see some dusty old computers on the Shelves behind the Counter.",
-  "short_description" : "Looks like there's a lot of junk for sale.",
+  "long_description" : "You almost trip as you step into an abominable clutter of the claustrophobic interior inside the tiny shop. It smells like an abandoned shed full of rusty tools, and avian twittering resonates from several hidden nooks. It is lit with almost-enough light bulbs, all slightly different colors of white hung at irritatingly dissimilar heights. Behind a glass counter fractured in several place, a clerk smiles at you with kind eyes and a good number of teeth.",
+  "short_description" : "A lot of junk for sale in a store the size of a shoebox.",
   "visited" : false,
+  "virtual_space" : false,
   "room_features" : [
     {
       "name" : "Counter",
@@ -14,7 +15,7 @@
     },
     {
         "name" : "Store Clerk",
-        "description" : "\"Best wares in town.\", he grunts as he turns a page."
+        "description" : "A humanish creature, most likely broken and put back together several times in the dark."
     }
   ],
   "room_connections" : [

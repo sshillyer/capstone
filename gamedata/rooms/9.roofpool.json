@@ -1,8 +1,9 @@
 {
   "name" : "\"Pool\" on the Roof",
-  "long_description" : "Okay, this is just the roof...",
-  "short_description" : "Yup. No pool up here.",
+  "long_description" : "The heavy door begins to close as you walk out to find not a welcoming pool, but an empty cracked concrete stretching out towards the ledge of the roof- you’ve been tricked! As the door swings back you notice a black automated control panel.",
+  "short_description" : "A normal roof with a security lock on the door and definitely no pool.",
   "visited" : false,
+  "virtual_space" : false,
   "room_features" : [
       {
         "name" : "Door",
@@ -17,7 +18,7 @@
     {
       "label": "Hall",
       "cardinal_direction": "South",
-      "description": "",
+      "description": "the trap door leading back to the Hall.",
       "destination": "Hall"
     }
   ]

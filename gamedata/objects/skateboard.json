@@ -1,0 +1,8 @@
+{
+  "name" : "Skateboard",
+  "long_description" : "a long plane of wood, sturdily attached to four miniature versions of Semi-Truck wheels.  Though the yellow and blue paint job has now faded to a blurred abstract behind years of scuff marks, it is clear that this is a quality [Skateboard] built to last- it could glide over a corpse with ease. You wonder why someone might have discarded such a treasure, and conclude they must have been kidnapped.",
+  "short_description" : "A blue and yellow tricked-out skateboard",
+  "default_location" : "Street",
+  "details" : "increases speed",
+  "cost" : 0
+}
