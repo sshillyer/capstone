@@ -1,0 +1,8 @@
+{
+  "name" : "HackerSnacks",
+  "long_description" : "a crinkly cellophane bag with what might pass for premium pet treats inside. [HackerSnacks], an essential food group! Flavors include 'Cereal Killer' and 'Kitten Khicken!' Nutritional information omitted.",
+  "short_description" : "A bag of crunchy and chewy goodies",
+  "default_location" : "Street",
+  "details" : "Increases speed",
+  "cost" : 0
+}

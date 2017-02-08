@@ -1,0 +1,8 @@
+{
+  "name" : "New Computer",
+  "long_description" : "Wow! A brand [New Computer]! Ripe for the taking... or buying.",
+  "short_description" : "So shiny. So new.",
+  "default_location" : "Pawn Shop",
+  "details" : "hack",
+  "cost" : 350
+}

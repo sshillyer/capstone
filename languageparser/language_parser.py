@@ -13,13 +13,13 @@
 # DEV NOTES:
 # 1/22/17:
 # The language parser will have to return more than the verb. It will also need to identify the
-# subject (feature or verb_object) and appropriate prepositions and such. At a minimum I'd expect the LP to
-# return a python dictionary of a verb that's being called and one or more subjects that are trying to
+# subject (feature or verb_subject_name) and appropriate prepositions and such. At a minimum I'd expect the LP to
+# return a python dictionary of a verb that's being called and one or more targets that are trying to
 # be interacted. For example "use broom on dusty floor" might return:
 #
 # {
 #     'verb' : 'use',
-#     'verb_object' : 'broom',
+#     'verb_subject_name' : 'broom',
 #     'targets' : [
 #         'dusty floor'
 #     ]
@@ -31,7 +31,7 @@
 
 
 from constants.verbs import *
-
+from languageparser.language_parser_wrapper import *
 from debug.debug import *
 logger = logging.getLogger(__name__)
 
@@ -57,41 +57,47 @@ class LanguageParser:
         # TODO: Might also want to strip trailing whitespace (SSH)
         # l.strip() strips the left-side whitespace, not sure on right side whitespace (SSH)
         command = command.lower().lstrip()
-        object = None
+        subject = None
         targets = None
 
-        # Hacky way to parse a "look at" command to find the verb_object/feature player wants to examine.
+        # Hacky way to parse a "look at" command to find the verb_subject_name/feature player wants to examine.
         # NOTE: Doesn't parse aliases
         if 'look at' in command:
-            object = command.replace("look at ", "", 1) # replace "look at " with empty string - rest is the verb_object
+            subject = command.replace("look at ", "", 1) # replace "look at " with empty string - rest is the verb_subject_name
             command = "look at"
 
         # hacky way to parse a 'take' command.
         # NOTE: Doesn't parse aliases
         elif 'take' in command:
-            object = command.replace("take ", "", 1) # replace at most one instance of "take " with empty str
+            subject = command.replace("take ", "", 1) # replace at most one instance of "take " with empty str
             command = "take"
 
         # hacky way to parse a 'drop' command
         # NOTE: Doesn't parse aliases
         elif 'drop' in command:
-            object = command.replace("drop ", "", 1) # replace at most one instance of "drop " with empty str
+            subject = command.replace("drop ", "", 1) # replace at most one instance of "drop " with empty str
             command = "drop"
 
         # Same thing for go
         elif 'go' in command:
-            object = command.replace("go ", "", 1)
+            subject = command.replace("go ", "", 1)
             command = "go"
 
         elif 'buy' in command:
-            object = command.replace("buy ", "", 1)
+            subject = command.replace("buy ", "", 1)
             command = "buy"
 
         elif 'use' in command:
-            object = command.replace("use ", "", 1)
+            subject = command.replace("use ", "", 1)
             command = "use"
 
+        elif 'steal' in command:
+            subject = command.replace("steal ", "", 1)
+            command = "steal"
 
+        elif 'hack' in command:
+            subject = command.replace("hack ", "", 1)
+            command = "hack"
         # This simple code just checks if the string entered by user us in one of several Lists defined in the resource
         # file constants/verbs.py. Each list is a set of aliases for each verb and it returns a simple string that
         # the gameclient is able to examine.
@@ -106,6 +112,8 @@ class LanguageParser:
             command = LOAD_GAME
         elif command in SAVE_GAME_ALIASES:
             command = SAVE_GAME
+        elif command in HACK_ALIASES:
+            command = HACK
         elif command in HELP_ALIASES:
             command = HELP
         elif command in LOOK_ALIASES:
@@ -126,6 +134,8 @@ class LanguageParser:
             command = USE
         elif command in SPRAYPAINT_ALIASES:
             command = SPRAYPAINT
+        elif command in STEAL_ALIASES:
+            command = STEAL
         # cheat codes
         elif command == "mess with the best":
             command = CHEATCODE_LOSE
@@ -135,5 +145,11 @@ class LanguageParser:
         else:
             command = INVALID_INPUT
 
-        logger.debug("Returning: " + str(command) + ", " + str(object) + ", " + str(targets))
-        return (command, object, targets)
+        # return (command, subject, targets)
+
+        results = LanguageParserWrapper()
+        results.set_verb(str(command))
+        results.set_noun(str(subject), str("object"))
+
+        logger.debug("Returning: \n" + str(results))
+        return results

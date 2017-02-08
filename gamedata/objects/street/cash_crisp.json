@@ -1,6 +1,6 @@
 {
   "name" : "Crisp Cash",
-  "long_description" : "Some [Crisp Cash] - at least two C-notes paper-clipped together.",
+  "long_description" : "some [Crisp Cash] - at least two C-notes paper-clipped together.",
   "short_description" : "Probably dropped by some EvilCorp employee",
   "default_location" : "Street",
   "details" : "gives money",

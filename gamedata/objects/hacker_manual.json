@@ -1,0 +1,8 @@
+{
+  "name" : "Hacker Manual",
+  "long_description" : "A leather-bound manual on how to hack. Everything from ATM's to Traffic Lights to Subway Turnstiles and beyond. Oh, and there's a section on hacking the nut and how to detect Code Smell.",
+  "short_description" : "A small book about huge hacks.",
+  "default_location" : "inventory",
+  "details" : "teaches player the 'hack' ability",
+  "cost" : 0
+}

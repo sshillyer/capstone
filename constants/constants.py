@@ -1,0 +1,6 @@
+MIN_ROWS = 35
+MIN_COLS = 80
+TEXT_WIDTH = 80
+
+NOUN_TYPE_OBJECT = "object"
+NOUN_TYPE_FEATURE = "feature"

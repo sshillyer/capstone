@@ -4,6 +4,7 @@
   "short_description" : "This busy street has some nice guardrails, but unfortunately, somebody put up a \"No Skateboarding\" sign! Jerks.",
   "visited" : false,
   "virtual_space" : false,
+  "object_dictionary" : "./objects/street/",
   "room_features" : [
       {
         "name" : "\"No Skateboarding\" sign",
@@ -12,6 +13,10 @@
       {
         "name" : "Guardrails",
         "description" : "These guardrails look perfect for grinding on with a skateboard!"
+      },
+      {
+        "name" : "Traffic Lights",
+        "description" : "There's a panel you could jack into and hack if you just knew how."
       }
   ],
   "room_connections" : [

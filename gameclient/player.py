@@ -20,7 +20,9 @@ class Player:
         self.coolness = 0
         self.speed = 0
         self.inventory = Inventory()
-        self.has_spraypaint = False
+        self.has_hack_skill = False
+        self.has_skate_skill = False
+        self.has_spraypaint_skill = False
 
     def add_object_to_inventory(self, object):
         if object:
@@ -48,11 +50,23 @@ class Player:
     def update_coolness(self, coolness_change):
         self.coolness += coolness_change
 
-    def set_has_spraypaint(self, has_spraypaint):
-        self.has_spraypaint = True
+    def set_has_hack_skill(self, has_skill=True):
+        self.has_hack_skill = has_skill
+
+    def set_has_spraypaint_skill(self, has_skill=True):
+        self.has_spraypaint_skill = has_skill
+
+    def set_has_skate_skill(self, has_skill=True):
+        self.has_skate_skill = has_skill
+
+    def can_hack(self):
+        return self.has_hack_skill
+
+    def can_skateboard(self):
+        return self.has_skate_skill
 
     def can_spraypaint(self):
-        return self.has_spraypaint
+        return self.has_spraypaint_skill
 
 
 class Inventory:
@@ -64,7 +78,7 @@ class Inventory:
 
     def get_object_by_name(self, object_name):
         '''
-        Finds an verb_object in the inventory by name and returns a reference to it
+        Finds an object in the inventory by name and returns a reference to it
         :param object_name:
         :return:
         '''
@@ -73,10 +87,8 @@ class Inventory:
                 return inventory_object
         return None
 
-
     def add_object(self, object):
         self.objects.append(object)
-
 
     def remove_object(self, object):
         self.objects.remove(object)
@@ -87,7 +99,6 @@ class Inventory:
         :return:
         '''
 
-        # TODO: Make the strings pad a certain number of characters (spaces or periods) between item name and description
         if self.objects:
             inventory_size = len(self.objects)
             count = 0

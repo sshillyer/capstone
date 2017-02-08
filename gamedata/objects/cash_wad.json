@@ -1,8 +1,8 @@
 {
   "name" : "Cash Wad",
-  "long_description" : "a greasy [Cash Wad], with denominations ranging from Marilyn Monroes to Michael Jacksons.",
+  "long_description" : "A greasy [Cash Wad], with denominations ranging from Marilyn Monroes to Michael Jacksons.",
   "short_description" : "A stash of cash",
-  "default_location" : "Street",
+  "default_location" : "Subway",
   "details" : "gives money",
   "cost" : 0
 }
