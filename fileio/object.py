@@ -80,13 +80,13 @@ class ObjectBuilder:
     def __init__(self):
         pass
 
-    def load_object_data_from_file(self):
+    def load_object_data_from_file(self, dir="./gamedata/objects/*.json"):
         '''
         Called by GameClient to instantiate all of the objects. This is called whether the game is new
         or loaded. Returns ALL objects as a list.
         '''
         object_list = []
-        objects_dir = './gamedata/objects/*.json'
+        objects_dir = dir
         objects_files =  glob.glob(objects_dir)
 
         # Load object content from directory

@@ -7,11 +7,13 @@
   "room_features" : [
       {
         "name" : "Binary Files",
-        "description" : "\"01000101111001Mr.Robot1100010\" So THAT'S who's behind all this!"
+        "description" : "\"01000101111001Mr.Robot1100010\" So THAT'S who's behind all this!",
+        "hackable": false
       },
       {
         "name" : "Corrupted Files",
-        "description" : "Probably shouldn't open these..."
+        "description" : "Probably shouldn't open these...",
+        "hackable": false
       }
   ],
   "room_connections" : [

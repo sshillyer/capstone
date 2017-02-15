@@ -7,23 +7,28 @@
   "room_features" : [
       {
         "name" : "Your Gear",
-        "description" : "All the sweet stuff you've collected through all your adventures."
+        "description" : "All the sweet stuff you've collected through all your adventures.",
+        "hackable": false
       },
       {
         "name" : "Unattended Police Computer",
-        "description" : "Somebody forgot to log out... Don't they learn this stuff in the Academy?"
+        "description" : "Somebody forgot to log out... Don't they learn this stuff in the Academy?",
+        "hackable": false
       },
 	  {
         "name" : "Police Officer",
-        "description" : "Probably works for tips."
+        "description" : "Probably works for tips.",
+        "hackable": false
       },
       {
         "name" : "Unoccupied Desk",
-        "description" : "The new home of all your sweet gear... not. gonna. cry."
+        "description" : "The new home of all your sweet gear... not. gonna. cry.",
+        "hackable": false
       },
 	  {
         "name" : "Metal Door",
-        "description" : "Locked tight- but there must be keys somewhere."
+        "description" : "Locked tight- but there must be keys somewhere.",
+        "hackable": false
       }
   ],
   "room_connections" : [

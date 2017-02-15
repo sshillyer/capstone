@@ -7,15 +7,18 @@
   "room_features" : [
       {
         "name" : "Emojis",
-        "description" : "8-P <<< Cheeky nerd"
+        "description" : "8-P <<< Cheeky nerd",
+        "hackable": false
       },
       {
         "name" : "Creature",
-        "description" : "Time to pay the troll toll..."
+        "description" : "Time to pay the troll toll...",
+        "hackable": false
       },
       {
         "name" : "Acid Burn",
-        "description" : "So much hacking knowledge in one place!"
+        "description" : "So much hacking knowledge in one place!",
+        "hackable": false
       }
   ],
   "room_connections" : [

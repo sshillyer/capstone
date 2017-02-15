@@ -63,18 +63,20 @@ CONNECTION_LIST_SEGWAY= "] is "
 
 # Various messages to user related to new/save/load/quit commands
 NEW_GAME_MESSAGE = "Starting a new game."
-LOAD_GAME_MESSAGE = "Let's load saved game..."
+LOAD_GAME_MESSAGE = "Let's load your saved game..."
 LOAD_FILENAME_PROMPT = "Enter the number of the filename you wish to load and press [Enter]"
 LOAD_CONFIRM_PROMPT = "Loading a game will cause you to lose unsaved progress.\nDo you wish to continue? (Y)es or (N)o"
-LOAD_GAME_NO_SAVES = "There are no savegames available to load."
+LOAD_GAME_NO_SAVES = "There are no saved games available to load."
 LOAD_NOT_INTEGER = "That's not a valid integer. Enter the number and press enter."
 LOAD_OUT_OF_RANGE_MESSAGE = "That's not a valid menu option. Please choose an integer from the list to load the game"
 
-SAVE_GAME_PROMPT = "Name for your file: "
+SAVE_GAME_PROMPT = "Do you wish to save this game? (Y)es or (N)o?"
+SAVE_GAME_FILE_PROMPT = "Name a file to save this game (no extension): "
 SAVE_GAME_SUCCESS = "Saving game to filename: "
 SAVE_GAME_FAILED = "There was an error saving the game to filename: "
 SAVE_GAME_VALID_FILENAME_MESSAGE = "Something about the filename you provided was invalid."
 QUIT_CONFIRM_PROMPT = "Quitting the game will cause you to lose unsaved progress.\nDo you wish to continue? (Y)es or (N)o"
+# QUIT_CONFIRM_PROMPT = "Quitting the game...\nDo you wish to save this game? (Y)es or (N)o"
 YES_ALIASES = {'yes', 'y'}
 
 
@@ -101,16 +103,21 @@ DROP_INVALID_SUFFIX = " because you're not carrying it. Don't be silly!"
 # 'go' strings
 GO_SUCCESS_PREFIX = "You head off towards the "
 GO_SUCCESS_SUFFIX = " without a problem."
+GO_FAILURE_DESTINATION_MISSING = "You need to say where you're trying to go!"
 GO_FAILURE_PREFIX = "You try to go to the "
 GO_FAILURE_SUFFIX = " but just can't find a way."
+GO_FAILURE_SUBWAY_CASH = "You don't have enough cash to ride the subway. Maybe there's a way to ride without paying?"
 GO_INVALID_PREFIX = "You can't go to the "
 GO_INVALID_SUFFIX = " because you're basically there already!"
 
 # 'hack' strings
 HACK_FAIL_NOSKILL = "You just don't know how to do that yet"
-HACK_FAIL_INVALID_OBJECT = "There's no way to hack that. Try hacking something useful!"
+HACK_FAIL_INVALID_TARGET = "There's no way to hack that. Try hacking something useful!"
 HACK_FAIL_FEATURE_NOT_PRESENT = "There isn't one of those here to hack."
+HACK_FAIL_ALREADY_HACKED = "You've already hacked that."
+HACK_SUCCESS_ATM = "You jack into the system. Go baby, go baby, go baby! Alright! Pin number... 9003. Not your account, though. Because you don't have one. Because EvilCorp Bank is Evil. And Corporate. Eww."
 HACK_SUCCESS_TRAFFIC_LIGHTS = "You hack the Traffic Lights. You can cross the street whenever you want. That should make things a lot faster for you."
+HACK_SUCCESS_TURNSTILE = "You plug into the port and use the classic turnstile hack covered in the Hacker Manual. You should be able to pass through the area without paying now."
 
 # 'help' strings
 HELP_HEADER_TEXT = "HELP"
@@ -131,7 +138,7 @@ HELP_MESSAGE = [
     "* buy <object>:  Some objects cost money and cannot be taken.",
     "* steal <object>  Sometimes you don't have enough money to buy an object.",
     "* inventory  Look at all of the items youv'e collected so far.",
-    "* hack <feature>  Try and hack a feature in the room. Not everything can be hacked.",
+    "* hack <feature>  Try and hack a feature in the room. Not everything can be hacked, and you need to learn how to hack first.",
     "* spraypaint <feature>  If you have the necessary tools, you can paint the town red.",
     "* use <object or feature>  Everything has a purpose. Well, not everything."
 ]
@@ -157,6 +164,10 @@ NO_INTERESTING_FEATURES_MESSAGE = "You see nothing else worth checking out."
 
 # 'Look at' strings
 LOOK_AT_NOT_SEEN = "You do not see that here."
+LOOK_AT_TRASH_CAN_ALREADY_LOOTED = "You already dug through the trash can. There's nothing else worth taking."
+LOOK_AT_TRASH_CAN_PROMPT = "Do you want to dig deeper in the trash? You might get messy. (Y)es or (N)o."
+LOOK_AT_TRASH_SEARCHED = "You dig deeper into the trash and stain your shirt with mustard from an old hot dog. How uncool! But wait, there's a barely-used RAM chip in the trash! You wipe it off with an anti-static cloth and tuck it into your bag."
+LOOK_AT_TRASH_NOT_SEARCHED = "You see a partially eaten hot dog and a partially digested chicken bone laying on the top, but you can't bring yourself to dig deeper."
 
 # 'steal' strings
 STEAL_FAIL_ALREADY_OWNED = "You already own that. You can just take it!"

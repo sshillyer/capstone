@@ -1,20 +1,22 @@
 {
-  "name" : "Arcade",
-  "long_description" : "Inside the arcade the air is littered with cheers, bleeps, bloops, and the smell of pizza and popcorn. Rows of glowing bug-eyed faces stare forward, blissfully lost in digital worlds. Your favorite game \"Death to the Patriarchy\" has just sent away another newb retreating in tears to the change machine in search of more coinage. A sick ramp skirts the parameter of the room leading up to a lofted snack bar lined with hyper-active virtual reality junkies heavily accessorized with glowing fluorescent personal effects. Money can buy happiness. Like, even just a quarter can.",
-  "short_description" : "A blissful head rush of arcade games with a sweet ramp leading up to a really well-stocked snack bar.",
-  "visited" : false,
-  "virtual_space" : false,
-  "room_features" : [
-      {
-        "name" : "Ramp",
-        "description" : "No one will stop a skateboarder here!"
-      },
-      {
-        "name" : "Death to the Patriarchy",
-        "description" : "Round One... Fight!"
-      }
+  "name": "Arcade",
+  "long_description": "Inside the arcade the air is littered with cheers, bleeps, bloops, and the smell of pizza and popcorn. Rows of glowing bug-eyed faces stare forward, blissfully lost in digital worlds. Your favorite game \"Death to the Patriarchy\" has just sent away another newb retreating in tears to the change machine in search of more coinage. A sick ramp skirts the parameter of the room leading up to a lofted snack bar lined with hyper-active virtual reality junkies heavily accessorized with glowing fluorescent personal effects. Money can buy happiness. Like, even just a quarter can.",
+  "short_description": "A blissful head rush of arcade games with a sweet ramp leading up to a really well-stocked snack bar.",
+  "visited": false,
+  "virtual_space": false,
+  "room_features": [
+    {
+      "name": "Ramp",
+      "description": "No one will stop a skateboarder here!",
+      "hackable": false
+    },
+    {
+      "name": "Death to the Patriarchy",
+      "description": "Round One... Fight!",
+      "hackable": false
+    }
   ],
-  "room_connections" : [
+  "room_connections": [
     {
       "label": "Street",
       "cardinal_direction": "South",

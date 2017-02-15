@@ -1,20 +1,28 @@
 {
-  "name" : "Subway",
-  "long_description" : "You find yourself in a cavernous space completely covered in pale tile, giving your footsteps a sweet-sounding echo. Excessive greenish fluorescent lighting floods the space and saps the color from the mostly organic stains on the ground and walls. A dense rumble precedes the arrival of each subway, which greets you with an unintelligible squawking of multilingual vowels and jingles. A much abuse trashcan cowers in the far corner. To one side a phone booth advertises the city’s best psychic and liquor delivery services.",
-  "short_description" : "An underground transport system complete with garbage receptacle and touch tone communication interface.",
-  "visited" : false,
-  "virtual_space" : false,
-  "room_features" : [
-      {
-        "name" : "Phone Booth",
-        "description" : "People have probably wasted a lot of money in this broke down Phone Booth."
-      },
-      {
-        "name" : "Trash Can",
-        "description" : "One's trash is another's treasure, right?"
-      }
+  "name": "Subway",
+  "long_description": "You find yourself in a cavernous space completely covered in pale tile, giving your footsteps a sweet-sounding echo. Excessive greenish fluorescent lighting floods the space and saps the color from the mostly organic stains on the ground and walls. A dense rumble precedes the arrival of each subway, which greets you with an unintelligible squawking of multilingual vowels and jingles. A much abuse trashcan cowers in the far corner. To one side a phone booth advertises the city’s best psychic and liquor delivery services. Some turnstiles are in place to collect your fare before traveling to other areas.",
+  "short_description": "An underground transport system complete with garbage receptacle and touch tone communication interface.",
+  "visited": false,
+  "virtual_space": false,
+  "room_features": [
+    {
+      "name": "Phone Booth",
+      "description": "People have probably wasted a lot of money in this broke down Phone Booth.",
+      "hackable": false
+    },
+    {
+      "name": "Trash Can",
+      "description": "One's trash is another's treasure, right?",
+      "hackable": false
+    },
+    {
+      "name" : "Turnstiles",
+      "description" : "These turnstiles are somehow impossible to jump over. A slot designed for accepting fare payments sits to one side, and an access port looks like it would interface with a standard USB cable.",
+      "hackable": true,
+      "description_hacked": "The turnstiles have been overridden by your h4cking skillz. You can are able to walk through without paying a dime."
+    }
   ],
-  "room_connections" : [
+  "room_connections": [
     {
       "label": "Street",
       "cardinal_direction": "North",

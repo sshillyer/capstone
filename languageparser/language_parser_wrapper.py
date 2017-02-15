@@ -23,10 +23,10 @@
 
 class LanguageParserWrapper:
     def __init__(self):
-        self.verb = ""
+        self.verb = None
         self.noun = {}
         self.extras = []
-        self.preposition = ""
+        self.preposition = None
         self.error_message = None
 
     def __str__(self):
@@ -35,8 +35,11 @@ class LanguageParserWrapper:
         :return:
         '''
         str = "{\n\t'verb' : '" + self.verb + "'\n"
-        str += "\t'noun['name']' : '" + self.noun['name'] + "'\n"
-        str += "\t'noun['type']' : '" + self.noun['type'] + "'\n"
+        if self.noun is None:
+            str+= "\t'noun['name']' : None'\n"
+        else:
+            str += "\t'noun['name']' : '" + self.noun['name'] + "'\n"
+            str += "\t'noun['type']' : '" + self.noun['type'] + "'\n"
         str += "\t'extras' : "
 
         if self.extras:
@@ -93,3 +96,6 @@ class LanguageParserWrapper:
 
     def get_preposition(self):
         return self.preposition
+
+    def get_error_message(self):
+        return self.error_message

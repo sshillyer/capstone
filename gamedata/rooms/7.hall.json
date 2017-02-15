@@ -1,21 +1,24 @@
 {
   "name" : "Hall",
-  "long_description" : "Your eyes kind of blank out for a second as you stare down a long corridor of walls inlayed with metal lockers painted purple to compliment the light lavender cinderblock walls. The ceiling is tricked out with evenly spaced emergency sprinklers, there to protect the bastions of our nation’s future should any of them catch fire, which just might be possible as there is a teacher surreptitiously smoking in a corner. Your locker, assigned at random, sports 3 marvelous examples of prose, \"Byte Me,\" \"Heaven is for Hackers- Always Save,\" and \"Nukem.\" On the opposite wall in a red and white fire alarm. There's a good chance a hall monitor could catch you skipping. Better move fast.",
+  "long_description" : "Your eyes kind of blank out for a second as you stare down a long corridor of walls inlayed with metal lockers painted purple to compliment the light lavender cinderblock walls. The ceiling is tricked out with evenly spaced emergency sprinklers, there to protect the bastions of our nation's future should any of them catch fire, which just might be possible as there is a teacher surreptitiously smoking in a corner. Your locker, assigned at random, sports 3 marvelous examples of prose, \"Byte Me\", \"Heaven is for Hackers- Always Save\", and \"Nukem\". On the opposite wall in a red and white fire alarm. There's a good chance a hall monitor could catch you skipping. Better move fast.",
   "short_description" : "A corridor of lockers, complete with fire eliminating equipment and a teacher who slept through D.A.RE.",
   "visited" : false,
   "virtual_space" : false,
   "room_features" : [
       {
         "name" : "Locker",
-        "description" : "5... 29... 17... click... Aaand unlocked!"
+        "description" : "5... 29... 17... click... Aaand unlocked!",
+        "hackable": false
       },
 	  {
         "name" : "Teacher",
-        "description" : "I guess, maybe just some rando wandered in from the street? Do street randos shop at the Profresh Prof's Discount Suits? They should teach this in school."
+        "description" : "I guess, maybe just some rando wandered in from the street? Do street randos shop at the Profresh Prof's Discount Suits? They should teach this in school.",
+        "hackable": false
       },
       {
         "name" : "Fire Alarm",
-        "description" : "This could make an excellent diversion..."
+        "description" : "This could make an excellent diversion...",
+        "hackable": false
       }
   ],
   "room_connections" : [

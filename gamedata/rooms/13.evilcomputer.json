@@ -7,11 +7,13 @@
   "room_features" : [
       {
         "name" : "Input / Output Port",
-        "description" : "You can copy some useful files through this port."
+        "description" : "You can copy some useful files through this port.",
+        "hackable": false
       },
       {
         "name" : "Sentient CPU",
-        "description" : "The creepiest graphics imaginable."
+        "description" : "The creepiest graphics imaginable.",
+        "hackable": false
       }
   ],
   "room_connections" : [

@@ -7,23 +7,28 @@
   "room_features" : [
       {
         "name" : "School-wide Intercom Mic",
-        "description" : "\"Attention students! School is closed for the rest of the year!\" jk jk"
+        "description" : "\"Attention students! School is closed for the rest of the year!\" jk jk",
+        "hackable": false
       },
       {
         "name" : "Office Computer",
-        "description" : "Straight A's? Suuure I earned all these..."
+        "description" : "Straight A's? Suuure I earned all these...",
+        "hackable": false
       },
       {
         "name" : "Acid Burn",
-        "description" : "Still the coolest kid in school (graduating last year hasn't changed this)."
+        "description" : "Still the coolest kid in school (graduating last year hasn't changed this).",
+        "hackable": false
       },
 	  {
         "name" : "Clock",
-        "description" : "It isn't even digital."
+        "description" : "It isn't even digital.",
+        "hackable": false
       },
       {
         "name" : "Poster",
-        "description" : "The thing is, they paid someone to write this. That is a job. People go to school to do that."
+        "description" : "The thing is, they paid someone to write this. That is a job. People go to school to do that.",
+        "hackable": false
       }
   ],
   "room_connections" : [

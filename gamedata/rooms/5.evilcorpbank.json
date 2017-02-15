@@ -7,15 +7,19 @@
   "room_features" : [
       {
         "name" : "ATM",
-        "description" : "So much Cash in such a small machine..."
+        "description" : "So much Cash in such a small machine. Seems like last time you watched Terminator 2 that John Connor did something to get cash out of a similar machine. If only there was a book to teach you how to do this!",
+        "hackable": true,
+        "description_hacked" : "This ATM has already been depleted of its cash reserves. PIN Number was 9003."
       },
       {
         "name" : "Cash",
-        "description" : "Jackpot!"
+        "description" : "Jackpot!",
+        "hackable": false
       },
 	  {
         "name" : "Guard",
-        "description" : "A pile of aggressive flesh, worked into a rage from years of never guessing the answers to any Jeopardy questions. Good thing it likes naps."
+        "description" : "A pile of aggressive flesh, worked into a rage from years of never guessing the answers to any Jeopardy questions. Good thing it likes naps.",
+        "hackable": false
       }
   ],
   "room_connections" : [

@@ -47,6 +47,12 @@ class Player:
     def update_speed(self, speed_change):
         self.speed += speed_change
 
+    def get_coolness(self):
+        return self.coolness
+
+    def get_speed(self):
+        return self.speed
+
     def update_coolness(self, coolness_change):
         self.coolness += coolness_change
 

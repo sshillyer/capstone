@@ -68,6 +68,7 @@ class Room:
         Get the "long long_description" version of the room's long_description
         :return: string representing full length long_description
         '''
+        # full_description = textwrap.fill(self.long_description, TEXT_WIDTH, replace_whitespace=False) + "\n" + self.get_supplemental_description()
         full_description = textwrap.fill(self.long_description, TEXT_WIDTH) + "\n" + self.get_supplemental_description()
         return full_description
 
@@ -120,7 +121,7 @@ class Room:
         '''
         feature_string = ""
         for feature in self.room_features:
-            feature_string = feature_string + textwrap.fill(feature.get_feature_description(), TEXT_WIDTH) + "\n"
+            feature_string = feature_string + textwrap.fill(feature.get_feature_list_label(), TEXT_WIDTH) + "\n"
         return feature_string
 
     def set_visited(self, visited=True):
@@ -178,6 +179,9 @@ class Room:
     def is_visited(self):
         return self.visited
 
+    def set_is_visited(self, is_visited=True):
+        self.visited = is_visited
+
     def is_virtual_space(self):
         return self.virtual_space
 
@@ -194,14 +198,24 @@ class RoomFeature:
     def __init__(self, properties):
         self.name = properties['name']
         self.description = properties['description']
+        self.hackable = properties['hackable']
+        if self.hackable is True:
+            self.description_hacked = properties['description_hacked']
+        else:
+            self.description_hacked = self.description # Shouldn't need this - here as a failsafe
+        self.hacked = False
 
     def get_name(self):
         return self.name
 
     def get_description(self):
-        return self.description
+        if self.is_hacked() is True:
+            return self.description_hacked
+        else:
+            return self.description
 
-    def get_feature_description(self):
+
+    def get_feature_list_label(self):
         '''
         Get the string for room features
         :return: string
@@ -209,6 +223,14 @@ class RoomFeature:
         description = FEATURES_LIST_PREFIX + "[" + self.name + "]"
         return description
 
+    def is_hackable(self):
+        return self.hackable
+
+    def is_hacked(self):
+        return self.hacked
+
+    def set_is_hacked(self, hacked=True):
+        self.hacked = hacked
 
 class RoomConnection:
     '''
@@ -241,13 +263,13 @@ class RoomBuilder:
         # logger.debug("RoomBuilder instantiated")
         pass
 
-    def load_room_data_from_file(self):
+    def load_room_data_from_file(self, dir="./gamedata/rooms/*.json"):
         '''
         Called by GameClient to instantiate all of the rooms. This is called whether the game is new
         or loaded. Returns ALL rooms as a list.
         '''
         rooms = []
-        rooms_dir = './gamedata/rooms/*.json'
+        rooms_dir = dir
         rooms_files =  glob.glob(rooms_dir)
 
         # Load room content from directory

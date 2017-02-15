@@ -1,24 +1,27 @@
 {
-  "name" : "Pawn Shop",
-  "long_description" : "You almost trip as you step into an abominable clutter of the claustrophobic interior inside the tiny shop. It smells like an abandoned shed full of rusty tools, and avian twittering resonates from several hidden nooks. It is lit with almost-enough light bulbs, all slightly different colors of white hung at irritatingly dissimilar heights. Behind a glass counter fractured in several place, a clerk smiles at you with kind eyes and a good number of teeth.",
-  "short_description" : "A lot of junk for sale in a store the size of a shoebox.",
-  "visited" : false,
-  "virtual_space" : false,
-  "room_features" : [
+  "name": "Pawn Shop",
+  "long_description": "You almost trip as you step into an abominable clutter of the claustrophobic interior inside the tiny shop. It smells like an abandoned shed full of rusty tools, and avian twittering resonates from several hidden nooks. It is lit with almost-enough light bulbs, all slightly different colors of white hung at irritatingly dissimilar heights. Behind a glass counter fractured in several place, a clerk smiles at you with kind eyes and a good number of teeth.",
+  "short_description": "A lot of junk for sale in a store the size of a shoebox.",
+  "visited": false,
+  "virtual_space": false,
+  "room_features": [
     {
-      "name" : "Counter",
-      "description" : "Nothing really useful to you under the smeared glass."
+      "name": "Counter",
+      "description": "Nothing really useful to you under the smeared glass.",
+      "hackable": false
     },
     {
-      "name" : "Shelves",
-      "description" : "Old computers can always be repurposed..."
+      "name": "Shelves",
+      "description": "Old computers can always be repurposed...",
+      "hackable": false
     },
     {
-        "name" : "Store Clerk",
-        "description" : "A humanish creature, most likely broken and put back together several times in the dark."
+      "name": "Store Clerk",
+      "description": "A humanish creature, most likely broken and put back together several times in the dark.",
+      "hackable": false
     }
   ],
-  "room_connections" : [
+  "room_connections": [
     {
       "label": "Subway",
       "cardinal_direction": "South",

@@ -7,15 +7,18 @@
   "room_features" : [
       {
         "name" : "Acid Burn",
-        "description" : "High five! We did it!"
+        "description" : "High five! We did it!",
+        "hackable": false
       },
       {
         "name" : "Diving Board",
-        "description" : "CANNON BALLLL!"
+        "description" : "CANNON BALLLL!",
+        "hackable": false
       },
       {
         "name" : "Walls",
-        "description" : "There are some sweet tags on here."
+        "description" : "There are some sweet tags on here.",
+        "hackable": false
       }
   ],
   "room_connections" : [
