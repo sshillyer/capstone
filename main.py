@@ -12,7 +12,7 @@
 # CITE: http://stackoverflow.com/questions/566746/how-to-get-console-window-width-in-python
 
 from gameclient.game_client import *
-from constants.constants import *
+from constants.game_engine_constants import *
 from gameclient.game_client import UserInterface
 import subprocess
 # For debugging

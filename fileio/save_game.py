@@ -13,7 +13,7 @@
 # CITE: http://stackoverflow.com/questions/2835559/parsing-values-from-a-json-file-using-python
 # CITE: http://stackoverflow.com/questions/30876497/open-a-file-from-user-input-in-python-2-7
 
-from constants.action_costs import STARTING_TIME
+from constants.gameplay_settings import STARTING_TIME
 import json
 import glob
 import os

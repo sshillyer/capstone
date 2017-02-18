@@ -2,7 +2,7 @@
 # Created by Shawn
 
 import unittest
-from constants.verbs import *
+from constants.language_words import *
 from languageparser.language_parser import *
 from fileio.room import *
 from fileio.object import *

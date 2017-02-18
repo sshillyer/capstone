@@ -7,9 +7,11 @@
 # Principal Author of this file per Project plan: Shawn Hillyer
 
 # CITATIONS
-# CITE:
+# CITE: https://docs.python.org/3.3/library/copy.html
+#       Used to figure out how to make a shallow/deep copy of an object rather than just assigning a reference to an object
 
 from constants.strings import *
+import copy
 
 class Player:
     '''
@@ -26,8 +28,9 @@ class Player:
 
     def add_object_to_inventory(self, object):
         if object:
-            object.set_is_owned_by_player()
-            self.inventory.add_object(object)
+            copy_of_object = copy.copy(object)
+            copy_of_object.set_is_owned_by_player()
+            self.inventory.add_object(copy_of_object)
 
     def remove_object_from_inventory(self, object):
         self.inventory.remove_object(object)

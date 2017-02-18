@@ -6,7 +6,7 @@
 # Description: One-off function to word-wrap paragraphs when desired
 # Principal Author of this file per Project plan: Shawn Hillyer
 
-from constants.constants import TEXT_WIDTH
+from constants.game_engine_constants import TEXT_WIDTH
 import textwrap
 
 

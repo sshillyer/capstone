@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 def ut_savegame():
     GC = GameClient()
     GC.gamestate.rooms = GC.gamestate.rb.load_room_data_from_file()
-    GC.gamestate.initialize_new_game()
+    GC.gamestate.initialize_gamestate()
 
     sg = SaveGame(GC.gamestate)
     pp = pprint.PrettyPrinter()

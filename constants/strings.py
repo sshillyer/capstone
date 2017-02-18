@@ -11,7 +11,7 @@
 # of the strings here to one file so we can easily modify things without having to dig through code to find strings (SSH)
 # CITE: Also this is similar to how our assembly programs stored strings in one spot and just referenced by name later
 
-from constants.constants import *
+from constants.game_engine_constants import *
 import textwrap
 
 # This string should introduce the game once at loadup. Could replace with ASCII art if desired
@@ -64,6 +64,7 @@ CONNECTION_LIST_SEGWAY= "] is "
 # Various messages to user related to new/save/load/quit commands
 NEW_GAME_MESSAGE = "Starting a new game."
 LOAD_GAME_MESSAGE = "Let's load your saved game..."
+LOAD_GAME_SPLASH = "You've loaded your game... prepare to hack the planet once more!"
 LOAD_FILENAME_PROMPT = "Enter the number of the filename you wish to load and press [Enter]"
 LOAD_CONFIRM_PROMPT = "Loading a game will cause you to lose unsaved progress.\nDo you wish to continue? (Y)es or (N)o"
 LOAD_GAME_NO_SAVES = "There are no saved games available to load."
