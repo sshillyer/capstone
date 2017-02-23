@@ -57,6 +57,9 @@ STATUS_HEADER_CASH_LABEL = "\t\t[CASH]\t"
 STATUS_HEADER_SKILLS_LABEL = "\t[SKILLS]\t"
 STATUS_NO_SKILLS = "Nothing marketable!"
 
+GRAFFITI_HEADER = "GRAFFITI! \nCheck out your sweet tag:"
+GRAFFITI_FOOTER = "\n"
+
 DESCRIPTION_HEADER = "DESCRIPTION:"
 DESCRIPTION_FOOTER = "\n"
 EXITS_HEADER = "Always know your exits:"
@@ -81,9 +84,6 @@ SAVE_GAME_PROMPT = "Do you wish to save this game? (Y)es or (N)o?"
 SAVE_GAME_FILE_PROMPT = "Name a file to save this game (no extension): "
 SAVE_GAME_SUCCESS = "Saving game to filename: "
 SAVE_GAME_FAILED = "There was an error saving the game to filename: "
-SAVE_GAME_AGAIN = "Try again:"
-SAVE_GAME_INVALID_EXISTS = "There is already a game saved to that file."
-SAVE_GAME_INVALID_CHARACTERS = "This filename contains invalid characters."
 SAVE_GAME_VALID_FILENAME_MESSAGE = "Something about the filename you provided was invalid."
 QUIT_CONFIRM_PROMPT = "Quitting the game will cause you to lose unsaved progress.\nDo you wish to continue? (Y)es or (N)o"
 # QUIT_CONFIRM_PROMPT = "Quitting the game...\nDo you wish to save this game? (Y)es or (N)o"
@@ -154,8 +154,6 @@ HELP_MESSAGE = [
 ]
 
 
-
-
 HELP_FEATURE_GENERIC = " is a feature of the room. 'Look at' it to learn more."
 HELP_OBJECT_GENERIC = " is an object. You can 'look at' an object and you can 'use' an object if it's in your 'inventory'."
 
@@ -171,13 +169,18 @@ JAIL_GO_TO_MESSAGE = "Your actions have landed you in jail, costing you valuable
 NO_INTERESTING_OBJECTS_MESSAGE = " ...Hmmm, nothing worth taking."
 NO_INTERESTING_FEATURES_MESSAGE = "You see nothing else worth checking out."
 
-
 # 'Look at' strings
 LOOK_AT_NOT_SEEN = "You do not see that here."
 LOOK_AT_TRASH_CAN_ALREADY_LOOTED = "You already dug through the trash can. There's nothing else worth taking."
 LOOK_AT_TRASH_CAN_PROMPT = "Do you want to dig deeper in the trash? You might get messy. (Y)es or (N)o."
 LOOK_AT_TRASH_SEARCHED = "You dig deeper into the trash and stain your shirt with mustard from an old hot dog. How uncool! But wait, there's a barely-used RAM chip in the trash! You wipe it off with an anti-static cloth and tuck it into your bag."
 LOOK_AT_TRASH_NOT_SEARCHED = "You see a partially eaten hot dog and a partially digested chicken bone laying on the top, but you can't bring yourself to dig deeper."
+
+# 'spraypaint' strings
+SPRAYPAINT_FAIL_NO_SKILL = "You need to [use Spray Paint] before you can try to spraypaint the world."
+SPRAYPAINT_FAIL_VIRTUAL_SPACE = "You cannot spraypaint on the internet, you know better than that!"
+SPRAYPAINT_ROOM_SUCCESS = "You spraypaint the room with your message. You should take a [look]!"
+SPRAYPAINT_ROOM_FAIL_ALREADY_PAINTED = "This room is already painted."
 
 # 'steal' strings
 STEAL_FAIL_ALREADY_OWNED = "You already own that. You can just take it!"

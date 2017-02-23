@@ -96,6 +96,8 @@ class GameClient:
                 elif exit_code is GAMEOVER_LOSE:
                     wprint("Game over: Player lost")
                 elif exit_code is GAMEOVER_SAVE:
+                    # DEBUG
+                    print("ABOUT TO SAVE THIS GAME...")
                     self.save_game_menu()
                     wprint("Game over: Player saved game")
                 elif exit_code is GAMEOVER_LOAD:
@@ -211,8 +213,8 @@ class GameClient:
                 self.verb_buy(self.verb_noun_name)
             elif self.command is SPRAYPAINT:
                 # TODO: Finish implementing verb_spraypaint and remove the debug print
-                logger.debug("Spraypaint is not fully implemented yet.")
-                self.verb_spraypaint(self.verb_noun_name)
+                logger.debug("Spray paint is not fully implemented yet.")
+                self.verb_spraypaint(self.verb_noun_name, self.extras)
             elif self.command is USE:
                 self.verb_use(self.verb_noun_name, self.verb_noun_type)
             elif self.command is HELP:
@@ -301,27 +303,16 @@ class GameClient:
 
         while valid_filename is False or file_name == "":
             wprint(SAVE_GAME_FILE_PROMPT)
-            file_name = self.ui.user_prompt()
+            file_name = self.ui.user_prompt() + '.json'
             valid_filename = save_game.is_existing_saved_game(file_name)
-            while valid_filename is False:
-                wprint(SAVE_GAME_INVALID_EXISTS)
-                wprint(SAVE_GAME_AGAIN)
-                file_name = self.ui.user_prompt()
-                valid_filename = save_game.is_existing_saved_game(file_name)
+            if valid_filename is False:
+                wprint(SAVE_GAME_VALID_FILENAME_MESSAGE)
 
-        while save_game.write_to_file(file_name) is False:
-            wprint(SAVE_GAME_INVALID_CHARACTERS)
-            wprint(SAVE_GAME_FAILED + file_name + '.json')
-            wprint(SAVE_GAME_AGAIN)
-            file_name = self.ui.user_prompt()
-            valid_filename = save_game.is_existing_saved_game(file_name)
-            while valid_filename is False:
-                wprint(SAVE_GAME_INVALID_EXISTS)
-                wprint(SAVE_GAME_AGAIN)
-                file_name = self.ui.user_prompt()
-                valid_filename = save_game.is_existing_saved_game(file_name)
+        if save_game.write_to_file(file_name) is True:
+            wprint(SAVE_GAME_SUCCESS + file_name)
+        else:
+            wprint(SAVE_GAME_FAILED + file_name)
 
-        wprint(SAVE_GAME_SUCCESS + file_name + '.json')
         self.ui.wait_for_enter()
 
     def go_to_jail(self):
@@ -350,8 +341,8 @@ class GameClient:
                 wprint(BUY_NOT_IN_ROOM)
             elif object.get_cost() is 0:
                 wprint(BUY_FREE_ITEM)
-            # elif object.is_owned_by_player() is True:
-            #     wprint(BUY_FREE_ITEM)
+            elif object.is_owned_by_player() is True:
+                wprint(BUY_FREE_ITEM)
             elif object.get_cost() > player_cash:
                 wprint(BUY_INSUFFICIENT_CASH_PREFIX + str(object.get_cost()) + BUY_INSUFFICIENT_CASH_SUFFIX)
             else:
@@ -392,8 +383,6 @@ class GameClient:
                 wprint(DROP_FAILURE_VIRTUALSPACE)
             elif inventory_object is not None:
                 self.gamestate.player.inventory.remove_object(inventory_object)
-                # DEBUG Print owned array
-                # print(self.gamestate.player.owned.get_inventory_string())
                 self.gamestate.get_current_room().add_object_to_room(inventory_object)
                 wprint(DROP_SUCCESS_PREFIX + self.verb_noun_name + DROP_SUCCESS_SUFFIX)
                 drop_success = True
@@ -581,13 +570,20 @@ class GameClient:
         '''
         self.ui.clear_screen()
 
-        if self.gamestate.get_current_room().is_visited() is False or print_long_description is True:
-            description = self.gamestate.get_current_room().get_long_description()
+        cur_room = self.gamestate.get_current_room()
+        if cur_room.is_visited() is False or print_long_description is True:
+            description = cur_room.get_long_description()
         else:
-            description = self.gamestate.get_current_room().get_short_description()
+            description = cur_room.get_short_description()
 
         header_info = self.gamestate.get_header_info()
         self.ui.print_status_header(header_info)
+
+        # Print any 'graffiti' (spray paint messages)
+        spray_painted_message = self.gamestate.get_room_spray_painted_message(cur_room.get_name())
+        if spray_painted_message is not None:
+            self.ui.print_graffiti(spray_painted_message)
+
         self.ui.print_room_description(description)
         self.gamestate.get_current_room().set_visited()
 
@@ -683,8 +679,7 @@ class GameClient:
             room_object = self.gamestate.get_current_room().get_object_by_name(noun_name)
 
             if room_object is not None:
-                # if room_object.get_cost() is 0 or room_object.is_owned_by_player() is True:
-                if room_object.get_cost() is 0 or room_object in self.gamestate.player.owned:
+                if room_object.get_cost() is 0 or room_object.is_owned_by_player() is True:
                     self.gamestate.get_current_room().remove_object_from_room(room_object)
                     self.gamestate.player.add_object_to_inventory(room_object)
                     wprint(PICKUP_SUCCESS_PREFIX + self.verb_noun_name + PICKUP_SUCCESS_SUFFIX)
@@ -712,6 +707,7 @@ class GameClient:
 
             if used_object is not None:
                 obj_label = used_object.get_name().lower()
+                logger.debug("Trying to compare " + obj_label + " to various things, including: " + SPRAYPAINT.lower())
 
                 if obj_label == CASH_CRISP.lower():
                     cash_gained = self.rand_event.get_random_cash_amount(CASH_CRISP_MIN, CASH_CRISP_MAX)
@@ -750,7 +746,7 @@ class GameClient:
                     self.gamestate.player.remove_object_from_inventory(used_object)
                     self.gamestate.player.update_speed(SKATEBOARD_SPEED_INCREASE)
                     wprint(USE_SKATEBOARD_SUCCESS)
-                elif obj_label == SPRAYPAINT.lower():
+                elif obj_label == SPRAY_PAINT.lower():
                     self.gamestate.player.set_has_spraypaint_skill(True)
                     self.gamestate.player.remove_object_from_inventory(used_object)
                     wprint(USE_SPRAYPAINT_SUCCESS)
@@ -776,22 +772,36 @@ class GameClient:
         self.ui.wait_for_enter()
         return use_success
 
-    def verb_spraypaint(self, verb_object):
-        # TODO: Implement this fully. Check that object/feature is spraypaintable and handle logic if not/fails
-        # TODO: also chance of getting caught / going to jail or some other bad effect
-
-        spraypaint_success = True
+    def verb_spraypaint(self, verb_object, command_extras):
+        command_extra_first = command_extras[0]
+        spraypaint_message = command_extra_first['name']
+        logger.debug("Message will be: '" + spraypaint_message + "'")
+        spraypaint_success = False
+        cur_room = self.gamestate.get_current_room()
+        cur_room_name = cur_room.get_name()
 
         if self.gamestate.player.can_spraypaint():
-            wprint("TODO: You spraypaint stuff and coolness should go up and description should update. ")
-            self.gamestate.player.update_coolness(SPRAYPAINT_COOLNESS_INCREASE)
+            if cur_room.is_virtual_space() is False:
+                # Check of room is already painted
+                is_cur_room_painted = self.gamestate.is_room_spray_painted_by_name(cur_room_name)
+                if is_cur_room_painted is False:
+                    interface_message = SPRAYPAINT_ROOM_SUCCESS
+                    spraypaint_success = True
+                else:
+                    # Room is already painted, currently don't allow doing it again
+                    interface_message = SPRAYPAINT_ROOM_FAIL_ALREADY_PAINTED
+            else:
+                interface_message = SPRAYPAINT_FAIL_VIRTUAL_SPACE
         else:
-            wprint("You need to [use Spray Paint] before you can try to spraypaint the world.")
-            spraypaint_success = False
+            interface_message = SPRAYPAINT_FAIL_NO_SKILL
 
-        if spraypaint_success:
+        if spraypaint_success is True:
+            self.gamestate.set_room_spray_painted_by_name(cur_room_name, True)
+            self.gamestate.set_room_spray_painted_message(cur_room_name, spraypaint_message)
             self.gamestate.update_time_left(SPRAYPAINT_COST)
+            self.gamestate.player.update_coolness(SPRAYPAINT_COOLNESS_INCREASE)
 
+        wprint(interface_message)
         self.ui.wait_for_enter()
         return spraypaint_success
 
@@ -807,10 +817,9 @@ class GameClient:
             room_object = self.gamestate.get_current_room().get_object_by_name(noun_name)
 
             if room_object is not None:
-                # if room_object.is_owned_by_player() is True:
-                #     wprint(STEAL_FAIL_ALREADY_OWNED)
-                # elif room_object.get_cost() is 0:
-                if room_object.get_cost() is 0:
+                if room_object.is_owned_by_player() is True:
+                    wprint(STEAL_FAIL_ALREADY_OWNED)
+                elif room_object.get_cost() is 0:
                     wprint(STEAL_FAIL_FREE_ITEM)
                 elif room_object.get_cost() > 0:
                     if (self.rand_event.attempt_steal() is True):

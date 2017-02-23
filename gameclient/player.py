@@ -22,7 +22,6 @@ class Player:
         self.coolness = 0
         self.speed = 0
         self.inventory = Inventory()
-        self.owned = Inventory()
         self.has_hack_skill = False
         self.has_skate_skill = False
         self.has_spraypaint_skill = False
@@ -30,8 +29,8 @@ class Player:
     def add_object_to_inventory(self, object):
         if object:
             copy_of_object = copy.copy(object)
+            copy_of_object.set_is_owned_by_player()
             self.inventory.add_object(copy_of_object)
-            self.owned.add_object(copy_of_object)
 
     def remove_object_from_inventory(self, object):
         self.inventory.remove_object(object)

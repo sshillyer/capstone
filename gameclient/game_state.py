@@ -6,7 +6,6 @@
 # Description: GameState class that encapsulates all things that can be changed in the game world
 # Principal Author of this file per Project plan: Shawn Hillyer
 
-from constants.gameplay_settings import STARTING_TIME
 from constants.gameover_status_codes import *
 from fileio.room import *
 from fileio.object import *
@@ -56,6 +55,7 @@ class GameState:
         self.player = Player()
         self.time_left = STARTING_TIME
         self.is_trash_can_looted = False
+        self.spraypaint_data = {}
 
     def load_rooms_and_objects_from_file(self):
         # Initialize the rooms and objects to their defaults
@@ -69,6 +69,9 @@ class GameState:
         # Still need to set the default room and put the objects in the rooms
         self.set_default_room_by_name(DEFAULT_ROOM)
         self.place_objects_in_rooms(self.objects)
+
+        # Set the spraypainted status for each room to be blank
+        self.initialize_spraypaint_data()
 
     def initialize_load_game(self, filename):
         # TODO: Need to set the property is_owned_by_player on objects in the game world in the save and load functions
@@ -122,15 +125,6 @@ class GameState:
             self.player.add_object_to_inventory(obj)
             logger.debug("Adding object " + obj.get_name() + " to player's bag.")
 
-        # TODO
-        # Objects owned by player
-        player_owned = save_data.get_owned()
-        for object_name in player_owned:
-            obj = self.get_object_by_name(object_name)
-            copy_of_object = copy.copy(object)
-            player_owned.add_object(copy_of_object)
-            logger.debug("Adding object " + obj.get_name() + " to player's 'owned' list.")
-
         # Player variables
         logger.debug("self.player_cash = save_data.get_player_cash() = " + str(save_data.get_player_cash()))
         self.player.cash = save_data.get_player_cash()
@@ -142,6 +136,10 @@ class GameState:
 
         # Other variables stored in GameState
         self.time_left = save_data.get_time_left()
+
+        # TODO: Read SaveGame data once it's implemented isntead of the below re-initialization
+        self.spraypaint_data = save_data.get_spraypaint_data()
+        # self.initialize_spraypaint_data()  # TODO: Delete this once we can get the data from save_data (SaveGame obj.)
 
     def game_status(self):
         # TODO: Implement this properly. Status codes in constants\gameover_status_codes.py  ((SSH))
@@ -170,6 +168,65 @@ class GameState:
     def set_default_room_by_name(self, room_name):
         default_room = self.get_room_by_name(room_name)
         self.set_current_room(default_room)
+
+    def initialize_spraypaint_data(self):
+        self.spraypaint_data.clear()
+        for room in self.rooms:
+            if room.is_virtual_space() is False:
+                room_name = room.get_name()
+                is_spraypainted = False
+                entry = {
+                         'is_spraypainted': is_spraypainted,
+                         'spraypaint_message': None
+                }
+                self.spraypaint_data[room_name] = entry
+
+        logger.debug(str(self.spraypaint_data)) # TODO: Comment this out later
+
+    def set_spraypaint_data(self, spraypaint_data):
+        # TODO: Implement this
+
+        pass
+
+    def is_room_spray_painted_by_name(self, room_name):
+        is_painted = None
+        try:
+            entry = self.spraypaint_data[room_name]
+            if entry is not None:
+                is_painted = entry['is_spraypainted']
+        except:
+            logger.debug("There was a problem finding the room '" + str(room_name) + "' + in the self.spraypaint_data dictionary")
+        logger.debug("is_room_spray_painted_by_name(" + room_name + ") returns " + str(is_painted))
+        return is_painted
+
+    def set_room_spray_painted_by_name(self, room_name, painted=True):
+        try:
+            entry = self.spraypaint_data[room_name]
+            entry['is_spraypainted'] = painted
+            logger.debug(str(entry))
+        except:
+            logger.debug("Tried to set_room_spray_painted_by_name( +" + room_name + "," + str(painted) +  " ) but failed with exception.")
+
+    def set_room_spray_painted_message(self, room_name, message):
+        try:
+            entry = self.spraypaint_data[room_name]
+            entry['spraypaint_message'] = str(message)
+            logger.debug("Setting the message... entry is now " + str(entry))
+            logger.debug(str(self.spraypaint_data))
+        except:
+            logger.debug("Error setting the message in this room")
+            logger.debug(str(self.spraypaint_data))
+
+    def get_room_spray_painted_message(self, room_name):
+        try:
+            logger.debug("Trying to get spray painted message from room " + room_name)
+            entry = self.spraypaint_data[room_name]
+            logger.debug("self.spraypaint_data[" + room_name + "]" + str(entry))
+            logger.debug(entry['spraypaint_message'])
+            return entry['spraypaint_message']
+        except:
+            logger.debug("Couldn't find a message for the room " + room_name + ", this isn't necessarily a problem if in a virtual space")
+            return None
 
     def place_objects_in_rooms(self, game_objects):
         for game_object in game_objects:
