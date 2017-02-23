@@ -33,6 +33,12 @@
       "cardinal_direction": "South",
       "description": "a door leading into the Principal's Office",
       "destination": "Office"
+    },
+    {
+      "label": "Street",
+      "cardinal_direction": "West",
+      "description": "the door heading outside to the Street",
+      "destination": "Street"
     }
   ]
 }

@@ -6,6 +6,7 @@
 # Description: GameState class that encapsulates all things that can be changed in the game world
 # Principal Author of this file per Project plan: Shawn Hillyer
 
+from constants.gameplay_settings import STARTING_TIME
 from constants.gameover_status_codes import *
 from fileio.room import *
 from fileio.object import *
@@ -106,9 +107,12 @@ class GameState:
         # Objects in rooms and inventory
         objects_room_mapping = save_data.get_objects_room_mapping()
         for room_name in objects_room_mapping:
-            for object_name in objects_room_mapping[room_name]:
-                obj = self.get_object_by_name(object_name)
+            for object_data in objects_room_mapping[room_name]:
+                obj = self.get_object_by_name(object_data['object_name'])
+                # logger.debug("Loading object name " + obj.get_name() + " for room " + room_name)
+                obj_owned = object_data['is_owned_by_player']
                 room = self.get_room_by_name(room_name)
+                obj.set_is_owned_by_player(obj_owned)
                 room.add_object_to_room(obj)
                 logger.debug("Adding object " + obj.get_name() + " to room " + room.get_name() + ".")
 
@@ -117,6 +121,15 @@ class GameState:
             obj = self.get_object_by_name(object_name)
             self.player.add_object_to_inventory(obj)
             logger.debug("Adding object " + obj.get_name() + " to player's bag.")
+
+        # TODO
+        # Objects owned by player
+        player_owned = save_data.get_owned()
+        for object_name in player_owned:
+            obj = self.get_object_by_name(object_name)
+            copy_of_object = copy.copy(object)
+            player_owned.add_object(copy_of_object)
+            logger.debug("Adding object " + obj.get_name() + " to player's 'owned' list.")
 
         # Player variables
         logger.debug("self.player_cash = save_data.get_player_cash() = " + str(save_data.get_player_cash()))
@@ -149,12 +162,6 @@ class GameState:
             'spraypaint_skill' : self.player.can_spraypaint()
         }
         return header_info
-
-    # DEPRECATED
-    # def set_room_vars_to_default(self):
-    #     for room in self.rooms:
-    #         room.set_visited(False)
-    #         room.objects = []
 
     def set_object_vars_to_default(self):
         for obj in self.objects:

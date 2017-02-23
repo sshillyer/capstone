@@ -96,8 +96,6 @@ class GameClient:
                 elif exit_code is GAMEOVER_LOSE:
                     wprint("Game over: Player lost")
                 elif exit_code is GAMEOVER_SAVE:
-                    # DEBUG
-                    print("ABOUT TO SAVE THIS GAME...")
                     self.save_game_menu()
                     wprint("Game over: Player saved game")
                 elif exit_code is GAMEOVER_LOAD:
@@ -303,16 +301,27 @@ class GameClient:
 
         while valid_filename is False or file_name == "":
             wprint(SAVE_GAME_FILE_PROMPT)
-            file_name = self.ui.user_prompt() + '.json'
+            file_name = self.ui.user_prompt()
             valid_filename = save_game.is_existing_saved_game(file_name)
-            if valid_filename is False:
-                wprint(SAVE_GAME_VALID_FILENAME_MESSAGE)
+            while valid_filename is False:
+                wprint(SAVE_GAME_INVALID_EXISTS)
+                wprint(SAVE_GAME_AGAIN)
+                file_name = self.ui.user_prompt()
+                valid_filename = save_game.is_existing_saved_game(file_name)
 
-        if save_game.write_to_file(file_name) is True:
-            wprint(SAVE_GAME_SUCCESS + file_name)
-        else:
-            wprint(SAVE_GAME_FAILED + file_name)
+        while save_game.write_to_file(file_name) is False:
+            wprint(SAVE_GAME_INVALID_CHARACTERS)
+            wprint(SAVE_GAME_FAILED + file_name + '.json')
+            wprint(SAVE_GAME_AGAIN)
+            file_name = self.ui.user_prompt()
+            valid_filename = save_game.is_existing_saved_game(file_name)
+            while valid_filename is False:
+                wprint(SAVE_GAME_INVALID_EXISTS)
+                wprint(SAVE_GAME_AGAIN)
+                file_name = self.ui.user_prompt()
+                valid_filename = save_game.is_existing_saved_game(file_name)
 
+        wprint(SAVE_GAME_SUCCESS + file_name + '.json')
         self.ui.wait_for_enter()
 
     def go_to_jail(self):
@@ -341,8 +350,8 @@ class GameClient:
                 wprint(BUY_NOT_IN_ROOM)
             elif object.get_cost() is 0:
                 wprint(BUY_FREE_ITEM)
-            elif object.is_owned_by_player() is True:
-                wprint(BUY_FREE_ITEM)
+            # elif object.is_owned_by_player() is True:
+            #     wprint(BUY_FREE_ITEM)
             elif object.get_cost() > player_cash:
                 wprint(BUY_INSUFFICIENT_CASH_PREFIX + str(object.get_cost()) + BUY_INSUFFICIENT_CASH_SUFFIX)
             else:
@@ -383,6 +392,8 @@ class GameClient:
                 wprint(DROP_FAILURE_VIRTUALSPACE)
             elif inventory_object is not None:
                 self.gamestate.player.inventory.remove_object(inventory_object)
+                # DEBUG Print owned array
+                # print(self.gamestate.player.owned.get_inventory_string())
                 self.gamestate.get_current_room().add_object_to_room(inventory_object)
                 wprint(DROP_SUCCESS_PREFIX + self.verb_noun_name + DROP_SUCCESS_SUFFIX)
                 drop_success = True
@@ -465,7 +476,7 @@ class GameClient:
         return go_success
 
     def verb_hack(self, noun_name, noun_type):
-        # TODO: Finish implementing verb_hack
+        # TODO: Finish implementing verb_hack for other room features
         hack_success = False
 
         if self.gamestate.player.can_hack() is False:
@@ -672,7 +683,8 @@ class GameClient:
             room_object = self.gamestate.get_current_room().get_object_by_name(noun_name)
 
             if room_object is not None:
-                if room_object.get_cost() is 0 or room_object.is_owned_by_player() is True:
+                # if room_object.get_cost() is 0 or room_object.is_owned_by_player() is True:
+                if room_object.get_cost() is 0 or room_object in self.gamestate.player.owned:
                     self.gamestate.get_current_room().remove_object_from_room(room_object)
                     self.gamestate.player.add_object_to_inventory(room_object)
                     wprint(PICKUP_SUCCESS_PREFIX + self.verb_noun_name + PICKUP_SUCCESS_SUFFIX)
@@ -701,22 +713,22 @@ class GameClient:
             if used_object is not None:
                 obj_label = used_object.get_name().lower()
 
-                if obj_label == "crisp cash":
+                if obj_label == CASH_CRISP.lower():
                     cash_gained = self.rand_event.get_random_cash_amount(CASH_CRISP_MIN, CASH_CRISP_MAX)
                     self.gamestate.player.update_cash(cash_gained)
                     self.gamestate.player.remove_object_from_inventory(used_object)
                     wprint(USE_CASH_SUCCESS_PREFIX + str(cash_gained) + USE_CASH_SUCCESS_SUFFIX)
-                elif obj_label == "cash wad":
+                elif obj_label == CASH_WAD.lower():
                     cash_gained = self.rand_event.get_random_cash_amount(CASH_WAD_CASH_MIN, CASH_WAD_CASH_MAX)
                     self.gamestate.player.update_cash(cash_gained )
                     self.gamestate.player.remove_object_from_inventory(used_object)
                     wprint(USE_CASH_SUCCESS_PREFIX + str(cash_gained) + USE_CASH_SUCCESS_SUFFIX)
-                elif obj_label in {"graphics card", "ram chip", "floppy disk"}:
+                elif obj_label in {GRAPHICS_CARD.lower(), RAM.lower(), FLOPPY_DISK.lower()}:
                     # TODO: Build logic to confirm player has all components to build a PC, in correct location to build one
                     # and then update some game-state variable so that player can do things they can do if they have a PC
-                    g_card = self.gamestate.player.inventory.get_object_by_name("graphics card")
-                    ram_chip = self.gamestate.player.inventory.get_object_by_name("ram chip")
-                    floppy_disk = self.gamestate.player.inventory.get_object_by_name("floppy disk")
+                    g_card = self.gamestate.player.inventory.get_object_by_name(GRAPHICS_CARD.lower())
+                    ram_chip = self.gamestate.player.inventory.get_object_by_name(RAM.lower())
+                    floppy_disk = self.gamestate.player.inventory.get_object_by_name(FLOPPY_DISK.lower())
 
                     if g_card is not None and \
                          ram_chip is not None and \
@@ -729,24 +741,24 @@ class GameClient:
                         self.gamestate.set_current_room(self.gamestate.get_room_by_name("Your Computer"))
                     else:
                         wprint(USE_COMPUTER_PARTS_MISSING)
-                elif obj_label == "hackersnacks":
+                elif obj_label == HACKERSNACKS.lower():
                     self.gamestate.player.remove_object_from_inventory(used_object)
                     self.gamestate.player.update_speed(SNACK_SPEED_INCREASE)
                     wprint(USE_SNACKS_SUCCESS)
-                elif obj_label == "skateboard":
+                elif obj_label == SKATEBOARD.lower():
                     self.gamestate.player.set_has_skate_skill(True)
                     self.gamestate.player.remove_object_from_inventory(used_object)
                     self.gamestate.player.update_speed(SKATEBOARD_SPEED_INCREASE)
                     wprint(USE_SKATEBOARD_SUCCESS)
-                elif obj_label == "spray paint":
+                elif obj_label == SPRAYPAINT.lower():
                     self.gamestate.player.set_has_spraypaint_skill(True)
                     self.gamestate.player.remove_object_from_inventory(used_object)
                     wprint(USE_SPRAYPAINT_SUCCESS)
-                elif obj_label == "hacker manual":
+                elif obj_label == HACKER_MANUAL.lower():
                     self.gamestate.player.set_has_hack_skill(True)
                     self.gamestate.player.remove_object_from_inventory(used_object)
                     wprint(USE_HACKERMANUAL_SUCCESS)
-                elif obj_label == "surge":
+                elif obj_label == SURGE.lower():
                     self.gamestate.player.remove_object_from_inventory(used_object)
                     self.gamestate.player.update_speed(SNACK_SPEED_INCREASE)
                     wprint(USE_SURGE_SUCCESS)
@@ -795,9 +807,10 @@ class GameClient:
             room_object = self.gamestate.get_current_room().get_object_by_name(noun_name)
 
             if room_object is not None:
-                if room_object.is_owned_by_player() is True:
-                    wprint(STEAL_FAIL_ALREADY_OWNED)
-                elif room_object.get_cost() is 0:
+                # if room_object.is_owned_by_player() is True:
+                #     wprint(STEAL_FAIL_ALREADY_OWNED)
+                # elif room_object.get_cost() is 0:
+                if room_object.get_cost() is 0:
                     wprint(STEAL_FAIL_FREE_ITEM)
                 elif room_object.get_cost() > 0:
                     if (self.rand_event.attempt_steal() is True):
@@ -852,7 +865,7 @@ class GameClient:
             confirm = self.ui.user_prompt().lower()
             if confirm in YES_ALIASES:
                 message = LOOK_AT_TRASH_SEARCHED
-                ram_chip = self.gamestate.get_object_by_name("RAM Chip")
+                ram_chip = self.gamestate.get_object_by_name(RAM.lower())
                 self.gamestate.player.add_object_to_inventory(ram_chip)
                 self.gamestate.player.update_coolness(TRASH_CAN_SEARCH_COOLNESS_COST)
                 self.gamestate.is_trash_can_looted = True
