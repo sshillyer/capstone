@@ -1,0 +1,8 @@
+{
+  "name" : "Carcass",
+  "long_description" : "A nice [carcass] trophy for defeating that bug back in the Metaverse.",
+  "short_description" : "Might be nice to keep around...",
+  "default_location" : "Inside the Metaverse",
+  "details" : "hack binary files",
+  "cost" : 0
+}

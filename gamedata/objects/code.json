@@ -1,0 +1,8 @@
+{
+  "name" : "Code",
+  "long_description" : "'password'?! Really? THAT'S the nuclear launch [code]?!",
+  "short_description" : "'password'",
+  "default_location" : "Encrypted Files",
+  "details" : "used to launch da nukes!",
+  "cost" : 0
+}

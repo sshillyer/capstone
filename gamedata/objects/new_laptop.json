@@ -1,0 +1,8 @@
+{
+  "name" : "New Laptop",
+  "long_description" : "Wow! A brand [New Laptop]! Ripe for the taking... or buying. Looks like a fairly standard model, but it could still get you into the metaverse.",
+  "short_description" : "So shiny. So new.",
+  "default_location" : "Pawn Shop",
+  "details" : "hack",
+  "cost" : 350
+}

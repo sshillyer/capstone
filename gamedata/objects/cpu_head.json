@@ -1,0 +1,8 @@
+{
+  "name" : "CPU Head",
+  "long_description" : "This is one ugly dude, but the a Sentient [CPU Head] would make a nice paperweight.",
+  "short_description" : "The head of your enemy. Gross. Cool, but gross.",
+  "default_location" : "Data Tower",
+  "details" : "Get this prize for defeating the ultimate evil!",
+  "cost" : 0
+}

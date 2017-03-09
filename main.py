@@ -35,8 +35,10 @@ def main():
             print_minimum_terminal_size_error(MIN_ROWS, MIN_COLS)
             sys.exit(1)
     elif ui.op_system == "Windows":
-        # TODO Not critical for assignment as we must run on LINUX but can still implement this
+        # TODO Not required for assignment as we must run on LINUX but can still implement this if time
         pass
+
+    ui.create_savedgames_dir()
 
     GC = GameClient()
     GC.main_loop()

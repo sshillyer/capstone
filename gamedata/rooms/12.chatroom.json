@@ -17,15 +17,20 @@
       },
       {
         "name" : "Acid Burn",
-        "description" : "So much hacking knowledge in one place!",
+        "description" : "So much hacking knowledge in one gorgeous place!",
         "hackable": false
+      },
+      {
+          "name" : "leet Translator",
+          "description" : "Translate your n00b text into l337 text!",
+          "hackable": false
       }
   ],
   "room_connections" : [
     {
       "label": "Inside the Metaverse",
       "cardinal_direction": "South",
-      "description": "",
+      "description": "the insides of the virtual world- this kinda looks like heaven",
       "destination": "Inside the Metaverse"
     }
   ]

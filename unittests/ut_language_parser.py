@@ -1,6 +1,9 @@
 # Unit tests for language parser
 # Created by Shawn
+# NOTE: These unit tests were never utilized after LanguageParser was re-implemented; file in project to show what work
+# we had done on this so far.
 
+# Citation for these unit tests are official python3 document for unittest module
 import unittest
 from constants.language_words import *
 from languageparser.language_parser import *
@@ -118,7 +121,6 @@ class TestLanguageParser(unittest.TestCase):
             for buy_word in BUY_ALIASES:
                 test_string = buy_word + " " + str(obj_name)
                 obj_name = obj_name.lower()
-                # TODO: Revise this unit test with revised language parser logic
                 # I think the language parser actually sets expected_noun to None instead of dictionary of None values?
                 expected_noun = {'name': '', 'type': None}
                 result = self.LP.parse_command(test_string)

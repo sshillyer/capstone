@@ -19,13 +19,13 @@ R5 = ['subway', 'metro', 'underground']
 R7 = ['jail', 'prison', 'slammer']
 R6 = ['pool on the roof', 'roof pool', 'pool', 'roof']
 R8 = ['hall', 'hallway']
-R9 = ['office']
-R10 = ['computer', 'laptop']
+R9 = ['school office']
+R10 = ['your computer']
 R11 = ['inside the metaverse', 'metaverse', 'internet']
 R12 = ['chat room', 'chat']
-R13 = ['evil computer']
-R14 = ['secret files', 'secret']
-R15 = ['virus room', 'virus']
+R13 = ['data tower', 'data', 'tower']
+R14 = ['encrypted files', 'encrypted', 'encrypt']
+R15 = ['spaghetti code', 'spaghetti', 'spagett']
 #no room 16 as player will be sent automatically if they win
 
 #destinations include directions and room names
@@ -33,10 +33,18 @@ DESTINATIONS = [['north'], ['south'], ['east'], ['west'], R1, R2, R3, R4, R5, R6
 
 #subjects- objects and features
 #objects and aliases
+ORANGE_CAT = 'orange cat'
+ORANGE_CAT_ALIASES = ['orange cat', 'gogi']
 CASH_CRISP = 'crisp cash'
 CASH_CRISP_ALIASES = ['crisp cash', 'crisp', 'crisp money'] 
 CASH_WAD = 'cash wad'
 CASH_WAD_ALIASES = ['cash wad', 'wad of cash', 'wad of money', 'money wad', 'wad']
+CRUMPLED_CASH = 'crumpled cash'
+CRUMPLED_CASH_ALIASES = ['crumpled cash', 'crumpled']
+CODE = 'code'
+CODE_ALIASES = ['code']
+COMPUTER = 'computer'
+COMPUTER_ALIASES = ['computer']
 SKATEBOARD = 'skateboard'
 SKATEBORD_ALIASES = ['skateboard', 'board', 'plank']
 HACKER_MANUAL = 'hacker manual'
@@ -45,44 +53,58 @@ HACKERSNACKS = 'hackersnacks'
 HACKERSNACKS_ALIASES = ['hackersnacks', 'snacks', 'munchies']
 SURGE = 'surge'
 SURGE_ALIASES = ['surge', 'soda', 'drink', 'beverage'] 
-SPRAY_PAINT = 'can of SuperSprayPaint'
-SPRAY_PAINT_ALIASES = ['can of SuperSprayPaint', 'can']
+SPRAY_PAINT = 'cans of superspraypaint'
+SPRAY_PAINT_ALIASES = ['cans of superspraypaint', 'superspraypaint', 'cans']
 FLOPPY_DISK = 'floppy disk'
-FLOPPY_DISK_ALIASES = ['floppy disk', 'floppydisk', 'floppy', 'disk']
+FLOPPY_DISK_ALIASES = ['floppy disk', 'floppydisk', 'floppy']
 GRAPHICS_CARD = 'graphics card'
 GRAPHICS_CARD_ALIASES = ['graphics card', 'graphic card', 'graphicscard', 'graphiccard', 'card', 'graphics']
-NEW_COMPUTER = ['new computer']
-NEW_COMPUTER_ALIASES = ['new computer']
+NEW_LAPTOP = 'new laptop'
+NEW_LAPTOP_ALIASES = ['new laptop', 'laptop']
 RAM = 'ram chip'
 RAM_ALIASES = ['ram chip', 'random access memory', 'memory', 'chip', 'ram']
+ACMERAM = 'acmeram'
+ACMERAM_ALIASES = ['acmeram', 'acme']
+KEY= 'key'
+KEY_ALIASES = ['key', 'jailkey', 'cellkey' ]
+FIREBALL = 'fireball'
+FIREBALL_ALIASES = ['fireball', 'ball']
+CARCASS = 'carcass'
+CARCASS_ALIASES = ['carcass']
+CPUHEAD = 'cpu head'
+CPUHEAD_ALIASES = ['cpu head', 'head']
+BINARY_STRING = 'binary string'
+BINARY_STRING_ALIASES = ['binary string', 'string']
+LOCK_PICKS = "lock picks"
+LOCK_PICKS_ALIASES = ['lock picks']
 
-OBJECT_ALIASES = [CASH_CRISP_ALIASES , CASH_WAD_ALIASES,  SKATEBORD_ALIASES, HACKERSNACKS_ALIASES, HACKER_MANUAL_ALIASES, SURGE_ALIASES, SPRAY_PAINT_ALIASES, FLOPPY_DISK_ALIASES, GRAPHICS_CARD_ALIASES, RAM_ALIASES]
+OBJECT_ALIASES = [ORANGE_CAT_ALIASES, CASH_CRISP_ALIASES , CASH_WAD_ALIASES, CODE_ALIASES, COMPUTER_ALIASES, SKATEBORD_ALIASES, HACKERSNACKS_ALIASES, HACKER_MANUAL_ALIASES, SURGE_ALIASES, SPRAY_PAINT_ALIASES, FLOPPY_DISK_ALIASES, GRAPHICS_CARD_ALIASES, NEW_LAPTOP_ALIASES, RAM_ALIASES, ACMERAM_ALIASES, KEY_ALIASES, FIREBALL_ALIASES, CARCASS_ALIASES, CPUHEAD_ALIASES, BINARY_STRING_ALIASES, LOCK_PICKS_ALIASES]
 
 #features 
 #TODO: add aliases, simple 'look at' features and descriptions to ROOMS, then add logic here
-R1_F = [['"no skateboarding" sign', 'no skateboarding sign', 'sign'], ['guardrails', 'rails', 'rail'], ['traffic lights', 'lights']]
+R1_F = [['"no skateboarding" sign', 'no skateboarding sign', 'sign'], ['guardrails', 'rails', 'rail'], ['traffic lights', 'traffic', 'lights', 'light']]
 R2_F = [['phone booth', 'phone', 'booth'], ['trash can', 'trash'], ['turnstiles', 'turn stile', 'turn stiles', 'turnstile']]
 R3_F = [['ramp'], ['death to the patriarchy', 'game', 'death', 'patriarchy']]
 R4_F = [['counter'], ['shelves'], ['store clerk', 'clerk']]
-R5_F = [['atm'], ['security officer', 'security']]
-R6_F = [['your gear', 'gear'], ['unattended police computer', 'police computer'], ['police officer', 'police', 'cop'], ['unoccupied desk', 'desk'], ['metal door']]
+R5_F = [['atm'], ['crumpled cash', 'crumpled'], ['security officer', 'security']]
+R6_F = [['your gear', 'gear'], ['unattended police desktop', 'police desktop'], ['police officer', 'cop'], ['unoccupied desk', 'desk'], ['metal door']]
 R7_F = [['locker'], ['teacher', 'teach'], ['fire alarm', 'alarm']]
-R8_F = [['school-wide intercom mic', 'intercom mic', 'intercom', 'mic'], ['office computer'], ['acid burn'], ['clock'], ['poster']]
-R9_F = [['door'], ['ledge']]
+R8_F = [['school intercom mic', 'intercom mic', 'intercom', 'mic'], ['office desktop'], ['clock'], ['poster']]
+R9_F = [['control box', 'control', 'box'], ['heavy door'], ['ledge']]
 R10_F = [['disk drive', 'drive'], ['panel'], ['terminal']]
 R11_F = [['bug'], ['firewall']]
-R12_F = [['emojis', 'emoticons'], ['creature', 'troll'], ['acid burn']]
-R13_F = [['input output port', 'input output port', 'in out port', 'input output', 'in out' 'port'], ['sentient cpu', 'cpu']]
-R14_F = [['cat videos from the internet', 'internet cat videos', 'cat videos', 'videos', 'vids'], ['nuclear launch codes', 'launch codes', 'codes']]
+R12_F = [['emojis', 'emoji', 'emoticons'], ['creature', 'troll'], ['leet translator', 'leet', 'translator']]
+R13_F = [['input output port', 'input output port', 'in out port', 'input output', 'in out' 'port'], ['sentient cpu', 'sentient']]
+R14_F = [['cat videos from the internet', 'internet cat videos', 'cat videos', 'videos', 'vids'], ['nuclear launch codes', 'nuclear codes', 'codes']]
 R15_F = [['binary files', 'binary'], ['corrupted files', 'corrupted']]
-R16_F = [['acid burn'], ['diving board'], ['office windows']]
+R16_F = [['diving board', 'diving'], ['walls']]
+R_MULTI = [['acid burn']]
 
-FEATURES_ALIASES_ARRAYS = [R1_F, R2_F, R3_F, R4_F, R5_F, R6_F, R7_F, R8_F, R9_F, R10_F, R11_F, R12_F, R13_F, R14_F, R15_F, R16_F]
+FEATURES_ALIASES_ARRAYS = [R1_F, R2_F, R3_F, R4_F, R5_F, R6_F, R7_F, R8_F, R9_F, R10_F, R11_F, R12_F, R13_F, R14_F, R15_F, R16_F, R_MULTI]
 
 #propositions
-PREPOSITIONS = [ 'in front of', 'next to', 'on', 'in', 'onto', 'into', 'below', 'behind', 'above', 'over', 'about', 'with']
+PREPOSITIONS = [ 'in front of', 'next to', 'on', 'in', 'inside', 'onto', 'into', 'below', 'behind', 'above', 'over', 'about', 'with', 'around', 'off', 'up']
 
-#cheatcodes
 CHEATCODE_LOSE = 'lose cheatcode'
 CHEATCODE_LOSE_ALIASES = ['cheatcode lose', 'mess with the best', 'lose cheatcode']
 CHEATCODE_WIN = 'cheatcode win'
@@ -108,10 +130,12 @@ LOOK_AT = 'look at'
 LOOK_AT_ALIASES = ['look at', 'examine']
 TAKE = 'take'
 TAKE_ALIASES = ['take', 'pick up', 'grab', 'acquire']
+TALK = 'talk'
+TALK_ALIASES = ['talk', 'speak', 'ask']
 INVENTORY = 'inventory'
 INVENTORY_ALIASES = ['inventory', 'backpack', 'bag']
 NEW_GAME = 'new game'
-NEW_GAME_ALIASES = [ 'new game', 'hack the planet', 'new game', 'hacktheplanet', 'newgame', 'new']
+NEW_GAME_ALIASES = [ 'new game', 'hack the planet', 'new game', 'hacktheplanet', 'newgame']
 QUIT = 'quit'
 QUIT_ALIASES = ['quit', 'leave game', 'exit', 'bye', 'goodbye']
 SAVE_GAME = 'save game'
@@ -126,8 +150,9 @@ USE = 'use'
 USE_ALIASES = ['use']
 
 
+
 VERB_ALIASES = [BUY_ALIASES, DROP_ALIASES, GO_ALIASES, HACK_ALIASES, HELP_ALIASES, LOAD_GAME_ALIASES, LOOK_AT_ALIASES, 
-LOOK_ALIASES, TAKE_ALIASES, INVENTORY_ALIASES, NEW_GAME_ALIASES, QUIT_ALIASES, SAVE_GAME_ALIASES, SPRAYPAINT_ALIASES, STEAL_ALIASES, USE_ALIASES]
+LOOK_ALIASES, TAKE_ALIASES, TALK_ALIASES, INVENTORY_ALIASES, NEW_GAME_ALIASES, QUIT_ALIASES, SAVE_GAME_ALIASES, SKATE_ALIASES, SPRAYPAINT_ALIASES, STEAL_ALIASES, USE_ALIASES]
 
 
 NEGATIONS = ['not', 'don\'t', 'no']
@@ -146,3 +171,4 @@ INVALID_PREPOSITION_NO_NOUN = 'invalid command: uh, what you want to do with tha
 INVALID_DOUBLE = 'invalid command: no need to repeat the same thing twice- simply your life, yo'
 INVALID_SPRAYPAINT_NO_MESSAGE = 'invalid command: what do you want to write with your spraypaint?'
 INVALID_NEGATION = 'invalid command: if you don\'t wanna do that what DO you wanna do??'
+INVALID_SENTENCE_STRUCTURE = 'invalid command: you made a weird sentence. Try verb-noun yo.'

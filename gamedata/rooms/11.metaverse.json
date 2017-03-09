@@ -7,12 +7,12 @@
   "room_features" : [
       {
         "name" : "Bug",
-        "description" : "Oh no! Someone hacked autocorrect to change every word you type to \"butts\"!",
+        "description" : "A creepy crawly bug eating through logic fastern than fiber.",
         "hackable": false
       },
       {
         "name" : "Firewall",
-        "description" : "Access denied?! Not today!",
+        "description" : "A flaming structure blocking your path to the Data Tower.",
         "hackable": false
       }
   ],
@@ -20,19 +20,19 @@
     {
       "label": "Chat Room",
       "cardinal_direction": "North",
-      "description": "",
+      "description": "chattering noises sending off blips and bleeps at an alarming rate",
       "destination": "Chat Room"
     },
     {
-      "label": "Evil Computer",
+      "label": "Data Tower",
       "cardinal_direction": "South",
-      "description": "",
-      "destination": "Evil Computer"
+      "description": "spooky looking tower of bits and bytes",
+      "destination": "Data Tower"
     },
     {
       "label": "Your Computer",
       "cardinal_direction": "West",
-      "description": "",
+      "description": "home sweet home, the safety of your own system",
       "destination": "Your Computer"
     }
   ]

@@ -1,0 +1,33 @@
+{
+  "name" : "Pool on the Roof",
+  "long_description" : "The heavy door begins to close as you walk out to find not a welcoming pool, but an empty cracked concrete stretching out towards the ledge of the roof- you've been tricked! As the door swings back you notice a black automated control box.",
+  "short_description" : "A normal roof with a security lock on the door and definitely no pool.",
+  "visited" : false,
+  "virtual_space" : false,
+  "room_features" : [
+      {
+        "name" : "Heavy Door",
+        "description" : "A large metal structure which is probably gonna make you late for class. Psyc! You would never go to class.",
+        "hackable": true,
+        "description_hacked" : "The door swings open freely now. Go as you please..."
+      },
+      {
+        "name" : "Control Box",
+        "description" : "Standard black plastic covering to hide some hackable computery insides.",
+        "hackable": false
+      },
+      {
+        "name" : "Ledge",
+        "description" : "No way but... down? It's only two stories...",
+        "hackable": false
+      }
+  ],
+  "room_connections" : [
+    {
+      "label": "Hall",
+      "cardinal_direction": "South",
+      "description": "the trap door leading back to the Hall.",
+      "destination": "Hall"
+    }
+  ]
+}

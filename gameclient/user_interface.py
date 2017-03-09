@@ -61,6 +61,8 @@ class UserInterface:
 
     def clear_screen(self):
         # Cite: http://stackoverflow.com/questions/4810537/how-to-clear-the-screen-in-python
+        # DEBUG Disable clear screen
+        # pass
         if self.op_system == "Windows":
             os.system('cls')
         elif self.op_system == "Linux":
@@ -121,7 +123,27 @@ class UserInterface:
         print(inventory_description)
         wprint(INVENTORY_LIST_FOOTER)
 
+    def create_savedgames_dir(self):
+        # Windows reference only to testing locally
+        if self.op_system == "Windows":
+            os.system('if not exist ".\gamedata\savedgames" mkdir ".\gamedata\savedgames"')
+        # CITE: http://stackoverflow.com/questions/793858/how-to-mkdir-only-if-a-dir-does-not-already-exist
+        elif self.op_system == "Linux":
+            os.system('mkdir -p ./gamedata/savedgames')
+        # else:
+        #     pass
+
     def print_graffiti(self, spray_painted_message):
         wprint(GRAFFITI_HEADER)
         wprint(spray_painted_message)
         wprint(GRAFFITI_FOOTER)
+
+    def print_hints(self, hints):
+        if len(hints) > 1:
+            wprint(HINTS_HEADER_PLURAL)
+        else:
+            wprint(HINTS_HEADER_SINGULAR)
+        for hint in hints:
+            wprint(HINT_BULLET_PREFIX + hint)
+
+        self.wait_for_enter()

@@ -7,10 +7,10 @@
   "room_features" : [
       {
         "name" : "Locker",
-        "description" : "5... 29... 17... click... Aaand unlocked!",
+        "description" : "Inside are some of your most prized possessions- naturally security is so high only a hacker could pick this lock.",
         "hackable": false
       },
-	  {
+      {
         "name" : "Teacher",
         "description" : "I guess, maybe just some rando wandered in from the street? Do street randos shop at the Profresh Prof's Discount Suits? They should teach this in school.",
         "hackable": false
@@ -18,21 +18,22 @@
       {
         "name" : "Fire Alarm",
         "description" : "This could make an excellent diversion...",
-        "hackable": false
+        "hackable": true,
+        "description_hacked" : "Just a bunch of mangled wires now."
       }
   ],
   "room_connections" : [
     {
-      "label": "\"Pool\" on the Roof",
+      "label": "Pool on the Roof",
       "cardinal_direction": "North",
       "description": "a door leading to the Pool on the Roof",
-      "destination": "\"Pool\" on the Roof"
+      "destination": "Pool on the Roof"
     },
     {
-      "label": "Office",
+      "label": "School Office",
       "cardinal_direction": "South",
       "description": "a door leading into the Principal's Office",
-      "destination": "Office"
+      "destination": "School Office"
     },
     {
       "label": "Street",

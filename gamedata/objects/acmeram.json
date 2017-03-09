@@ -1,0 +1,8 @@
+{
+  "name" : "AcmeRAM",
+  "long_description" : "A shiny new chunk green board with black and silver dots and blocks gridded along the surface. The label on the back of this chip reveals it is top of the line [ACMEram] brand, whoa!",
+  "short_description" : "A brand new green circuit board",
+  "default_location" : "Pawn Shop",
+  "details" : "build computer",
+  "cost" : 60
+}

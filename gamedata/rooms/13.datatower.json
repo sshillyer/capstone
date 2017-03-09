@@ -1,0 +1,46 @@
+{
+  "name" : "Data Tower",
+  "long_description" : "The inside of the data tower is the digital equivalent of a scrapyard where the compactor just never quits, instead of a bunch of old autos stacked up high, it is all these glowing crushed bits of binary files just smashed together with no order or elegance. Then you see it- flying above the digital sky are those awful red EvilCorps banners stretched out like gruesome tags across the entire place. Oh heck, you must be inside the EvilCorps Bank! Better speed up before security bots catch on to you. You look around to try and locate anything useful, One encrypted file keeps flashing the same pattern in what must be some digital death cry.  Another sad data files spaghetti code flows out like guts dripping bits that scatter on the floor. In the center there is one exception, a gleaming Central Processing Unit- a disembodied giant head, kind of like a digital Olmec from Legends of the Hidden Temple glaring down all red eyed and angry at you.",
+  "short_description" : "large dark structure with crushed binary files on one side, spaghetti code on the other, and a dark looking CPU in the center.",
+  "visited" : false,
+  "virtual_space" : true,
+  "room_features" : [
+      {
+        "name" : "Input Output Port",
+        "description" : "You can copy some useful files through this port.",
+        "hackable": false
+      },
+      {
+        "name" : "Sentient CPU",
+        "description" : "The creepiest graphics imaginable.",
+        "hackable": true,
+        "description_hacked" : "Not so sentient now, is it?!"
+      }
+  ],
+  "room_connections" : [
+    {
+      "label": "Inside the Metaverse",
+      "cardinal_direction": "North",
+      "description": "the insides of the virtual world- this kinda looks like heaven",
+      "destination": "Inside the Metaverse"
+    },
+    {
+      "label": "Winners' Pool",
+      "cardinal_direction": "South",
+      "description": "the ultimate reward",
+      "destination": "Winners' Pool"
+    },
+    {
+      "label": "Spaghetti Code",
+      "cardinal_direction": "East",
+      "description": "a pathetic jumble of code that was probably written on a typewriter",
+      "destination": "Spaghetti Code"
+    },
+    {
+      "label": "Encrypted Files",
+      "cardinal_direction": "West",
+      "description": "a smashed up file that keeps flashing some sad binary code as if this was a rave",
+      "destination": "Encrypted Files"
+    }
+  ]
+}

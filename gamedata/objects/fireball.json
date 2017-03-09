@@ -1,0 +1,8 @@
+{
+  "name" : "Fireball",
+  "long_description" : "A ball of fiery plasma to 'melt' malicious virtual files.Go go [fireball]!!",
+  "short_description" : "Virtual files take 8d6 fire damage! *geeky chuckle*",
+  "default_location" : "Inside the Metaverse",
+  "details" : "increases speed",
+  "cost" : 0
+}

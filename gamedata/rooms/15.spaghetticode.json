@@ -1,0 +1,29 @@
+{
+  "name" : "Spaghetti Code",
+  "long_description" : "A sticky sloppy mess of code swirls around your body immobilizing you in a small cramped space where you can barely see anything except a few black and white binary blinks and a couple of oozing corrupted files.",
+  "short_description" : "A swirl of spaghetti code with binary blinks and some majorly harshed files.",
+  "visited" : false,
+  "virtual_space" : true,
+  "room_features" : [
+      {
+        "name" : "Binary Files",
+        "description" : "'01000101111001Mr.Robot1100010' So THAT'S who's behind all this!",
+        "hackable": true,
+        "description_hacked": "These binary files have been hacked into bits."
+      },
+      {
+        "name" : "Corrupted Files",
+        "description" : "Probably shouldn't open these...",
+        "hackable": true,
+        "description_hacked" : "... yea, next time, you will probably want to use VirtualSandbox3.0. Those were almost as corrupt as EvilCorp Bank!"
+      }
+  ],
+  "room_connections" : [
+    {
+      "label": "Data Tower",
+      "cardinal_direction": "West",
+      "description": "spooky looking tower of bits and bytes",
+      "destination": "Data Tower"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name" : "Lock Picks",
+  "long_description" : "A steely set of [lock picks]. Might open some doors for you. You might also be able to finally sneak out after curfew!",
+  "short_description" : "A small set of lock picks.",
+  "default_location" : "Pawn Shop",
+  "details" : "opens doors",
+  "cost" : 20
+}

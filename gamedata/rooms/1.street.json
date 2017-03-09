@@ -39,7 +39,7 @@
     {
       "label": "Hall",
       "cardinal_direction": "East",
-      "description": "the main hall of Central High",
+      "description": "an entryway leading to the main hall of Bob Ross High",
       "destination": "Hall"
     },
     {
