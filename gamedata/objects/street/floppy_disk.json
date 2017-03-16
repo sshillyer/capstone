@@ -1,8 +1,0 @@
-{
-  "name" : "Floppy Disk",
-  "long_description" : "a purple square of plastic - you've seen this advanced tech before, it's a [Floppy Disk] - with a gold metallic part in the middle of one side. A label on the front list the capacity as 100 bits, more than enough space for sure. ",
-  "short_description" : "A purple disk, 7.5 inches of flop.",
-  "default_location" : "Street",
-  "details" : "build computer",
-  "cost" : 0
-}

@@ -1,8 +1,0 @@
-{
-  "name" : "RAM chip",
-  "long_description" : "a chunk green board with black and silver dots and blocks gridded along the surface. The label on the back of this [RAM chip] reveals it is top of the line Mountain Goat brand, whoa!",
-  "short_description" : "A green circuit board",
-  "default_location" : "Street",
-  "details" : "build computer",
-  "cost" : 0
-}
