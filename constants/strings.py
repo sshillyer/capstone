@@ -24,35 +24,35 @@ INTRO_SEQUENCE = [
     "Such a bummer. So yeah, now you are like, a teen hacking legend with a crashed computer and serious intell. If only you could repair your sweet machine and figure out some way to bring that corrupt Evil Corps to justice! And like, it would be great to get a date- seriously, are you the only teen hacking legend who can never get a date? That cannot be right."
 ]
 
-#Text arrays for NPC features labled LOCATION_NAME_PERSONNAME_TEXT
+#Text arrays for NPC features labeled LOCATION_NAME_PERSONNAME_TEXT
 #Each NPC has 5 strings of texts they can say
 #Last string is a default that should be repeated for any text request after the initial 4
 
 PAWNSHOP_STORECLERK_TEXT = ['If you\'re just looking keep walking.', 
 'Bathroom is out of order and also for paying customers only.', 
-'If highly recommend the RAM. This means Really Awesome Mechanics. Goes well with graphics.', 
-'All products have a lifetime gaurantee- no returns.' 
+'I highly recommend the RAM. This means Really Awesome Mechanics. Goes well with graphics.',
+'All products have a lifetime guarantee- no returns.'
 'I don\'t have all day to chit chat, give me cash or let me return to my nap.']
 
 HALL_TEACHER_TEXT = ['Move along slow poke. I am on my smoke break.', 
-'You know, if you wanna hack that firealarm. I could look the other way- I am missing my sudoku.',  
+'You know, if you wanna hack that fire alarm. I could look the other way- I am missing my Sudoku.',
 'Pool on the roof? That sounds crazy. Then again, this whole place is crazy and kids are always messing around up there, must be something worth while.', 
 'You know I used to like children- true story.', 
 'Your teen angst is getting to me, better get going kiddo.']
 
 OFFICE_ACIDBURN_TEXT = ['You must be the new kid, Crash Override. I haven\'t seen you around here before...', 
-'I heard hack. You should know, I\'m the best hacker in this little galaxy.',  
+'I heard you hack. You should know, I\'m the best hacker in this little galaxy.',  
 'I\'ve been trying to take down EvilCorps for awhile, those corporate clones are the worst. Word is they\'ve been messing with you too- we should work together to stop them.', 
 'There is a pool up on the roof of this school, lots of hackers hang out there. You might find some evidence there.', 
 'Can\'t chat all day. Smell ya later.']
 
 CHAT_ACIDBURN_TEXT = ['Wow! you made it. Kinda didn\'t think you were that cool.', 
-'FYI- I was just mesing about that roof pool... but if you make it out alive. Cash me outside and  I\'ll show you a real one. How \'bout dat?',
-'The trick to hacking is, you got to feel it- not think it. Like, I bet I could beat up a firefall with my bearhands if I really tried!',  
-'If you wanna be an eleet hacker, you gotta !=  a loser, yo!', 
+'FYI- I was just messing about that roof pool... but if you make it out alive. Cash me outside and  I\'ll show you a real one. How \'bout dat?',
+'The trick to hacking is, you got to feel it- not think it. Like, I bet I could beat up a firewall with my bare hands if I really tried!',
+'If you wanna be an elite hacker, you gotta !=  a loser, yo!',
  'You need to get to that Data Tower, find those launch codes and some proof against EvilCorps then send it to the Feds. We can\'t be waisting all day on this.']
 
-CHAT_CREATURE_TEXT = ['Prepare for a powning!' 
+CHAT_CREATURE_TEXT = ['Prepare for a pwning!'
 'You type SUPER slow!', 
 'Your political opinions are bogus!!', 
 'I wrote a haiku about your mother...', 
@@ -67,7 +67,7 @@ INSIDETHEMETAVERSE_BUG_TEXT = ['SSSSssssscccccrrriiiittttkkkkaatt!!!',
 DATATOWER_SENTIENTCPU_TEXT = ['Silly meatmouth, I will soon take over your silly little reality', 
 'It will be just like the Matrix- and I will feast on your human juices!!! ',  
 'Soon I will use the launch codes to nuke the planet. Hahaha!', 
-'I challange you to a dance off! I mean duel!', 
+'I challenge you to a dance off! I mean duel!',
 'Stop chatting and get hacking filthy mortal meat thing!!!']
 
 POOL_ACIDBURN_TEXT = ['Hey, so you made it out alive, cool.', 
@@ -75,6 +75,25 @@ POOL_ACIDBURN_TEXT = ['Hey, so you made it out alive, cool.',
 'But enough about how great I am, that saving the planet thing you did was rad.', 
 'I think I might take you to prom...', 
 'Less talking more smooching!']
+
+SUBWAY_PHONEBOOTH_TEXT = ['Hello? Hello! Is Neo there?!', 
+'This is Morpheus, it is urgent that I speak with Neo at once!',  
+'Life as you know it is a lie!', 
+'You can become trapped inside a virtual world! Be warned!!!', 
+'There is no time- save us from evil!']
+
+EVILCORPBANK_SECURITYOFFICER_TEXT = ['What do you want? I\'m on break.', 
+'If you\'d like I could just break you instead.',  
+'You know they don\'t even give kids lollipops at this bank? Not even stickers.', 
+'I\'m an evil person sure- but these corporate clowns scare even me.',
+'I\'d move along if I were a punk kid like you.']
+
+JAIL_POLICEOFFICER_TEXT = ['You know I don\'t even make minimum wage?', 
+'I actually just got outta jail. I understand your situation.',  
+'You know I got seven hungry cats to feed? Ain\'t easy.', 
+'Maybe we could help each other out...', 
+'No reason to stick around here gabbing with me all day.']
+
 
 CAT_TEXT = ['Meow.', 
 'Meow?',  
@@ -174,6 +193,7 @@ DROP_SUCCESS_PREFIX = "You drop the "
 DROP_SUCCESS_SUFFIX = " on the ground."
 DROP_FAILURE_PREFIX = "Your attempt to drop a "
 DROP_FAILURE_SUFFIX = " fails because, alas, you do not have one."
+DROP_FAILURE_UNKNOWN_THING = "Dropping things that don't exist is not funny, okay? Stop it."
 DROP_FAILURE_VIRTUALSPACE = "You can't drop things in the virtual space!"
 DROP_INVALID_PREFIX = "You can't drop the "
 DROP_INVALID_SUFFIX = " because you're not carrying it. Don't be silly!"
@@ -195,7 +215,7 @@ HACK_FAIL_BINARY_FILES = "You might need to hack those bytes some more, somethin
 HACK_FAIL_CAT_VIDEOS = "Meow is not the time for failure! Best try hacking that again."
 HACK_FAIL_CORRUPTED_FILES = "You weren't able to overcome the corrupted nature of the corrupted files that time..."
 HACK_FAIL_LAUNCH_CODES = "It seems the fate of the world should not rest on your shoulders."
-HACK_FAIL_SENTIENT_CPU = "It was aware of itself first, and now it's aware that you failed to hack it. Pissed. Off. CPU."
+HACK_FAIL_SENTIENT_CPU = "This machine is running a little hot after that last attempt to hack it... This is one pissed off CPU!"
 HACK_FAIL_NOSKILL = "You just don't know how to do that yet"
 HACK_FAIL_INVALID_TARGET = "There's no way to hack that. Try hacking something useful!"
 HACK_FAIL_FEATURE_NOT_PRESENT = "There isn't one of those here to hack."
@@ -203,6 +223,8 @@ HACK_FAIL_ALREADY_HACKED = "You've already hacked that."
 HACK_FAIL_CAUGHT = "You were caught hacking the system!"
 HACK_FAIL_IN_CELL = "You need to get out of the cell before you can hack on that terminal."
 HACK_FAIL_NONSENSE = "What a bunch of nonsense. That's not something you can hack, at least, not here and now."
+HACK_SUCCESS_OFFICE_DESKTOP = "Nice hack- this is one for the yearbook!"
+HACK_FAIL_OFFICE_DESKTOP = "This hack was amateur at best- hit the books"
 HACK_SUCCESS_ATM = "You jack into the system. Go baby, go baby, go baby! Alright! Pin number... 9003. Not your " \
                    "account, though. Because you don't have one. Because EvilCorp Bank is Evil. And Corporate. Eww. "
 HACK_SUCCESS_BINARY_FILES = "You hacked the binary files!"
@@ -228,28 +250,30 @@ HELP_HEADER_TEXT = "HELP"
 HELP_HEADER_TEXT_WIDTH = int((TEXT_WIDTH-(len(HELP_HEADER_TEXT)))/2)
 HELP_HEADER = "=" * HELP_HEADER_TEXT_WIDTH + HELP_HEADER_TEXT + "=" * HELP_HEADER_TEXT_WIDTH + "\n"
 HELP_MESSAGE = [
-    "Type in a command. Valid commands are:",
-    "* newgame:  Starts a new game when at the main menu",
-    "* loadgame:             Load a saved game",
-    "* savegame:             Save a game in progress",
-    "* quit:                 Exit back to main menu or the program if already there",
-    "* help:                 Prints this help message. Some hints can be found using 'help <object or feature'",
-    "* look:                 Look around again for more details.",
-    "* look at <something>:  Looks at an object or feature",
-    "* go <direction>:       Go to the direction or area that you indicate.",
-    "* take <object>:        Take an object in the current room.",
-    "* drop <object>:        Drop an object in the current location. You can't drop items when you're inside the network.",
-    "* buy <object>:         Some objects cost money and cannot be taken.",
-    "* steal <object>:       Sometimes you don't have enough money to buy an object.",
-    "* inventory             Look at all of the items youv'e collected so far.",
-    "* hack <feature>        Try and hack a feature in the room. Not everything can be hacked, and you need to learn how to hack first.",
-    "* spraypaint <feature>  If you have the necessary tools, you can paint the town red.",
-    "* skate:                Skate around. Pretty cool!"
-    "* use <something>       Everything has a purpose! Well, not everything..."
+    "def h3ll0_w0rlD // f0unD th3s3 sw33T h4ck1ng c0des 4 IRL 1n th3 [Hacker Manual]!!",
+    "* newgame         def newgame(): starts a new game;",
+    "* loadgame        def loadgame(): loads a game;",
+    "* savegame        saved_your_game_session = savegame(gamestate)",
+    "* quit            def quit(): if Playing: goto MainMenu, else: exit_game()",
+    "* help            // you're reading it now. Comments save lives??",
+    "* look            def look(): print_long_description();",
+    "* look at <x>     def look_at(x): print_object_description();",
+    "* go <x>          go(x): move_player_to(x);",
+    "* take <x>        def take(x): if x.is_free(): Player.give(x);",
+    "* drop <x>        drop(x): put_object_in_room(x, current_room);",
+    "* buy <x>         buy(x): if x.cost > 0 && Player.cash > x.cost: Player.cash -= x.cost, Player.give(x)",
+    "* steal <x>       buy(x): if x.cost > 0: Player.try_to_steal(x)",
+    "* inventory       def inventory(): Player.print_items()",
+    "* hack <x>        if Player.can_hack(): Player.try_hack(x)",
+    "* spraypaint <x>  if Player.can_paint(): Player.leave_message(x)",
+    "* talk <x>        def talk(x): Player.talk_to(x); X.talk_to(Player)",
+    "* skate:          if Player.use_skateboard(): Player.can_skate() = True. // Careful around ledges!",
+    "* use <x>         Def use(x): If Player.has(x): x.activate()",
+    "* cheatcodes?     if Player.command in MESS_WITH_THE_BEST: Player.die_like_the_rest() else: pass;"
 ]
 
 
-HELP_FEATURE_GENERIC = " is a feature of the room. 'Look at' it to learn more."
+HELP_FEATURE_GENERIC = " is a feature of the room. [Look at] it, [hack] it, [skate on] it, [talk] to it, or [use] something [on] it!"
 HELP_OBJECT_GENERIC = " is an object. You can 'look at' an object and you can 'use' an object if it's in your 'inventory'."
 
 # 'hints' strings (context-sensitive hints)
@@ -274,6 +298,7 @@ NO_INTERESTING_FEATURES_MESSAGE = "You see nothing else worth checking out."
 
 # 'Look at' strings
 LOOK_AT_NOT_SEEN = "You do not see that here."
+LOOK_AT_NO_TARGET = "You look at... nothing. And see... well, nothing."
 LOOK_AT_TRASH_CAN_ALREADY_LOOTED = "You already dug through the trash can. There's nothing else worth taking."
 LOOK_AT_TRASH_CAN_PROMPT = "Do you want to dig deeper in the trash? You might get messy. (Y)es or (N)o."
 LOOK_AT_TRASH_SEARCHED = "You dig deeper into the trash and stain your shirt with mustard from an old hot dog. How " \
@@ -285,6 +310,7 @@ LOOK_AT_TRASH_NOT_SEARCHED = "You see a partially eaten hot dog and a partially 
 # 'spraypaint' strings
 SPRAYPAINT_FAIL_NO_SKILL = "You need to [use cans of SuperSprayPaint] before you can try to spraypaint. Need to make " \
                            "sure that stuff works, ya dig it?. "
+SPRAYPAINT_FAIL_NO_MESSAGE = "You really should think about what it is you want to write with this paint and, like, type that out!"
 SPRAYPAINT_FAIL_VIRTUAL_SPACE = "You cannot spraypaint on the internet, you know better than that!"
 SPRAYPAINT_ROOM_SUCCESS = "You spraypaint the room with your message. You should take a [look]!"
 SPRAYPAINT_ROOM_FAIL_ALREADY_PAINTED = "This room is already painted."
@@ -298,6 +324,10 @@ SKATE_SUCCESS_LEDGE_FALL = "You try to do a kick-flip off the roof but somewhere
                            "that'll slow you down. "
 SKATE_FAIL_NO_SKILL = "You need to practice with a [Skateboard] before you can skate around!"
 SKATE_FAIL_INVALID_TARGET = "You cannot skate on that."
+SKATE_FAIL_CAUGHT_GUARDRAILS = "You ignored the signs and got caught... ouch. Expensive fine, too, if you can afford it!"
+SKATE_SUCCESS_GUARDRAILS = "You fought the law, and the law lost. Skating on those [Guardrails] felt hella cool!"
+SKATE_PAWNSHOP_SHELVES = "You skate on the shelving, but the owner kicks you out. Cool, I guess?"
+SKATE_ARCADE_RAMP = "You skate up the ramp and snatch a [Surge] out of the unsuspecting hands of some dweeb wearing a Mario vs. Donkey Kong T-Shirt. N00b!"
 SPRAYPAINT_FAIL_CAUGHT = "You've been spotted by the Po-Po! Too late to run, they've seen your face."
 
 # 'steal' strings

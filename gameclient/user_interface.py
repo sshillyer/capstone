@@ -3,7 +3,7 @@
 # Team Members: Sara Hashem, Shawn Hillyer, Niza Volair
 
 # user_interface.py
-# Description: UserInterface functions for basic termina IO
+# Description: UserInterface functions for basic terminal IO
 # Principal Author of this file per Project plan: Shawn Hillyer
 
 # CITATIONS
@@ -74,7 +74,6 @@ class UserInterface:
         self.clear_screen()
         self.print_introduction()
 
-
     def print_splash_screen_load_game(self):
         self.clear_screen()
         wprint(LOAD_GAME_SPLASH)
@@ -98,7 +97,6 @@ class UserInterface:
         has_spraypaint_skill = info['spraypaint_skill']
 
         if has_hack_skill is False and has_skate_skill is False and has_spraypaint_skill is False:
-            # logger.debug(has_hack_skill + has_spraypaint_skill + has_skate_skill)
             skills_row_text += STATUS_NO_SKILLS
         if has_hack_skill is True:
             skills_row_text +=  "hack\t"

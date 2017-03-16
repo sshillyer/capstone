@@ -87,6 +87,9 @@ class SaveGame:
             self.spraypaint_data = gamestate.get_spraypaint_data()
             self.time_left = gamestate.get_time_left()
 
+            # Data used to handle end game logic
+            self.endgame_data = gamestate.get_endgame_data()
+
 
     def write_to_file(self, filename):
         '''
@@ -132,7 +135,10 @@ class SaveGame:
             # Other variables stored in GameState
             'jailroom_data': self.jailroom_data,
             'spraypaint_data': self.spraypaint_data,
-            'time_left': self.time_left
+            'time_left': self.time_left,
+
+            # Data used to handle end game logic
+            'endgame_data': self.endgame_data
         }
 
         with open(os.path.join(saved_dir, filename), 'w') as saved_game_file:
@@ -184,6 +190,9 @@ class SaveGame:
         self.jailroom_data = self.save_data['jailroom_data']
         self.spraypaint_data = self.save_data['spraypaint_data']
         self.time_left = self.save_data['time_left']
+
+        # Data used to handle end game logic
+        self.endgame_data = self.save_data['endgame_data']
 
     def get_current_room(self):
         try:
@@ -283,6 +292,14 @@ class SaveGame:
             return self.time_left
         except:
             return None
+
+    def get_endgame_data(self):
+        try:
+            return self.endgame_data
+        except:
+            return None
+
+
 
     def get_visited_rooms_list(self):
         try:

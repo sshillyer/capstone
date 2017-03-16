@@ -12,12 +12,9 @@
 
 from fileio.room import *
 
-from debug.debug import *
-logger = logging.getLogger(__name__)
 
 import json
 import glob
-import pprint
 
 class Object:
     '''
@@ -25,7 +22,6 @@ class Object:
      Can be picked up from a room, dropped in a room, used, 'look at'ed, and possibly other actions
     '''
     def __init__(self, properties):
-        # logger.debug(properties)
         if 'name' in properties:
             self.name = properties['name']
         if 'long_description' in properties:

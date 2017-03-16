@@ -7,7 +7,7 @@
   "room_features" : [
       {
         "name" : "Heavy Door",
-        "description" : "A large metal structure which is probably gonna make you late for class. Psyc! You would never go to class.",
+        "description" : "A large metal structure which is probably gonna make you late for class. Psych! You would never go to class.",
         "hackable": true,
         "description_hacked" : "The door swings open freely now. Go as you please..."
       },
@@ -26,7 +26,7 @@
     {
       "label": "Hall",
       "cardinal_direction": "South",
-      "description": "the trap door leading back to the Hall.",
+      "description": "the heavy door leading back to the Hall.",
       "destination": "Hall"
     }
   ]

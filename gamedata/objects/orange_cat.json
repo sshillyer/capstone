@@ -2,7 +2,7 @@
   "name" : "Orange Cat",
   "long_description" : "A large fluffy orange [orange cat] of untold origins who has deemed you good company.",
   "short_description" : "A fat orange cat",
-  "default_location" : "Locker",
+  "default_location" : "special",
   "details" : "awesome",
   "cost" : 0
 }

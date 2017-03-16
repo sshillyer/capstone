@@ -18,8 +18,6 @@ import textwrap
 
 from debug.debug import *
 
-logger = logging.getLogger(__name__)
-
 import json
 import glob
 import copy
@@ -141,12 +139,8 @@ class Room:
         :return: The feature itself or null
         '''
         for room_feature in self.room_features:
-            # logger.debug("Checking if " + room_feature.get_name().lower() + " is " + feature.lower() + "...")
             if room_feature.get_name().lower() == feature_name.lower():
-                # logger.debug("Match found!")
                 return room_feature
-            # else:
-            #     logger.debug("Not a match!")
 
         # If the room does not have a feature with that name, return None
         return None
@@ -253,7 +247,6 @@ class RoomBuilder:
     This class is designed to build a room or multiple rooms from files
     '''
     def __init__(self):
-        # logger.debug("RoomBuilder instantiated")
         pass
 
     def load_room_data_from_file(self, dir="./gamedata/rooms/*.json"):

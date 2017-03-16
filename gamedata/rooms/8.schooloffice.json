@@ -6,21 +6,22 @@
   "virtual_space" : false,
   "room_features" : [
       {
-        "name" : "School wide Intercom Mic",
+        "name" : "School Intercom Mic",
         "description" : "\"Attention students! School is closed for the rest of the year!\" jk jk",
         "hackable": false
       },
       {
         "name" : "Office Desktop",
         "description" : "Straight A's? Suuure I earned all these...",
-        "hackable": false
+        "hackable": true,
+        "description_hacked": "This desktop has been thoroughly hacked."
       },
       {
         "name" : "Acid Burn",
         "description" : "Still the coolest kid in school (graduating last year hasn't changed this).",
         "hackable": false
       },
-	  {
+      {
         "name" : "Clock",
         "description" : "It isn't even digital.",
         "hackable": false

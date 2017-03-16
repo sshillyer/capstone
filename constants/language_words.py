@@ -10,7 +10,7 @@
 # CITATIONS
 # CITE: None
 
-#room destinaitions and aliases
+#room destininations and aliases
 R1 = ['street']
 R2 = ['evilcorp bank', 'evil corp', 'evil bank', 'evilcorp', 'bank']
 R3 = ['arcade']
@@ -39,8 +39,6 @@ CASH_CRISP = 'crisp cash'
 CASH_CRISP_ALIASES = ['crisp cash', 'crisp', 'crisp money'] 
 CASH_WAD = 'cash wad'
 CASH_WAD_ALIASES = ['cash wad', 'wad of cash', 'wad of money', 'money wad', 'wad']
-CRUMPLED_CASH = 'crumpled cash'
-CRUMPLED_CASH_ALIASES = ['crumpled cash', 'crumpled']
 CODE = 'code'
 CODE_ALIASES = ['code']
 COMPUTER = 'computer'
@@ -86,7 +84,7 @@ R1_F = [['"no skateboarding" sign', 'no skateboarding sign', 'sign'], ['guardrai
 R2_F = [['phone booth', 'phone', 'booth'], ['trash can', 'trash'], ['turnstiles', 'turn stile', 'turn stiles', 'turnstile']]
 R3_F = [['ramp'], ['death to the patriarchy', 'game', 'death', 'patriarchy']]
 R4_F = [['counter'], ['shelves'], ['store clerk', 'clerk']]
-R5_F = [['atm'], ['crumpled cash', 'crumpled'], ['security officer', 'security']]
+R5_F = [['atm'], ['security officer', 'security']]
 R6_F = [['your gear', 'gear'], ['unattended police desktop', 'police desktop'], ['police officer', 'cop'], ['unoccupied desk', 'desk'], ['metal door']]
 R7_F = [['locker'], ['teacher', 'teach'], ['fire alarm', 'alarm']]
 R8_F = [['school intercom mic', 'intercom mic', 'intercom', 'mic'], ['office desktop'], ['clock'], ['poster']]

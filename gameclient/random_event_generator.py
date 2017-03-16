@@ -26,6 +26,7 @@ class RandomEventGenerator:
         self.spraypaint_success_chance = SPRAYPAINT_SUCCESS_CHANCE
         self.steal_success_chance = STEAL_SUCCESS_CHANCE
         self.hack_success_chance = HACK_SUCCESS_CHANCE
+        self.skate_success_chance = SKATE_SUCCES_CHANCE
         random.seed()
 
     def attempt_steal(self):
@@ -37,6 +38,12 @@ class RandomEventGenerator:
     def attempt_hack(self):
         num = random.randint(1,100)
         if num <= self.hack_success_chance:
+            return True
+        return False
+
+    def attempt_skate(self):
+        num = random.randint(1, 100)
+        if num <= self.skate_success_chance:
             return True
         return False
 
@@ -52,7 +59,6 @@ class RandomEventGenerator:
 
     def coin_flip(self):
         num = random.randint(1,100)
-        logger.debug("coin flip value: " + str(num))
         if num <= 50:
             return True
         return False

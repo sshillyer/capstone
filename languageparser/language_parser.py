@@ -19,23 +19,15 @@ from fileio.object import *
 from debug.debug import *
 import string
 
-logger = logging.getLogger(__name__)
 
 
 
 class LanguageParser:
 
-    '''
-        TODO:
-
-    '''
-    def __init__(self):
-        logger.debug("Language Parser initialized")
-
 
     def parse_command(self, command):
         
-        # Go through list of words to parse out words accourding to type and order
+        # Go through list of words to parse out words according to type and order
         
         #***Valid Structures***
         # VERB
@@ -48,16 +40,11 @@ class LanguageParser:
         
         # Note: we are using 'TARGET' to mean 'object of the preposition' to avoid confusion with objects
         
-        # TODO: Deal with punctuation accounting for it in messages
-        
-        # STRETCH GOAL (finished): account for NEGATIONS
-        # STRETCH GOAL (finished): account for other word sentence structure
-        
         if command == '':
             error = INVALID_EMPTY
             
         #save a copy of original in case we need for spraypaint
-        sprayCommand = command;
+        sprayCommand = command
         
         #otherwise capitalization doesn't matter
         command = command.lower().lstrip()
@@ -80,12 +67,12 @@ class LanguageParser:
         # check for cheat codes    
         for alias in CHEATCODE_LOSE_ALIASES:
             if alias in command:
-                verb  = CHEAT_LOSE
+                verb  = CHEATCODE_LOSE
                 cheat = True
         
         for alias in CHEATCODE_WIN_ALIASES:
             if alias in command:
-                verb = CHEAT_WIN
+                verb = CHEATCODE_WIN
                 cheat = True
                 
 
@@ -162,9 +149,7 @@ class LanguageParser:
                 for word in words:
                     if word in NEGATIONS:
                         error = INVALID_NEGATION
-    
-        #TODO: possibly add TALK to special verbs
-        
+            
 
         # SUBJECT or PREPOSTION check: the model is VERB-> (PREPOSITION ANY SUBSEQUENT LOCATION) + NOUN-> TARGET
         if error == None and cheat == None and verb_is_special == False:
@@ -197,14 +182,14 @@ class LanguageParser:
                         words_sublist_string = ' '.join(words_sublist)
                         words_sublist_string = ''.join(ch for ch in words_sublist_string if ch not in string.punctuation)
                         if words_sublist_string == obj_alias:
-                            # only save  the first occurance of object or feature
+                            # only save  the first occurrence of object or feature
                             if noun == None:
                                 # the alias arrays always store the base word at index 0
                                 noun = str(obj_alias_array[0])
                                 noun_is = 'object'
                                 #last index is the last index of the last noun or target we found
                                 noun_idx = last_idx = idx + num_words_in_alias - 1 
-                            # second occurance will be the target and cannot also be the noun
+                            # second occurrence will be the target and cannot also be the noun
                             elif target == None and noun != str(obj_alias_array[0]):
                                 target = str(obj_alias_array[0])
                                 target_is = 'object'
@@ -246,12 +231,6 @@ class LanguageParser:
                 if noun != None and preposition != None and target == None:
                     if prep_idx > noun_idx:
                         error = INVALID_SENTENCE_STRUCTURE
-                #INVALID: VERB NOUN TARGET PREP
-                elif noun != None and target != None and preposition != None:
-                    # TODO: target_idx is undefined! typing something like "use fireball on bug" cases exception and crashes game. putting a 'pass' here so I can test logic
-                    pass
-                    # if prep_idx > target_idx:
-                    #     error = INVALID_SENTENCE_STRUCTURE
         
         R = LanguageParserWrapper()
         if error != None:
@@ -272,8 +251,6 @@ class LanguageParser:
             
         if target != None:
             R.set_extra(str(target), str(target_is))
-            
-        logger.debug("Parser returning: \n" + str(R))
-        
+
 
         return R

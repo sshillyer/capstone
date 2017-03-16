@@ -7,7 +7,7 @@
   "room_features" : [
       {
         "name" : "Bug",
-        "description" : "A creepy crawly bug eating through logic fastern than fiber.",
+        "description" : "A creepy crawly bug eating through logic faster than fiber.",
         "hackable": false
       },
       {

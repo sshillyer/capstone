@@ -12,7 +12,6 @@
 from fileio.room import *
 
 from debug.debug import *
-logger = logging.getLogger(__name__)
 
 import json
 import glob

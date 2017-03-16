@@ -49,12 +49,17 @@ class Player:
 
     def update_cash(self, cash_change):
         self.cash += int(cash_change)
+        if self.cash < 0:
+            self.cash = 0
         if cash_change > 0:
             change_direction = "increased"
         else:
             change_direction = "decreased"
             cash_change = int(-1 * cash_change)
-        wprint("Your [Cash] " + change_direction + " by " + str(cash_change) +".")
+        if self.cash > 0:
+            wprint("Your [Cash] " + change_direction + " by " + str(cash_change) +".")
+        else:
+            wprint("You've used up all your [Cash]. If only there were an ATM you could [hack] or something!")
 
     def update_speed(self, speed_change):
         self.speed += int(speed_change)
@@ -100,9 +105,8 @@ class Player:
 
     def has_object_by_name(self, object_name):
         '''
-        Used in a few different
-        :param object_name:
-        :return:
+        :param object_name: Name of an object
+        :return: True if the object is in player's inventory, false otherwise
         '''
         player_inventory_objects = self.inventory.objects
         for inventory_object in player_inventory_objects:
@@ -111,7 +115,9 @@ class Player:
         return False
 
     def has_computer_parts(self):
-
+        '''
+        :return: True if player has a new computer or all of the parts they need, False otherwise
+        '''
         if self.has_object_by_name(NEW_LAPTOP) is True:
             return True
         elif    self.has_ram() is True and \
@@ -124,7 +130,6 @@ class Player:
     def has_ram(self):
         has_ram = self.has_object_by_name(RAM) or self.has_object_by_name(ACMERAM)
         return has_ram
-
 
 
 class Inventory:

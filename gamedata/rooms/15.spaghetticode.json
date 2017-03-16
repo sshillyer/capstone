@@ -1,7 +1,7 @@
 {
   "name" : "Spaghetti Code",
   "long_description" : "A sticky sloppy mess of code swirls around your body immobilizing you in a small cramped space where you can barely see anything except a few black and white binary blinks and a couple of oozing corrupted files.",
-  "short_description" : "A swirl of spaghetti code with binary blinks and some majorly harshed files.",
+  "short_description" : "A swirl of spaghetti code with binary blinks and some majorly hashed files.",
   "visited" : false,
   "virtual_space" : true,
   "room_features" : [

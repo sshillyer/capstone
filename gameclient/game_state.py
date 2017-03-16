@@ -29,8 +29,8 @@ class GameState:
 
     def set_current_room(self, room):
         '''
-        Update the location the player is in
-        :param room: The room the player is in (actual room)
+        Update the location the player is in. Needs actual reference to the room
+        :param room: Room object. Room the player is in
         :return: N/A
         '''
         try:
@@ -40,24 +40,41 @@ class GameState:
         self.current_room = room
 
     def get_room_by_name(self, room_name):
+        '''
+        :param room_name: String. Name of a room.
+        :return: The room or None if not exists
+        '''
         for room in self.rooms:
             if room.name.lower() == room_name.lower():
                 return room
         return None
 
     def get_object_by_name(self, object_name):
+        '''
+        :param object_name: String. Name of an object in game
+        :return: Object or None if not exists
+        '''
         for room_object in self.objects:
             if room_object.get_name().lower() == object_name.lower():
                 return room_object
         return None
 
     def get_object_art(self, object_name):
+        '''
+        Used to print ascii art of various objects as read from a data file
+        :param object_name: String. Name of the object
+        :return: The ascii art as a string, or None if not exists
+        '''
         for object in self.object_art:
             if object.name.lower() == object_name.lower():
                 return object.image
         return None
 
     def initialize_gamestate(self):
+        '''
+        Creates a variety of variables and puts them into an initial state so they can be used properly.
+        :return:
+        '''
         self.current_room = None
         self.prior_room = None
         self.rooms = []
@@ -67,13 +84,13 @@ class GameState:
         self.time_left = STARTING_TIME
         self.is_trash_can_looted = False
         self.is_locker_open = False
-        self.is_alarm_hacked = False
         self.is_graphics_card_found = False
+        self.is_game_played = False
         self.spraypaint_data = {}
         self.jailroom_data = {}
         self.endgame_data = {}
 
-        # Talk indices are intentionally not saved; if a player loads game, we figure they might want to have the conversations again
+        # Talk indices intentionally not saved; if player loads game, assumed might want to have conversations again
         self.talk_indices = {
             'store_clerk': 0,
             'office_acid' : 0,
@@ -82,16 +99,29 @@ class GameState:
             'sentient_cpu' : 0,
             'pool_acid' : 0,
             'hall_teacher' : 0,
-            'cat' : 0
+            'cat' : 0,
+            'jail_policeofficer' : 0,
+            'evilcorpbank_securityofficer' : 0,
+            'subway_phonebooth' : 0,
+            'chat_bug' : 0
         }
 
     def load_rooms_and_objects_from_file(self):
-        # Initialize the rooms and objects to their defaults
+        '''
+        Loads the 'master' version of every room and object into GameState. Rooms are only copy, but the objects
+        are very often duplicated (copied) into inventory and then back into rooms, referenced for their data, etc.
+        :return: None
+        '''
         self.rooms = self.rb.load_room_data_from_file()
         self.objects = self.ob.load_object_data_from_file()  # Being done in the initialize_gamestate()
         self.object_art = self.art.load_art_from_file()
 
     def initialize_new_game(self):
+        '''
+        Reinitializes the gamestate variable, loads the objects, and places objects in their default locations. Also
+        clears out some variables related to breaking out of jail and the spraypaint tags in each room.
+        :return: None
+        '''
         self.initialize_gamestate()
         self.load_rooms_and_objects_from_file()
 
@@ -105,6 +135,11 @@ class GameState:
         self.initialize_endgame_data()
 
     def initialize_load_game(self, filename):
+        '''
+        Loads a game from the filename passed in and initializes gamestate with the data.
+        :param filename:
+        :return:
+        '''
         self.game_file = filename.replace('.json', '')
 
         # Clear all of the variables by calling what is essentially the constructor
@@ -148,7 +183,6 @@ class GameState:
                 room = self.get_room_by_name(room_name)
                 room.add_object_to_room(obj)
                 # logger.debug("Adding object " + obj.get_name() + " to room " + room.get_name() + ".")
-        #
         player_inventory_list = save_data.get_player_inventory()
         for object_name in player_inventory_list:
             obj = self.get_object_by_name(object_name)
@@ -177,16 +211,24 @@ class GameState:
         self.initialize_jailroom_data() # Makes sure dictionary clear
         self.jailroom_data = save_data.get_jailroom_data()
         self.initialize_endgame_data()
-        # self.endgame_data = save_data.get_endgame_data() # TODO: Have Sara build this into SaveGame
+        if save_data.get_endgame_data() is not None:
+            self.endgame_data = save_data.get_endgame_data()
 
     def game_status(self):
-        # TODO: Implement this properly. Status codes in constants\gameover_status_codes.py  ((SSH))
-        # This function should/will check if player has won or lost(died/whatever)
+        '''
+        Was intended to do multiple checks to see if player has lost or won, but we ended up only having one way to
+        "lose" (out of time --> lose game) and one way to "win", which ends up restarting game rather than going to menu
+        :return: A constant indicating if the game is lost or not
+        '''
         if self.time_left is 0:
             return GAMEOVER_LOSE
         return GAME_CONTINUE
 
     def get_header_info(self):
+        '''
+        Used on the main interface to print details
+        :return: Dictionary of the various stats from player and gamestate
+        '''
         header_info = {
             'speed' : self.player.speed,
             'coolness' : self.player.coolness,
@@ -234,6 +276,10 @@ class GameState:
         return self.spraypaint_data
 
     def initialize_jailroom_data(self):
+        '''
+        Sets the jail back to its initial state (locked down!)
+        :return:
+        '''
         self.jailroom_data = {
             'cell_unlocked' : False,
             'computer_hacked' : False,
@@ -262,21 +308,7 @@ class GameState:
         return self.jailroom_data
 
     def get_endgame_data(self):
-        logger.debug(self.endgame_data)
         return self.endgame_data
-
-    # def append_endgame_data(self, key, new_data):
-    #     '''
-            # TODO: Probably delete this, it's just a bad idea
-    #     Add data to the endgame_data variable. Used to store special variables that are accessed by game engine to handle
-    #     special logic, particularly in the endgame
-    #
-    #     :param key: The key to use for the data being added
-    #     :param dict_data: The dictionary being added to the overall dictionary
-    #     :return: None
-    #     '''
-    #     logger.debug("Appending data\nKEY:\n" + key + "\nDATA:\n" + new_data)
-    #     self.endgame_data[key] = new_data
 
     def is_room_spray_painted_by_name(self, room_name):
         '''
@@ -291,7 +323,7 @@ class GameState:
                 is_painted = entry['is_spraypainted']
         except:
             logger.debug("There was a problem finding the room '" + str(room_name) + "' + in the self.spraypaint_data dictionary")
-        # logger.debug("is_room_spray_painted_by_name(" + room_name + ") returns " + str(is_painted))
+
         return is_painted
 
     def set_room_spray_painted_by_name(self, room_name, painted=True):
@@ -316,8 +348,6 @@ class GameState:
         try:
             entry = self.spraypaint_data[room_name]
             entry['spraypaint_message'] = str(message)
-            # logger.debug("Setting the message... entry is now " + str(entry))
-            # logger.debug(str(self.spraypaint_data))
         except:
             logger.debug("Error setting the message in this room")
             logger.debug(str(self.spraypaint_data))
@@ -329,13 +359,9 @@ class GameState:
         :return:
         '''
         try:
-            # logger.debug("Trying to get spray painted message from room " + room_name)
             entry = self.spraypaint_data[room_name]
-            # logger.debug("self.spraypaint_data[" + room_name + "]" + str(entry))
-            # logger.debug(entry['spraypaint_message'])
             return entry['spraypaint_message']
         except:
-            # logger.debug("Couldn't find a message for the room " + room_name + ", this isn't necessarily a problem if in a virtual space")
             return None
 
     def place_objects_in_rooms(self, game_objects):
@@ -353,8 +379,8 @@ class GameState:
                         self.player.add_object_to_inventory(game_object)
                     except:
                         logger.debug("place_objects_in_rooms() failed to place " + game_object.get_name() + " in inventory")
-                if object_location == "trash can":
-                    pass # it's manually 'yanked' in the 'search_trash_can()' method
+                if object_location == "special":
+                    pass # not in a room
                 else:
                     try:
                         room = self.get_room_by_name(object_location)
@@ -390,10 +416,13 @@ class GameState:
         return self.time_left
 
     def get_longest_object_name(self):
+        '''
+        Used to help pad the inventory short descriptions
+        :return: Length of the longest object name in game
+        '''
         max = 0
         for game_object in self.objects:
             name_length = len(game_object.get_name())
             if name_length > max:
                 max = name_length
-        # logger.debug("MAX OBJECT NAME LENGTH: " + str(max))
         return max
