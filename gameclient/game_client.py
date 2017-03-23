@@ -723,6 +723,7 @@ class GameClient:
         :return:
         '''
         # self.ui.clear_screen()
+        print('\n\n')
 
         cur_room = self.gamestate.get_current_room()
         if cur_room.is_visited() is False or print_long_description is True:

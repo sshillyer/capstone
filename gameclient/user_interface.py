@@ -49,6 +49,7 @@ class UserInterface:
 
     def user_prompt(self):
         user_input = input(self.prompt_text)
+        print('\n')
         return user_input
 
     def print_help_message(self):
