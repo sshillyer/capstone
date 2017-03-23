@@ -45,7 +45,7 @@ class UserInterface:
 
     def print_main_menu(self):
         for line in MAIN_MENU_LINES:
-            wprint(line)
+            print(line)
 
     def user_prompt(self):
         user_input = input(self.prompt_text)
@@ -109,6 +109,7 @@ class UserInterface:
         wprint(STATUS_HEADER_BAR)
 
     def wait_for_enter(self):
+        # pass
         input(PRESS_KEY_TO_CONTINUE_MSG)
         self.clear_screen()
 

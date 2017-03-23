@@ -386,6 +386,7 @@ class GameState:
                         room = self.get_room_by_name(object_location)
                         room.add_object_to_room(game_object)
                     except:
+                        pass
                         logger.debug("place_objects_in_rooms() failed to place " + game_object.get_name() + " because room_name " + object_location + " does not exist.")
             except:
                 logger.debug("place_objects_in_rooms() failed for some unknown reason")
@@ -402,7 +403,6 @@ class GameState:
         :param time_change: Integer. Positive increases time_left, Negative decreases time_left
         :return: N/A
         '''
-        # TODO: Game design decision. What exactly does speed do? This implementation just adds the speed to any negative
         # time effects unless it reduces the effect to cause a GAIN in time which makes no sense
         # We could also make speed some kind of multiplier or some other method
         if time_change < 0:

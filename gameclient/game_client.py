@@ -125,8 +125,8 @@ class GameClient:
                 first_pass = False
             else:
                 self.ui.clear_screen()
-                wprint(self.user_input + INVALID_MENU_COMMAND_MESSAGE + "\n\n")
-                self.ui.wait_for_enter()
+                print(self.user_input + INVALID_MENU_COMMAND_MESSAGE + "\n\n")
+                # self.ui.wait_for_enter()
             self.main_menu_prompt()
 
             self.send_command_to_parser()
@@ -199,7 +199,7 @@ class GameClient:
                 # The verb_look() method is called at the top of each loop, so not explicitly called here
                 print_long_description = True
                 self.gamestate.update_time_left(LOOK_COST)
-                self.ui.clear_screen()
+                # self.ui.clear_screen()
             # Verbs
             elif self.command is LOOK_AT :
                 self.verb_look_at(self.verb_noun_name, self.verb_noun_type)
@@ -247,7 +247,7 @@ class GameClient:
                         status = GAMEOVER_QUIT
             else:
                 wprint(COMMAND_NOT_UNDERSTOOD)
-                self.ui.wait_for_enter()
+                # self.ui.wait_for_enter()
 
         return status
 
@@ -382,7 +382,7 @@ class GameClient:
         if buy_succeeded:
             self.gamestate.update_time_left(BUY_COST)
 
-        self.ui.wait_for_enter()
+        # self.ui.wait_for_enter()
         return buy_succeeded
 
     def verb_cheat_win(self):
@@ -422,7 +422,7 @@ class GameClient:
         if drop_success:
             self.gamestate.update_time_left(DROP_COST)
 
-        self.ui.wait_for_enter()
+        # self.ui.wait_for_enter()
         return drop_success
 
     def verb_go(self, destination, error_message):
@@ -533,7 +533,7 @@ class GameClient:
                 message = GO_FAILURE_PREFIX + self.verb_noun_name + GO_FAILURE_SUFFIX
 
         wprint(message)
-        self.ui.wait_for_enter()
+        # self.ui.wait_for_enter()
         return GAME_CONTINUE # Return NONE unless player won the game
 
     def verb_hack(self, noun_name, noun_type):
@@ -673,7 +673,7 @@ class GameClient:
         wprint(message)
         if hacking_detected_by_police is True:
             self.go_to_jail()
-        self.ui.wait_for_enter()
+        # self.ui.wait_for_enter()
         return hack_success
 
 
@@ -691,7 +691,7 @@ class GameClient:
             room_feature = self.gamestate.get_current_room().get_feature_by_name(noun_name)
             if room_feature is not None:
                 wprint(room_feature.get_name() + HELP_FEATURE_GENERIC)
-                self.ui.wait_for_enter()
+                # self.ui.wait_for_enter()
                 return
 
         elif noun_type == NOUN_TYPE_OBJECT:
@@ -702,7 +702,7 @@ class GameClient:
                 obj = self.gamestate.player.inventory.get_object_by_name(noun_name)
             if obj is not None:
                 wprint(obj.get_name() + HELP_OBJECT_GENERIC)
-                self.ui.wait_for_enter()
+                # self.ui.wait_for_enter()
                 return
             else:
                 self.ui.print_help_message()
@@ -713,7 +713,7 @@ class GameClient:
         self.gamestate.update_time_left(INVENTORY_COST)
         inventory_description = self.gamestate.player.inventory.get_inventory_string(self.gamestate.get_longest_object_name())
         self.ui.print_inventory(inventory_description)
-        self.ui.wait_for_enter()
+        # self.ui.wait_for_enter()
 
     def verb_look(self, print_long_description):
         '''
@@ -722,7 +722,7 @@ class GameClient:
         before. Used for 'look' command
         :return:
         '''
-        self.ui.clear_screen()
+        # self.ui.clear_screen()
 
         cur_room = self.gamestate.get_current_room()
         if cur_room.is_visited() is False or print_long_description is True:
@@ -813,7 +813,7 @@ class GameClient:
         except:
             logger.debug("Error with room object art method?")
 
-        self.ui.wait_for_enter()
+        # self.ui.wait_for_enter()
 
         # Handle special look at 'minigame' logic
         if looked_at_trash_can is True:
@@ -839,7 +839,7 @@ class GameClient:
         :param message: string
         :return: message that should be printed
         '''
-        self.ui.clear_screen()
+        # self.ui.clear_screen()
         self.ui.print_quit_confirm(message)
         confirm = self.ui.user_prompt().lower()
         if confirm in YES_ALIASES:
@@ -852,7 +852,7 @@ class GameClient:
         :param message: string
         :return: message that should be printed
         '''
-        self.ui.clear_screen()
+        # self.ui.clear_screen()
         self.ui.print_quit_confirm(message)
         confirm = self.ui.user_prompt().lower()
         if confirm in YES_ALIASES:
@@ -897,7 +897,7 @@ class GameClient:
             self.gamestate.update_time_left(TAKE_COST)
 
         wprint(message)
-        self.ui.wait_for_enter()
+        # self.ui.wait_for_enter()
         return take_success
 
     def verb_talk(self, noun_name, noun_type):
@@ -958,7 +958,7 @@ class GameClient:
             response = room_feature.get_name() + " says: '" + response + "'"
 
         wprint(response)
-        self.ui.wait_for_enter()
+        # self.ui.wait_for_enter()
         return talk_success
 
     def get_talk_response_from_array(self, conversation_list, index_lookup):
@@ -1080,8 +1080,8 @@ class GameClient:
                         message = "You're not sure how to use a bug carcass in such a way."
 
                 else:
-                    logger.debug("Not implemented: use " + used_object.get_name())
-                    message = ("You used something that the game doesn't know what to do with, please tell your local dev!")
+                    # logger.debug("Not implemented: use " + used_object.get_name())
+                    message = ("You can't figure out how to use that directly. Hm. Maybe you should just hang on to it.")
                     use_success = False
             else:
                 message = USE_FAIL_UNUSABLE
@@ -1093,7 +1093,7 @@ class GameClient:
             self.gamestate.update_time_left(USE_COST)
 
         wprint(message)
-        self.ui.wait_for_enter()
+        # self.ui.wait_for_enter()
         return use_success
 
     def verb_skate(self, noun_name, noun_type, preposition):
@@ -1180,7 +1180,7 @@ class GameClient:
             pass
 
         wprint(message)
-        self.ui.wait_for_enter()
+        # self.ui.wait_for_enter()
         return skate_success
 
     def verb_spraypaint(self, command_extras):
@@ -1233,7 +1233,7 @@ class GameClient:
         wprint(interface_message)
         if spraypaint_detected_by_police is True:
             self.go_to_jail()
-        self.ui.wait_for_enter()
+        # self.ui.wait_for_enter()
         return spraypaint_success
 
     def verb_steal(self, noun_name, noun_type):
@@ -1284,7 +1284,7 @@ class GameClient:
         wprint(message)
         if steal_detected_by_police is True:
             self.go_to_jail()
-        self.ui.wait_for_enter()
+        # self.ui.wait_for_enter()
         return steal_success
 
     def send_command_to_parser(self):
@@ -1337,7 +1337,7 @@ class GameClient:
                 message = LOOK_AT_TRASH_NOT_SEARCHED
 
         wprint(message)
-        self.ui.wait_for_enter()
+        # self.ui.wait_for_enter()
 
     def install_floppy_disk(self):
         '''
@@ -1456,7 +1456,7 @@ class GameClient:
 
         if self.gamestate.is_locker_open is  True:
             wprint("Looks like there has already been a security breach on the locker. Nothing here.")
-            self.ui.wait_for_enter()
+            # self.ui.wait_for_enter()
             return
 
         wprint("You examine the metal contraption and notice a sturdy lock in place to thwart  thievery. "
@@ -1512,8 +1512,8 @@ class GameClient:
                             "This is an outrage! The cat jumps for your face, teeth and claws in a frenzy. "
                             "It eats your left ear and most of your nose.")
                     self.gamestate.player.update_coolness(CAT_FOOD_FAIL_COOLNESS_COST)
-                self.ui.wait_for_enter()
-            self.ui.wait_for_enter()
+                # self.ui.wait_for_enter()
+            # self.ui.wait_for_enter()
         elif user_response in ANSWER_B:
             wprint("A paper plane whizzes by your head almost chopping your ear off! This thing must be trapped! "
                     "Would be great if you could remember that code...")
@@ -1522,7 +1522,7 @@ class GameClient:
                     "The shame.")
             self.gamestate.player.update_coolness(FRESHMAN_SHAME)
 
-        self.ui.wait_for_enter()
+        # self.ui.wait_for_enter()
         
     def minigame_controlbox(self):
         '''
@@ -1557,7 +1557,7 @@ class GameClient:
         else:
             wprint("You\'ve searched this well enough- better get going with preventing that nuclear apocalypse.")
         
-        self.ui.wait_for_enter() 
+        # self.ui.wait_for_enter()
 
     def minigame_death(self):
         '''
@@ -1597,7 +1597,7 @@ class GameClient:
         else:
             wprint("Looks like the game is being played by a rambunctious third grader- probably too sticky to "
                     "get in a good game now anyway. ")
-        self.ui.wait_for_enter()
+        # self.ui.wait_for_enter()
 
     def minigame_bug(self):
         '''
@@ -1609,7 +1609,7 @@ class GameClient:
 
         if bug_defeated is True:
             wprint(MINIGAME_BUG_DONE)
-            self.ui.wait_for_enter()
+            # self.ui.wait_for_enter()
             return
 
         else:                
@@ -1655,7 +1655,7 @@ class GameClient:
                 except:
                     logger.debug("Unable to add [carcass] to player inventory, maybe the object doesn't exist yet?")
 
-            self.ui.wait_for_enter()
+            # self.ui.wait_for_enter()
 
     def minigame_firewall(self):
         firewall_defeated = self.gamestate.endgame_data['metaverse']['is_firewall_defeated']
@@ -1723,7 +1723,7 @@ class GameClient:
                 except:
                     logger.debug("Unable to add [fireball] to inventory")
 
-        self.ui.wait_for_enter()
+        # self.ui.wait_for_enter()
 
     def leet_translator(self):
         '''
@@ -1774,7 +1774,7 @@ class GameClient:
                 wprint("L473R H473r... (That's 'Later hater...' for you n00b$!)")
         else:
             wprint("L473R H473r... (That's 'Later hater...' for you n00b$!)")
-        self.ui.wait_for_enter()
+        # self.ui.wait_for_enter()
 
     def hack_heavy_door(self):
         '''
@@ -1878,13 +1878,13 @@ class GameClient:
                 else:
                     wprint("Punch, kick, fight, bit! That door crumples under your teenage assult!")
                     hack_success = True
-            self.ui.wait_for_enter()
+            # self.ui.wait_for_enter()
 
             if hack_success == False:
                 wprint("You've made some poor choices. Is this your fault- heck no! Blame society. Take 20 on this and figure it out. "
                         "Just get it done before the nukes go off... What do you want to try now?: ")
                 self.gamestate.update_time_left(DOOR_COST)
-            self.ui.wait_for_enter()
+            # self.ui.wait_for_enter()
         return True
         
     def hack_fire_alarm(self):
@@ -1925,7 +1925,7 @@ class GameClient:
             self.gamestate.player.update_speed(FIREALARM_SPEED_DECREASE)
             hack_success = False
 
-        self.ui.wait_for_enter()
+        # self.ui.wait_for_enter()
         return hack_success
 
     def hack_office_desktop(self):
@@ -1962,7 +1962,7 @@ class GameClient:
             wprint("You lose several brain cells in a mindless game of computer card. Acid Burn notices. This isn\'t good.")
             self.gamestate.player.update_coolness(OFFICE_DESKTOP_COOLNESS_DECREASE)
 
-        self.ui.wait_for_enter()
+        # self.ui.wait_for_enter()
         return hack_success
     
     def hack_binary_files(self):
@@ -2008,7 +2008,7 @@ class GameClient:
             self.gamestate.player.update_coolness(BINARY_FILES_COOLNESS_INCREASE)
             hack_success = False
 
-        self.ui.wait_for_enter()
+        # self.ui.wait_for_enter()
         return hack_success
 
     def hack_corrupted_files(self):
@@ -2058,7 +2058,7 @@ class GameClient:
             wprint("You play it safe and make it back out of that putrid mess… wonder what that game might have been though…")
             hack_success = False
 
-        self.ui.wait_for_enter()
+        # self.ui.wait_for_enter()
         return hack_success
 
     def hack_cat_videos(self):
@@ -2090,7 +2090,7 @@ class GameClient:
                    "this was the right choice.")
             hack_success = True # Redundant call, just in case want to change this to 'failing' the hack
 
-        self.ui.wait_for_enter()
+        # self.ui.wait_for_enter()
         return hack_success
 
     def hack_sentient_cpu(self):
@@ -2150,7 +2150,7 @@ class GameClient:
             )
             return False
 
-        self.ui.wait_for_enter()
+        # self.ui.wait_for_enter()
 
     def hack_launch_codes(self):
         '''
@@ -2192,7 +2192,7 @@ class GameClient:
 
             hack_success = True
 
-        self.ui.wait_for_enter()
+        # self.ui.wait_for_enter()
         return hack_success
 
     def use_object_on_feature(self, object_name, feature_name, success_function):

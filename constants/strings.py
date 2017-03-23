@@ -15,7 +15,6 @@ from constants.game_engine_constants import *
 import textwrap
 
 # This string should introduce the game once at loadup. Could replace with ASCII art if desired
-INTRO_STRING = "Welcome to Hacker: The Movie: The Adventure Game: The Sequel"
 INTRO_SEQUENCE = [
     "Last night you were eating pizza and hacking the system, everything totally rad. Slash/slash/hack!hack! it was just a usual night in the metaverse and you were a computer hacking teen legend! The best of the best!! For real.",
     "Your eyes shined bright in the green glow of the screen and your fingers flew over the numbers and letters in a flash of algorithms, each one quicker than the last. The chatroom were buzzing with hashtags and likes for your glorious brilliance!! Well, that was last night- but one move wrong stroke of the keyboard and all was changed forever....",
@@ -107,17 +106,14 @@ INVALID_MENU_COMMAND_MESSAGE = " is not a valid command at the main menu"
 COMMAND_NOT_UNDERSTOOD = "What?! How dare you say that to me!"
 
 # main menu related strings
-MAIN_MENU_1 = "MAIN MENU"
-MAIN_MENU_2 = "newgame :: \tbegin a new game"
-MAIN_MENU_3 = "loadgame:: \tload game from save"
-MAIN_MENU_4 = "quit :: \texit game"
-MAIN_MENU_5 = "help :: \tPrint instructions for the game"
+
 MAIN_MENU_LINES = [
-    MAIN_MENU_1,
-    MAIN_MENU_2,
-    MAIN_MENU_3,
-    MAIN_MENU_4,
-    MAIN_MENU_5,
+    "h4Ck3Rz: Th3 G4m3",
+    "\nMAIN MENU",
+    "newgame :: \tbegin a new game",
+    "loadgame:: \tload game from save",
+    "quit :: \texit game",
+    "help :: \tPrint instructions for the game"
 ]
 
 # General UI strings
