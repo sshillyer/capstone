@@ -2030,7 +2030,7 @@ class GameClient:
         if user_response in YES_ALIASES:
             wprint("Before your eyes flashes up like, a really big Wheel of Fortune type deal, you take a spin "
                    "throwing turing it as fast as you can and you see it tik tik tik around and around… fingers "
-                   "crossed!")
+                    "crossed!")
             player_wins_spin = self.rand_event.coin_flip()
 
             if player_wins_spin is True:
